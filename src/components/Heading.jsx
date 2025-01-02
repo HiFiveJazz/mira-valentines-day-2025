@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css'; // Import the CSS file
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navItems = [
     { name: 'Home', link: '/' },
     { name: 'Dates', link: '/dates' },
@@ -9,10 +11,17 @@ const Header = () => {
     { name: 'Invitation', link: '/contact' },
   ];
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <header className="header">
-      <h1 className="header-title">For Mira, My Love</h1>
-      <nav className="header-nav">
+      <img src="/heart-logo.png" alt="Heart Logo" className="header-logo" />
+      <button className="hamburger-menu" onClick={toggleMenu}>
+        ☰
+      </button>
+      <nav className={`header-nav ${menuOpen ? 'open' : ''}`}>
         {navItems.map((item) => (
           <a key={item.name} href={item.link} className="header-nav-link">
             {item.name}

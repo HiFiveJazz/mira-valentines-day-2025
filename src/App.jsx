@@ -12,8 +12,8 @@ function App() {
       <Heading />
       <CardSlider images={iceskatingImages} title="Ice Skating"/>
       <CardSlider images={riversideImages} title="Riverside Lights"/>
-      <CardSlider images={riversideImages} title="Riverside Lights"/>
-      <CardSlider images={riversideImages} title="Riverside Lights"/>
+      {/* <CardSlider images={riversideImages} title="Riverside Lights"/> */}
+      {/* <CardSlider images={riversideImages} title="Riverside Lights"/> */}
   </div>
   )
 }

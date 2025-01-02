@@ -3,6 +3,33 @@ import '../App.css'; // Import the CSS file
 
 const CardSlider = ({ images, title }) => {
   const [active, setActive] = useState(3);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX); // Record the starting touch position
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX); // Continuously update the ending touch position
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const swipeDistance = touchStart - touchEnd;
+    const swipeThreshold = 50; // Minimum swipe distance to trigger navigation
+
+    if (swipeDistance > swipeThreshold) {
+      handleNext(); // Swipe left to go to the next slide
+    } else if (swipeDistance < -swipeThreshold) {
+      handlePrev(); // Swipe right to go to the previous slide
+    }
+
+    // Reset touch positions
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   const loadShow = () => {
     const newItems = images.map((item, index) => {
@@ -49,7 +76,12 @@ const CardSlider = ({ images, title }) => {
   return (
     <div className="slider-container">
       {title && <h2 className="slider-title">{title}</h2>}
-      <div className="slider">
+      <div
+        className="slider"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {renderedItems.map((item) => (
           <div key={item.id} className="item" style={item.style}>
             <img
