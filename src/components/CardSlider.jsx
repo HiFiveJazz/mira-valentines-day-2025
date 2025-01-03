@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../App.css'; // Import the CSS file
 
 const CardSlider = ({ images, title }) => {
   const [active, setActive] = useState(3);

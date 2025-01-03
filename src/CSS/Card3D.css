@@ -1,0 +1,73 @@
+.card {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 310px 110px 80px;
+  grid-template-areas: "image" "text" "stats";
+
+  border-radius: 18px;
+  background-color: #9c1112;
+  /* background-image: linear-gradient(to top left, #9c1112, #9c8888); */
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  text-align: center;
+
+  margin: 20px auto;
+  max-width: 300px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  position: relative;
+  z-index: 1;
+}
+.card-image{
+  grid-area: image;
+  background: url("https://lajollamom.com/wp-content/uploads/2018/03/birch-aquarium-la-jolla-scaled.jpg");
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-size: cover;
+  /* transform: translateZ(5px) translateY(0px);  */
+  /* transition: transform 0.2s ease-out;  */
+  /* will-change: transform;  */
+}
+.card-text {
+  grid-area: text;
+  margin: 25px;
+  transform: translateZ(15px) translateY(0px); 
+  transition: transform 0.2s ease-out; 
+  will-change: transform; 
+}
+.card-text p {
+  color: #d9dadb;
+  font-size: 15px;
+  font-weight: 300;
+}
+.card-text h2 {
+  color: black;
+  margin-top: 0;
+  font-size: 28px;
+}
+.card-stats {
+  grid-area: stats;
+}
+.card:hover {
+  transform: scale(1.09);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+.card-text .date {
+  height: 35px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 50;
+  border-radius: 16px;
+  background-color: white;
+}
+.card.blurred {
+  filter: blur(5px) grayscale(100%); /* Apply Gaussian blur and grayscale */
+  pointer-events: none; /* Prevent interaction with blurred cards */
+  transition: filter 0.3s ease-in-out;
+}
+
+.card.selected {
+  z-index: 10; /* Ensure the selected card appears above blurred cards */
+}

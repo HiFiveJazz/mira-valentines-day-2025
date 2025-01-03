@@ -15,11 +15,6 @@ body {
   background: transparent; /* Allows the html gradient to show through */
 }
 /* Header styles */
-.header-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: contain; 
-}
 .header {
   display: flex;
   justify-content: space-between;
@@ -29,16 +24,23 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for hiding and showing */
 }
 
-.header-title {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #db912f;
-  font-weight: bold;
+.header.hidden {
+  transform: translateY(-100%); /* Move header out of view */
 }
 
-/* Hamburger Menu */
+.header.visible {
+  transform: translateY(0); /* Bring header back into view */
+}
+
+.header-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
 .hamburger-menu {
   display: none;
   background: none;
@@ -47,8 +49,6 @@ body {
   color: #fff;
   cursor: pointer;
 }
-
-/* Navigation */
 
 .header-nav-link {
   text-decoration: none;
@@ -65,7 +65,6 @@ body {
   color: #fff;
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .hamburger-menu {
     display: block; /* Show the hamburger menu on mobile */
@@ -85,7 +84,6 @@ body {
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
-
   }
 
   .header-nav.open {
@@ -147,4 +145,5 @@ body {
   right: 50px;
 }
 
+/* Card3D  */
 
