@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // Import the CSS file
+import '../App.css';
 
 const Heading = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,11 +23,22 @@ const Heading = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Show header when scrolling up, hide when scrolling down
+      // Safari Fix: Ensure we don't trigger at scroll boundaries
+      if (currentScrollY <= 0) {
+        setIsHeaderVisible(true); // Always show header at the top
+        return;
+      }
+
+      if (currentScrollY + window.innerHeight >= document.body.scrollHeight) {
+        setIsHeaderVisible(true); // Always show header at the bottom
+        return;
+      }
+
+      // Show or hide header based on scroll direction
       if (currentScrollY > lastScrollY) {
-        setIsHeaderVisible(false);
+        setIsHeaderVisible(false); // Scrolling down
       } else {
-        setIsHeaderVisible(true);
+        setIsHeaderVisible(true); // Scrolling up
       }
 
       lastScrollY = currentScrollY;
@@ -52,7 +63,7 @@ const Heading = () => {
             key={item.name}
             to={item.link}
             className="header-nav-link"
-            onClick={() => setMenuOpen(false)} // Close menu on navigation
+            onClick={() => setMenuOpen(false)}
           >
             {item.name}
           </Link>

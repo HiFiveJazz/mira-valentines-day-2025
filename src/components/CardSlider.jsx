@@ -3,31 +3,25 @@ import React, { useState } from 'react';
 const CardSlider = ({ images, title }) => {
   const [active, setActive] = useState(3);
   const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
 
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX); // Record the starting touch position
   };
 
   const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX); // Continuously update the ending touch position
-  };
+    if (touchStart === null) return; // Ignore move events without a start point
 
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const swipeDistance = touchStart - touchEnd;
-    const swipeThreshold = 50; // Minimum swipe distance to trigger navigation
+    const currentTouch = e.targetTouches[0].clientX; // Current touch position
+    const swipeDistance = touchStart - currentTouch; // Calculate swipe distance
+    const swipeThreshold = 60; // Minimum swipe distance to trigger navigation
 
     if (swipeDistance > swipeThreshold) {
-      handleNext(); // Swipe left to go to the next slide
+      handleNext(); // Trigger next slide
+      setTouchStart(currentTouch); // Update start position to avoid repeated triggers
     } else if (swipeDistance < -swipeThreshold) {
-      handlePrev(); // Swipe right to go to the previous slide
+      handlePrev(); // Trigger previous slide
+      setTouchStart(currentTouch); // Update start position to avoid repeated triggers
     }
-
-    // Reset touch positions
-    setTouchStart(null);
-    setTouchEnd(null);
   };
 
   const loadShow = () => {
@@ -79,7 +73,6 @@ const CardSlider = ({ images, title }) => {
         className="slider"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
       >
         {renderedItems.map((item) => (
           <div key={item.id} className="item" style={item.style}>

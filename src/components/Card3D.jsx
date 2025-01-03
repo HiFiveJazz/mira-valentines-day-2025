@@ -3,11 +3,21 @@ import VanillaTilt from 'vanilla-tilt';
 import confetti from 'canvas-confetti';
 import '../CSS/Card3D.css';
 
-const Card3D = ({ imageUrl, title, description, selected, blurred, onClick }) => {
+const Card3D = ({
+  imageUrl,
+  title,
+  description,
+  selected,
+  blurred,
+  onClick,
+  confettiDisabled,
+}) => {
   const cardRef = useRef(null);
+  let startX = 0; // Track initial touch X position
+  let startY = 0; // Track initial touch Y position
 
   useEffect(() => {
-    // Initialize VanillaTilt
+    // Initialize VanillaTilt for desktop hover
     const currentCard = cardRef.current;
     VanillaTilt.init(currentCard, {
       max: 25,
@@ -16,8 +26,37 @@ const Card3D = ({ imageUrl, title, description, selected, blurred, onClick }) =>
       'max-glare': 0.5,
     });
 
+    // Add touch event listeners for mobile
+    const handleTouchStart = (event) => {
+      const touch = event.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+    };
+
+    const handleTouchMove = (event) => {
+      const touch = event.touches[0];
+      const rect = currentCard.getBoundingClientRect();
+      const x = ((touch.clientX - startX) / rect.width) * 100;
+      const y = ((touch.clientY - startY) / rect.height) * 100;
+
+      currentCard.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
+    };
+
+    const handleTouchEnd = () => {
+      // Reset card to original position after touch ends
+      currentCard.style.transform = '';
+    };
+
+    currentCard.addEventListener('touchstart', handleTouchStart);
+    currentCard.addEventListener('touchmove', handleTouchMove);
+    currentCard.addEventListener('touchend', handleTouchEnd);
+
+    // Cleanup listeners
     return () => {
-      // Cleanup VanillaTilt
+      currentCard.removeEventListener('touchstart', handleTouchStart);
+      currentCard.removeEventListener('touchmove', handleTouchMove);
+      currentCard.removeEventListener('touchend', handleTouchEnd);
+
       if (currentCard.vanillaTilt) {
         currentCard.vanillaTilt.destroy();
       }
@@ -25,14 +64,14 @@ const Card3D = ({ imageUrl, title, description, selected, blurred, onClick }) =>
   }, []);
 
   const handleClick = () => {
-    if (!blurred) {
-      // Trigger confetti
+    if (!blurred && !confettiDisabled) {
+      const rect = cardRef.current.getBoundingClientRect();
       confetti({
         particleCount: 100,
         spread: 70,
         origin: {
-          x: cardRef.current.getBoundingClientRect().x / window.innerWidth + 0.1,
-          y: cardRef.current.getBoundingClientRect().y / window.innerHeight + 0.1,
+          x: (rect.left + rect.width / 2) / window.innerWidth,
+          y: (rect.top + rect.height / 2) / window.innerHeight,
         },
       });
 

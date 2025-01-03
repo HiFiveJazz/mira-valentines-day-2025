@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import Card3D from './Card3D';
-import '../CSS/DateSelector.css'; // Import specific CSS for this component
+import '../CSS/DateSelector.css';
 
 const DateSelector = () => {
   const [selectedCard, setSelectedCard] = useState(null);
+  const [confettiTriggered, setConfettiTriggered] = useState(false);
 
   const handleCardClick = (index) => {
-    setSelectedCard(index);
+    if (!confettiTriggered) {
+      setSelectedCard(index);
+      setConfettiTriggered(true); // Prevent further confetti
+    }
   };
 
   const locations = [
@@ -45,7 +49,8 @@ const DateSelector = () => {
             description={location.description}
             selected={selectedCard === index}
             blurred={selectedCard !== null && selectedCard !== index}
-            onClick={() => handleCardClick(index)} // Pass click handler
+            confettiDisabled={confettiTriggered} // Pass confettiTriggered state
+            onClick={() => handleCardClick(index)}
           />
         ))}
       </div>
