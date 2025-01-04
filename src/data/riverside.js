@@ -1,14 +1,14 @@
 // riverside.js
-import img1 from '../images/riverside_lights/IMG_2031.jpg';
-import img2 from '../images/riverside_lights/IMG_2032.jpg';
-import img3 from '../images/riverside_lights/IMG_2033.jpg';
-import img4 from '../images/riverside_lights/IMG_2034.jpg';
-import img5 from '../images/riverside_lights/IMG_2035.jpg';
-import img6 from '../images/riverside_lights/IMG_2036.jpg';
-import img7 from '../images/riverside_lights/IMG_2037.jpg';
-import img8 from '../images/riverside_lights/IMG_2038.jpg';
-import img9 from '../images/riverside_lights/IMG_2039.jpg';
-import img10 from '../images/riverside_lights/IMG_2040.jpg';
+import img1 from '../images/riverside-lights/IMG_2031.jpg';
+import img2 from '../images/riverside-lights/IMG_2032.jpg';
+import img3 from '../images/riverside-lights/IMG_2033.jpg';
+import img4 from '../images/riverside-lights/IMG_2034.jpg';
+import img5 from '../images/riverside-lights/IMG_2035.jpg';
+import img6 from '../images/riverside-lights/IMG_2036.jpg';
+import img7 from '../images/riverside-lights/IMG_2037.jpg';
+import img8 from '../images/riverside-lights/IMG_2038.jpg';
+import img9 from '../images/riverside-lights/IMG_2039.jpg';
+import img10 from '../images/riverside-lights/IMG_2040.jpg';
 
 const riversideImages = [
   { id: 1, image: img1 },

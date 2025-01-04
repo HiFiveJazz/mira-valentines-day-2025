@@ -49,7 +49,7 @@ const DateSelector = () => {
             description={location.description}
             selected={selectedCard === index}
             blurred={selectedCard !== null && selectedCard !== index}
-            confettiDisabled={confettiTriggered} // Pass confettiTriggered state
+            confettiDisabled={confettiTriggered} 
             onClick={() => handleCardClick(index)}
           />
         ))}

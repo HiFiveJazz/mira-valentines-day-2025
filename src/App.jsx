@@ -2,8 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Heading from './components/Heading';
 import CardSlider from './components/CardSlider';
 import DateSelector from './components/DateSelector';
+import BentoBoxGrid from './components/BentoBox/BentoBoxGrid'
 import riversideImages from './data/riverside';
-import iceskatingImages from './data/ice_skating';
+import iceskatingImages from './data/ice-skating';
 
 function App() {
   return (
@@ -29,8 +30,7 @@ function App() {
           path="/statistics"
           element={
             <div>
-              <CardSlider images={iceskatingImages} title="Ice Skating" />
-              <CardSlider images={riversideImages} title="Riverside Lights" />
+              <BentoBoxGrid/>
             </div>
           }
         />
