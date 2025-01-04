@@ -9,11 +9,14 @@
   cursor: pointer;
   transform-style: preserve-3d;
   transform: perspective(1000px);
+  position: relative;
+  z-index: 1;
 }
 
 .box:hover {
   transform: scale(1.05);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+  z-index: 10;
 }
 
 .box-image {

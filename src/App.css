@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  height: 100%; /* Ensures the body spans the same height as html */
+  height: 100vh; /* Ensures the body spans the same height as html */
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   padding: 0;
