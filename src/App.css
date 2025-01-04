@@ -1,9 +1,28 @@
+
+
+
+
+
 html {
   height: 100%; /* Ensures the html element spans the full height of the page */
-  background-image: linear-gradient(to top right, #9c1112, #323177);
-  background-attachment: fixed; /* Keeps the gradient consistent while scrolling */
-  background-size: cover; /* Ensures the gradient covers the entire viewport */
-  background-repeat: no-repeat; /* Prevents repeating of the gradient */
+  background-image: linear-gradient(to top right, #0ce605, #5540d8, #9c1112, #323177, #3d3191, #5540d8);
+  /* background-image: linear-gradient(to top right, #5540d8, #3d3191, #323177, #9c1112, #323177, #9c1112); */
+  background-attachment: fixed;
+  /* background-size: cover;  */
+  background-size: 400% 400%; 
+  /* background-repeat: no-repeat;  */
+  animation: bg 12s ease infinite;
+}
+@keyframes bg{
+  0%{
+    background-position: 0% 50%;
+  }
+  50%{
+    background-position: 100% 100%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
 }
 
 body {
