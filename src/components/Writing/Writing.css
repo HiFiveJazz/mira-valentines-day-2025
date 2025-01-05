@@ -1,0 +1,18 @@
+.writing-container {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.writing-header {
+  font-size: 5rem;
+  color: #fff;
+}
+
+.writing-subtext {
+  font-size: 2.5rem;
+  color: #ccc;
+}
+
+.highlight {
+  color: #9587ed;
+}
