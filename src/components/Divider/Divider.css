@@ -1,0 +1,36 @@
+.divider-container {
+  text-align: center;
+  margin: 50px auto;
+  padding: 10px 0;
+  border-bottom: 2px solid #7f69d6; /* Ensure this works */
+}
+
+.divider-title {
+  margin: 0;
+  color: #fff;
+  display: block; /* Block ensures the border takes the full width of the container */
+  padding-bottom: 5px; /* Space between the text and underline */
+  width: fit-content; /* Fit the width of the content only */
+  margin: 0 auto; /* Center align the title and underline */
+}
+
+@media (max-width: 768px) {
+  .divider-container {
+    margin: 20px auto;
+  }
+
+  .divider-title {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .divider-container {
+    margin: 10px auto;
+  }
+
+  .divider-title {
+    font-size: 5rem;
+  }
+}
+

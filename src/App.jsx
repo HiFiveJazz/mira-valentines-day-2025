@@ -9,6 +9,7 @@ import Button from './components/Button/Button'
 import riversideImages from './data/riverside';
 import iceskatingImages from './data/ice-skating';
 import CircleImage from './images/riverside-lights/IMG_2039.jpg';
+import Divider from './components/Divider/Divider'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           element={
             <div>
               <DateSelector/>
+              <Divider title='2024'/>
               <CardSlider images={iceskatingImages} title="Ice Skating" />
               <CardSlider images={riversideImages} title="Riverside Lights" />
             </div>
