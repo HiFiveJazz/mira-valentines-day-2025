@@ -34,8 +34,8 @@ function App() {
             <div>
               <DateSelector/>
               <Divider title='2024'/>
-              <CardSlider images={iceskatingImages} title="Ice Skating" />
               <CardSlider images={riversideImages} title="Riverside Lights" />
+              <CardSlider images={iceskatingImages} title="Ice Skating" />
             </div>
           }
         />

@@ -8,7 +8,6 @@ const CircleImageHeading = ({ imageUrl, title, description }) => {
         <img src={imageUrl} alt="Circle" />
       </div>
       <div className="text-content">
-        <h1>{title}</h1>
         <p>{description}</p>
       </div>
     </div>

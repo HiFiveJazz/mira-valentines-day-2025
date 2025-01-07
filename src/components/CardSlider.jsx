@@ -1,31 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import './CardSlider.css';
 
 const CardSlider = ({ images, title }) => {
   const [active, setActive] = useState(3);
   const [touchStart, setTouchStart] = useState(null);
+  const sliderRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const autoScrollInterval = useRef(null);
+  const manualControlTimeout = useRef(null);
+
+  // Stop auto-scroll after user interaction
+  const stopAutoScroll = () => {
+    clearInterval(autoScrollInterval.current);
+    clearTimeout(manualControlTimeout.current);
+    manualControlTimeout.current = setTimeout(() => {
+      if (isVisible) {
+        autoScrollInterval.current = setInterval(handleNext, 3000);
+      }
+    }, 7500); // Resume auto-scroll after 5 seconds of inactivity
+  };
+
+  // Handle visibility of the carousel
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sliderRef.current) {
+      observer.observe(sliderRef.current);
+    }
+
+    return () => {
+      if (sliderRef.current) {
+        observer.unobserve(sliderRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (isVisible) {
+      autoScrollInterval.current = setInterval(() => {
+        handleNext();
+      }, 3000); // Change slide every 3 seconds
+    } else {
+      clearInterval(autoScrollInterval.current);
+    }
+
+    return () => {
+      clearInterval(autoScrollInterval.current);
+    };
+  }, [isVisible]);
 
   const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX); // Record the starting touch position
+    stopAutoScroll();
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
-    if (touchStart === null) return; // Ignore move events without a start point
+    if (touchStart === null) return;
 
-    const currentTouch = e.targetTouches[0].clientX; // Current touch position
-    const swipeDistance = touchStart - currentTouch; // Calculate swipe distance
-    const swipeThreshold = 60; // Minimum swipe distance to trigger navigation
+    const currentTouch = e.targetTouches[0].clientX;
+    const swipeDistance = touchStart - currentTouch;
+    const swipeThreshold = 60;
 
     if (swipeDistance > swipeThreshold) {
-      handleNext(); // Trigger next slide
-      setTouchStart(currentTouch); // Update start position to avoid repeated triggers
+      handleNext();
+      setTouchStart(currentTouch);
     } else if (swipeDistance < -swipeThreshold) {
-      handlePrev(); // Trigger previous slide
-      setTouchStart(currentTouch); // Update start position to avoid repeated triggers
+      handlePrev();
+      setTouchStart(currentTouch);
     }
   };
 
   const loadShow = () => {
-    const newItems = images.map((item, index) => {
+    return images.map((item, index) => {
       let style = {};
       if (index === active) {
         style = {
@@ -53,21 +109,25 @@ const CardSlider = ({ images, title }) => {
       }
       return { ...item, style };
     });
-    return newItems;
   };
 
   const renderedItems = loadShow();
 
   const handleNext = () => {
-    setActive((prev) => (prev + 1) % images.length); // Loop to the beginning
+    stopAutoScroll();
+    setActive((prev) => (prev + 1) % images.length);
   };
 
   const handlePrev = () => {
-    setActive((prev) => (prev - 1 + images.length) % images.length); // Loop to the end
+    stopAutoScroll();
+    setActive((prev) => (prev - 1 + images.length) % images.length);
   };
 
   return (
-    <div className="slider-container">
+    <div
+      ref={sliderRef}
+      className={`slider-container ${isVisible ? 'fade-in' : 'fade-out'}`}
+    >
       {title && <h2 className="slider-title">{title}</h2>}
       <div
         className="slider"
