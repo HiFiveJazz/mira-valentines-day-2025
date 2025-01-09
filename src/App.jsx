@@ -10,6 +10,7 @@ import riversideImages from './data/riverside';
 import iceskatingImages from './data/ice-skating';
 import CircleImage from './images/riverside-lights/IMG_2039.jpg';
 import Divider from './components/Divider/Divider'
+import Subdivider from './components/Subdivider/Subdivider'
 
 function App() {
   return (
@@ -44,6 +45,22 @@ function App() {
           element={
             <div>
               <BentoBoxGrid/>
+            </div>
+          }
+        />
+        <Route
+          path="/relationship-recap"
+          element={
+            <div>
+              <Divider title='2024 Relationship Recap!'/>
+              <Subdivider title="This year, we wrote our story in texts, laughs, and unforgettable moments. Let's take a look back at all the ways we made magic together."/>
+              <Divider title='Statistics'/>
+              <Subdivider title="Words, emojis, and inside jokes: we broke some serious records this year! Here's the data back up our legendary bond."/>
+              <BentoBoxGrid/>
+              <Divider title='Dates'/>
+              <Subdivider title="From late-night adventures to cozy resturaunts, here's how we turned ordinary days into extraordinary memories"/>
+              <CardSlider images={riversideImages} title="Riverside Lights" />
+              <CardSlider images={iceskatingImages} title="Ice Skating" />
             </div>
           }
         />
