@@ -31,8 +31,8 @@
     margin: 20px auto;
   }
 
-  .divider-content {
-    font-size: 5rem;
+  .divider-content h1 {
+    font-size: 4rem;
   }
 }
 
@@ -41,8 +41,8 @@
     margin: 10px auto;
   }
 
-  .divider-content {
-    font-size: 5rem;
+  .divider-content h1 {
+    font-size: 3rem;
   }
 }
 

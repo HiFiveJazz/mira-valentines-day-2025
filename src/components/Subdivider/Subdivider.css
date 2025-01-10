@@ -31,8 +31,8 @@
     margin: 20px auto;
   }
 
-  .subdivider-content {
-    font-size: 5rem;
+  .subdivider-content p{
+    font-size: 2rem;
   }
 }
 
@@ -41,8 +41,8 @@
     margin: 10px auto;
   }
 
-  .subdivider-content {
-    font-size: 5rem;
+  .subdivider-content p{
+    font-size: 1.5rem;
   }
 }
 
