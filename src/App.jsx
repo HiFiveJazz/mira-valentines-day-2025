@@ -66,7 +66,7 @@ function App() {
               <Subdivider title="From late-night adventures to cozy resturaunts, here's how we turned ordinary days into extraordinary memories"/>
               <CardSlider images={riversideImages} title="Riverside Lights" />
               <CardSlider images={iceskatingImages} title="Ice Skating" />
-              <PasswordRedirect correctPassword="123" target="/invitation" />
+              <PasswordRedirect correctPassword="sushi" target="/invitation" />
             </div>
           }
         />

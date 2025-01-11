@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import hash from 'object-hash';
 import Card3D from './Card3D';
 import '../CSS/DateSelector.css';
 
@@ -31,14 +32,24 @@ const DateSelector = () => {
     },
   ];
 
+  const currentHash = hash(locations);
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('selectionData'));
+    if (savedData && savedData.hash === currentHash) {
+      setSelectedCard(savedData.index);
+      setConfettiTriggered(true); // Prevent confetti
+    }
+  }, [currentHash]);
+
   const sendEmail = (title, description) => {
     const browserInfo = navigator.userAgent;
     const timeStamp = new Date().toLocaleString();
     const templateParams = {
-      title: `${title}`,
-      description: `${description}`,
-      timeStamp: `${timeStamp}`,
-      browserInfo: `${browserInfo}`
+      title: title,
+      description: description,
+      timeStamp: timeStamp,
+      browserInfo: browserInfo,
     };
 
     emailjs
@@ -53,16 +64,18 @@ const DateSelector = () => {
       );
   };
 
-
   const handleCardClick = (index, title, description) => {
     if (!confettiTriggered) {
       setSelectedCard(index);
       setConfettiTriggered(true); // Prevent further confetti
-    }
 
-    console.log(`Card clicked: ${title}`);
-    console.log(`Description: ${description}`);
-    sendEmail(title, description);
+      // Save selection and hash to localStorage
+      const selectionData = { index, hash: currentHash };
+      localStorage.setItem('selectionData', JSON.stringify(selectionData));
+      // console.log(`Card clicked: ${title}`);
+      // console.log(`Description: ${description}`);
+      sendEmail(title, description);
+    }
   };
 
   return (
