@@ -52,13 +52,34 @@
   background-color: transparent;
   border: none;
   font-size: xxx-large;
+  font-size: 4rem;
   font-family: monospace;
   font-weight: bold;
-  left: 50px;
+  left: 19%;
 }
 
 #next {
   left: unset;
-  right: 50px;
+  right: 19%;
+}
+
+@media (max-width: 768px) {
+  #prev {
+    opacity: 0;
+  }
+
+  #next {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #prev {
+    opacity: 0;
+  }
+
+  #next {
+    opacity: 0;
+  }
 }
 
