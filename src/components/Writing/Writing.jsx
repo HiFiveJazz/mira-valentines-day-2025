@@ -8,20 +8,31 @@ const Writing = () => {
       <h1 className="writing-header">
         Welcome to <span className="highlight">Our Website!</span>
       </h1>
-      <p className="writing-subtext">
-        Give {''}
+      <div className="writing-subtext">
+        <span>Give</span>
         <Typewriter
           options={{
-            strings: [' Kindness', ' Care', ' Love', ' Affection',' Passion',' Admiration',' Compassion',' Appreciation',' Support :)'],
+            strings: [
+              ' Kindness',
+              ' Care',
+              ' Love',
+              ' Affection',
+              ' Passion',
+              ' Admiration',
+              ' Compassion',
+              ' Appreciation',
+              ' Support :)',
+            ],
             autoStart: true,
             loop: true,
             deleteSpeed: 'natural',
             pauseFor: 1000,
           }}
         />
-      </p>
+      </div>
     </div>
   );
 };
 
 export default Writing;
+

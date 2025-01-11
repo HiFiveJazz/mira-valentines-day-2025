@@ -13,20 +13,24 @@ const Card3D = ({
   confettiDisabled,
 }) => {
   const cardRef = useRef(null);
-  let startX = 0; // Track initial touch X position
-  let startY = 0; // Track initial touch Y position
+  let startX = 0;
+  let startY = 0;
 
   useEffect(() => {
-    // Initialize VanillaTilt for desktop hover
     const currentCard = cardRef.current;
-    VanillaTilt.init(currentCard, {
-      max: 25,
-      speed: 400,
-      glare: true,
-      'max-glare': 0.5,
-    });
 
-    // Add touch event listeners for mobile
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (!isMobile) {
+      VanillaTilt.init(currentCard, {
+        max: 25,
+        speed: 400,
+        glare: true,
+        'max-glare': 0.5,
+        gyroscope: false, // Disable device orientation
+      });
+    }
+
     const handleTouchStart = (event) => {
       const touch = event.touches[0];
       startX = touch.clientX;
@@ -43,7 +47,6 @@ const Card3D = ({
     };
 
     const handleTouchEnd = () => {
-      // Reset card to original position after touch ends
       currentCard.style.transform = '';
     };
 
@@ -51,7 +54,6 @@ const Card3D = ({
     currentCard.addEventListener('touchmove', handleTouchMove);
     currentCard.addEventListener('touchend', handleTouchEnd);
 
-    // Cleanup listeners
     return () => {
       currentCard.removeEventListener('touchstart', handleTouchStart);
       currentCard.removeEventListener('touchmove', handleTouchMove);

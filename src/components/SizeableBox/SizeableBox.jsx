@@ -20,13 +20,19 @@ const SizeableBox = ({
   useEffect(() => {
     const currentCard = cardRef.current;
 
-    // Initialize VanillaTilt for desktop hover
-    VanillaTilt.init(currentCard, {
-      max: 25,
-      speed: 400,
-      glare: true,
-      'max-glare': 0.5,
-    });
+    // Detect if the user is on a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // Initialize VanillaTilt only for non-mobile devices
+    if (!isMobile) {
+      VanillaTilt.init(currentCard, {
+        max: 25,
+        speed: 400,
+        glare: true,
+        'max-glare': 0.5,
+        gyroscope: false, // Disable device orientation
+      });
+    }
 
     // Detect scrolling
     const handleScroll = () => {
