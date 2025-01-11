@@ -20,69 +20,29 @@ const SizeableBox = ({
   useEffect(() => {
     const currentCard = cardRef.current;
 
-    // Detect if the user is on a mobile device
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    // Ensure the element exists before initializing VanillaTilt
+    if (currentCard) {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // Initialize VanillaTilt only for non-mobile devices
-    if (!isMobile) {
-      VanillaTilt.init(currentCard, {
-        max: 25,
-        speed: 400,
-        glare: true,
-        'max-glare': 0.5,
-        gyroscope: false, // Disable device orientation
-      });
+      // Initialize VanillaTilt only for non-mobile devices
+      if (!isMobile) {
+        VanillaTilt.init(currentCard, {
+          max: 25,
+          speed: 400,
+          glare: true,
+          'max-glare': 0.5,
+          gyroscope: false, // Disable device orientation
+        });
+      }
     }
 
-    // Detect scrolling
-    const handleScroll = () => {
-      setIsScrolling(true);
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => setIsScrolling(false), 500); // Add 0.25s delay after scrolling stops
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Add touch event listeners for mobile
-    const handleTouchStart = (event) => {
-      if (isScrolling) return; // Disable tilt during scroll
-      const touch = event.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-    };
-
-    const handleTouchMove = (event) => {
-      if (isScrolling) return; // Disable tilt during scroll
-      const touch = event.touches[0];
-      const rect = currentCard.getBoundingClientRect();
-      const x = ((touch.clientX - startX) / rect.width) * 100;
-      const y = ((touch.clientY - startY) / rect.height) * 100;
-
-      currentCard.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
-    };
-
-    const handleTouchEnd = () => {
-      if (isScrolling) return; // Disable tilt during scroll
-      // Reset card to original position after touch ends
-      currentCard.style.transform = '';
-    };
-
-    currentCard.addEventListener('touchstart', handleTouchStart);
-    currentCard.addEventListener('touchmove', handleTouchMove);
-    currentCard.addEventListener('touchend', handleTouchEnd);
-
-    // Cleanup listeners
+    // Cleanup VanillaTilt on unmount
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      currentCard.removeEventListener('touchstart', handleTouchStart);
-      currentCard.removeEventListener('touchmove', handleTouchMove);
-      currentCard.removeEventListener('touchend', handleTouchEnd);
-
-      if (currentCard.vanillaTilt) {
+      if (currentCard?.vanillaTilt) {
         currentCard.vanillaTilt.destroy();
       }
     };
-  }, [isScrolling]);
+  }, []);
 
   return (
     <div
