@@ -53,8 +53,6 @@ const poem = () => {
         <p>I miss and I crave, the Juliet to my Romeo.</p>
         <div className="stanza"></div>
         <p>With that being said, one question remains of mine,</p>
-        <p>I ask with hope: Will you be my Valentine?</p>
-        <p></p>
       </div>
     </div>
   );

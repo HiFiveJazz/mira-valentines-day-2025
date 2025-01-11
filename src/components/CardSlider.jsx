@@ -17,7 +17,7 @@ const CardSlider = ({ images, title }) => {
       if (isVisible) {
         autoScrollInterval.current = setInterval(handleNext, 3000);
       }
-    }, 7500); // Resume auto-scroll after 5 seconds of inactivity
+    }, 2000); // Resume auto-scroll after 5 seconds of inactivity
   };
 
   // Handle visibility of the carousel

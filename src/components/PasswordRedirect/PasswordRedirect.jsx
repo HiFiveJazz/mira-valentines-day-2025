@@ -11,6 +11,7 @@ const PasswordRedirect = ({ text, correctPassword, target }) => {
     e.preventDefault();
     if (password === correctPassword) {
       navigate(target, { state: { password } }); // Pass the password as state
+      window.scrollTo(0, 0); // Scroll to the top of the page
     } else {
       setErrorMessage('Incorrect password. Please try again.');
     }

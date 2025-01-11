@@ -13,6 +13,7 @@ import Divider from './components/Divider/Divider'
 import Subdivider from './components/Subdivider/Subdivider';
 import PasswordRedirect from './components/PasswordRedirect/PasswordRedirect';
 import Poem from './components/Poem/poem'
+import LoveLetter from './components/LoveLetter/LoveLetter';
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
               <Divider title='For Mira'/>
               {/* <PasswordRedirect correctPassword="123" target="/invitation"/> */}
               <Poem />
+              <LoveLetter/>
             </div>
           }
         />
