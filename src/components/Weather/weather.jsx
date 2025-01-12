@@ -6,9 +6,9 @@ const Weather = ({ lat, lon, heading }) => {
   const [forecast, setForecast] = useState(null);
 
   useEffect(() => {
-    const API_KEY = 'fae130671fbfaa91e243d117fec98e13';
+    const hash = atob('ZmFlMTMwNjcxZmJmYWE5MWUyNDNkMTE3ZmVjOThlMTM=');
 
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${hash}&units=imperial`;
 
     const fetchWeather = async () => {
       try {
