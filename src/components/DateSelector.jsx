@@ -72,8 +72,6 @@ const DateSelector = () => {
       // Save selection and hash to localStorage
       const selectionData = { index, hash: currentHash };
       localStorage.setItem('selectionData', JSON.stringify(selectionData));
-      // console.log(`Card clicked: ${title}`);
-      // console.log(`Description: ${description}`);
       sendEmail(title, description);
     }
   };
@@ -94,6 +92,7 @@ const DateSelector = () => {
             selected={selectedCard === index}
             blurred={selectedCard !== null && selectedCard !== index}
             confettiDisabled={confettiTriggered}
+            disableConfetti={false} // Ensure these cards can trigger confetti
             onClick={() => handleCardClick(index, location.title, location.description)}
           />
         ))}

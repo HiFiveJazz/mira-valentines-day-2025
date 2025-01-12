@@ -11,10 +11,9 @@ const Card3D = ({
   blurred,
   onClick,
   confettiDisabled,
+  disableConfetti, // New prop to control confetti behavior
 }) => {
   const cardRef = useRef(null);
-  let startX = 0;
-  let startY = 0;
 
   useEffect(() => {
     const currentCard = cardRef.current;
@@ -27,46 +26,19 @@ const Card3D = ({
         speed: 400,
         glare: true,
         'max-glare': 0.5,
-        gyroscope: false, // Disable device orientation
+        gyroscope: false,
       });
     }
 
-    const handleTouchStart = (event) => {
-      const touch = event.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-    };
-
-    const handleTouchMove = (event) => {
-      const touch = event.touches[0];
-      const rect = currentCard.getBoundingClientRect();
-      const x = ((touch.clientX - startX) / rect.width) * 100;
-      const y = ((touch.clientY - startY) / rect.height) * 100;
-
-      currentCard.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
-    };
-
-    const handleTouchEnd = () => {
-      currentCard.style.transform = '';
-    };
-
-    currentCard.addEventListener('touchstart', handleTouchStart);
-    currentCard.addEventListener('touchmove', handleTouchMove);
-    currentCard.addEventListener('touchend', handleTouchEnd);
-
     return () => {
-      currentCard.removeEventListener('touchstart', handleTouchStart);
-      currentCard.removeEventListener('touchmove', handleTouchMove);
-      currentCard.removeEventListener('touchend', handleTouchEnd);
-
-      if (currentCard.vanillaTilt) {
+      if (currentCard && currentCard.vanillaTilt) {
         currentCard.vanillaTilt.destroy();
       }
     };
   }, []);
 
   const handleClick = () => {
-    if (!blurred && !confettiDisabled) {
+    if (!blurred && !confettiDisabled && !disableConfetti) {
       const rect = cardRef.current.getBoundingClientRect();
       confetti({
         particleCount: 100,
@@ -76,10 +48,10 @@ const Card3D = ({
           y: (rect.top + rect.height / 2) / window.innerHeight,
         },
       });
+    }
 
-      if (onClick) {
-        onClick();
-      }
+    if (onClick) {
+      onClick();
     }
   };
 
@@ -91,13 +63,23 @@ const Card3D = ({
     >
       <div
         className="card-image"
-        style={{ backgroundImage: `url(${imageUrl})` }}
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+          backgroundColor: imageUrl.includes('openweathermap.org')
+            ? '#000'
+            : '#9c1112',
+          backgroundSize: imageUrl.includes('openweathermap.org')
+            ? 'contain'
+            : 'cover',
+          backgroundRepeat: 'no-repeat',
+          // backgroundPosition: 'center',
+        }}
       ></div>
       <div className="card-text">
         <div className="date">
           <h2>{title}</h2>
         </div>
-        <p>{description}</p>
+        <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
       </div>
       <div className="card-stats"></div>
     </div>

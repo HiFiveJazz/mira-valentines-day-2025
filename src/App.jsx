@@ -14,6 +14,7 @@ import Subdivider from './components/Subdivider/Subdivider';
 import PasswordRedirect from './components/PasswordRedirect/PasswordRedirect';
 import Poem from './components/Poem/poem'
 import LoveLetter from './components/LoveLetter/LoveLetter';
+import Weather from './components/Weather/weather';
 
 function App() {
   return (
@@ -40,6 +41,26 @@ function App() {
           element={
             <div>
               <DateSelector/>
+              {/* <Weather  */}
+              {/*   lat="33.9533"  */}
+              {/*   lon="-117.3962"  */}
+              {/*   heading="5-Day Weather Forecast for Riverside"  */}
+              {/* /> */}
+              {/* <Weather  */}
+              {/*   lat="32.7157"  */}
+              {/*   lon="-117.1611"  */}
+              {/*   heading="5-Day Weather Forecast for San Diego"  */}
+              {/* /> */}
+              <Weather 
+                lat="10.8231" 
+                lon="106.6297" 
+                heading="5-Day Weather Forecast for Ho Chi Minh City" 
+              />
+              <Weather 
+                lat="45.0725" 
+                lon="-93.4558" 
+                heading="5-Day Weather Forecast for Maple Grove" 
+              />
               <Divider title='2024'/>
               <CardSlider images={riversideImages} title="Riverside Lights" />
               <CardSlider images={iceskatingImages} title="Ice Skating" />
