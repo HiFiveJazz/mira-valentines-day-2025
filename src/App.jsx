@@ -15,6 +15,7 @@ import PasswordRedirect from './components/PasswordRedirect/PasswordRedirect';
 import Poem from './components/Poem/poem'
 import LoveLetter from './components/LoveLetter/LoveLetter';
 import Weather from './components/Weather/weather';
+import BingoCard from './components/BingoCard/BingoCard';
 
 function App() {
   return (
@@ -84,6 +85,9 @@ function App() {
               <Divider title='Statistics'/>
               <Subdivider title="Words, emojis, and inside jokes: we broke some serious records this year! Here's the data back up our legendary bond."/>
               <BentoBoxGrid/>
+              <Divider title='Bucket List for 2025'/>
+              <Subdivider title="Big dreams, bold plans, and unforgettable vibes—our 2025 bucket list is set to make history. Here’s what’s queued up for our year ahead!"/>
+              <BingoCard/>
               <Divider title='Dates'/>
               <Subdivider title="From late-night adventures to cozy resturaunts, here's how we turned ordinary days into extraordinary memories"/>
               <CardSlider images={riversideImages} title="Riverside Lights" />
@@ -97,7 +101,6 @@ function App() {
           element={
             <div>
               <Divider title='For Mira'/>
-              {/* <PasswordRedirect correctPassword="123" target="/invitation"/> */}
               <Poem />
               <LoveLetter/>
             </div>
@@ -109,4 +112,3 @@ function App() {
 }
 
 export default App;
-
