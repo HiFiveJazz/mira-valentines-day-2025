@@ -7,6 +7,7 @@ const Button = ({ text, target }) => {
 
   const handleClick = () => {
     navigate(target); // Use the target prop for navigation
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   return (

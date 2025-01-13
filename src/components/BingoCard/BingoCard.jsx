@@ -21,8 +21,8 @@ const BingoCard = () => {
       id: 1,
       type: 'image',
       imageUrl: totalWordsSent,
-      height: isMobile ? '500px' : '700px',
-      width: isMobile ? '500px' : '700px',
+      height: isMobile ? '425px' : '700px',
+      width: isMobile ? '425px' : '700px',
     },
   ];
 
