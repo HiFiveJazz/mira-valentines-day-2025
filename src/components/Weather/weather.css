@@ -30,7 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12.5px;
+  gap: 10px;
 }
 
 /* Card Styles */
@@ -106,9 +106,9 @@
 /* Adjustments for Mobile Screens */
 @media (max-width: 768px) {
   .card {
-    grid-template-columns: 210px;
+    grid-template-columns: 195px;
     grid-template-rows: 200px 100px 120px;
-    max-width: 210px;
+    max-width: 195px;
     margin: 0px; /* Reduce margin */
   }
 
