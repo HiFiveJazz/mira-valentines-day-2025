@@ -51,14 +51,14 @@ function App() {
                 city="San Diego"
                 heading="6-Day Weather Forecast for San Diego" 
               />
-              <Weather 
-                city="Ho Chi Minh City"
-                heading="6-Day Weather Forecast for Ho Chi Minh City" 
-              />
-              <Weather 
-                city="Maple Grove"
-                heading="6-Day Weather Forecast for Maple Grove" 
-              />
+              {/* <Weather  */}
+              {/*   city="Ho Chi Minh City" */}
+              {/*   heading="6-Day Weather Forecast for Ho Chi Minh City"  */}
+              {/* /> */}
+              {/* <Weather  */}
+              {/*   city="Maple Grove" */}
+              {/*   heading="6-Day Weather Forecast for Maple Grove"  */}
+              {/* /> */}
               <Divider title='2024'/>
               <CardSlider images={riversideImages} title="Riverside Lights" />
               <CardSlider images={iceskatingImages} title="Ice Skating" />
@@ -66,9 +66,10 @@ function App() {
           }
         />
         <Route
-          path="/statistics"
+          path="/stats"
           element={
             <div>
+              <Divider title='2024'/>
               <BentoBoxGrid/>
             </div>
           }

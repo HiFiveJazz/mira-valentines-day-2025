@@ -9,7 +9,7 @@ const Heading = () => {
   const navItems = [
     { name: 'Home', link: '/' },
     { name: 'Dates', link: '/dates' },
-    { name: 'Statistics', link: '/statistics' },
+    { name: 'Stats', link: '/stats' },
     { name: 'Relationship Recap', link: '/relationship-recap' },
   ];
 
@@ -51,6 +51,11 @@ const Heading = () => {
     };
   }, []);
 
+  const handleLinkClick = () => {
+      setMenuOpen(false);
+      window.scrollTo(0, 0); // Scroll to the top of the page
+    };
+
   return (
     <header className={`header ${isHeaderVisible ? 'visible' : 'hidden'}`}>
       <img src="/heart-logo.png" alt="Heart Logo" className="header-logo" />
@@ -63,7 +68,7 @@ const Heading = () => {
             key={item.name}
             to={item.link}
             className="header-nav-link"
-            onClick={() => setMenuOpen(false)}
+            onClick={handleLinkClick}
           >
             {item.name}
           </Link>
@@ -74,4 +79,3 @@ const Heading = () => {
 };
 
 export default Heading;
-
