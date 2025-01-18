@@ -28,7 +28,7 @@ const DateSelector = () => {
         'https://static01.nyt.com/images/2024/05/01/multimedia/01dc-pandas-mwbq/01dc-pandas-mwbq-videoSixteenByNineJumbo1600.jpg',
       title: 'San Diego Zoo',
       description:
-        'Located in Balboa Park, it began as a collection of animals left over from the Panama–California Exposition that were brought together by Dr. Wegeforth.',
+        'Located in Balboa Park, it began as a collection of animals left over from the Panama–California Exposition.',
     },
   ];
 
