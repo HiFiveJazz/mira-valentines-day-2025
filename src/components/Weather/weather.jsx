@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './weather.css';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend } from 'chart.js';
 import Card3D from '../Card3D';
+
+ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
 const Weather = ({ city, heading }) => {
   const [forecast, setForecast] = useState(null);
@@ -23,7 +27,6 @@ const Weather = ({ city, heading }) => {
         }
         const data = await response.json();
 
-        // Group data by day
         const groupedByDay = data.list.reduce((acc, item) => {
           const date = new Date(item.dt * 1000).toISOString().split('T')[0];
           if (!acc[date]) acc[date] = [];
@@ -31,7 +34,6 @@ const Weather = ({ city, heading }) => {
           return acc;
         }, {});
 
-        // Calculate daily averages
         const dailyForecast = Object.keys(groupedByDay).map((date) => {
           const dayData = groupedByDay[date];
 
@@ -57,12 +59,12 @@ const Weather = ({ city, heading }) => {
 
           return {
             date,
-            avgTemp,
-            avgFeelsLike,
-            avgHumidity,
-            avgWind,
-            avgPop,
-            weather: dayData[0].weather[0], // Use the first weather description/icon for simplicity
+            avgTemp: parseFloat(avgTemp),
+            avgFeelsLike: parseFloat(avgFeelsLike),
+            avgHumidity: parseFloat(avgHumidity),
+            avgWind: parseFloat(avgWind),
+            avgPop: parseFloat(avgPop),
+            weather: dayData[0].weather[0],
           };
         });
 
@@ -75,34 +77,99 @@ const Weather = ({ city, heading }) => {
     fetchWeather();
   }, [city]);
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(date);
-};
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(date);
+  };
 
   return (
     <div className="weather-container">
       <h1>{heading}</h1>
       {forecast ? (
-        <div className="forecast-grid">
-          {forecast.list.map((item, index) => (
-            <Card3D
-              key={index}
-              imageUrl={`http://openweathermap.org/img/wn/${item.weather.icon}@4x.png`}
-              title={formatDate(item.date)}
-              description={
-                <div style={{ lineHeight: '1.5', margin: 0 }}>
-                  <div>{item.avgTemp}°F, Feels like {item.avgFeelsLike}°F</div>
-                  <div>Humidity: {item.avgHumidity}%</div>
-                  <div>Wind: {item.avgWind} mph</div>
-                  <div>Precipitation Chance: {(item.avgPop * 100).toFixed(0)}%</div>
-                </div>
-              }
-              disableConfetti={true}
-              onClick={() => console.log(`Selected: ${item.weather.description}`)}
-            />
-          ))}
-        </div>
+        <>
+          {/* Chart Section */}
+          <div className="weather-chart">
+<Line
+  data={{
+    labels: forecast.list.map((item) => formatDate(item.date)),
+    datasets: [
+      {
+        label: 'Avg Temperature (°F)',
+        data: forecast.list.map((item) => item.avgTemp),
+        borderColor: 'rgba(75,192,192,1)',
+        fill: false,
+        tension: 0.4,
+      },
+    ],
+  }}
+  options={{
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          color: '#d9dadb', // Legend text color
+        },
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Date',
+          color: '#d9dadb', // X-axis title color
+        },
+        ticks: {
+          color: '#d9dadb', // X-axis ticks color
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)', // Optional gridline color
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Temperature (°F)',
+          color: '#d9dadb', // Y-axis title color
+        },
+        ticks: {
+          color: '#d9dadb', // Y-axis ticks color
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)', // Optional gridline color
+        },
+      },
+    },
+  }}
+/>
+          </div>
+
+          {/* Cards Section */}
+          <div className="forecast-grid">
+            {forecast.list.map((item, index) => (
+              <Card3D
+                key={index}
+                imageUrl={`https://openweathermap.org/img/wn/${item.weather.icon}@4x.png`}
+                title={formatDate(item.date)}
+                description={
+                  <div style={{ lineHeight: '1.5', margin: 0 }}>
+                    <div>{item.avgTemp}°F, Feels like {item.avgFeelsLike}°F</div>
+                    <div>Humidity: {item.avgHumidity}%</div>
+                    <div>Wind: {item.avgWind} mph</div>
+                    <div>Precipitation Chance: {(item.avgPop * 100).toFixed(0)}%</div>
+                  </div>
+                }
+                disableConfetti={true}
+                onClick={() => console.log(`Selected: ${item.weather.description}`)}
+              />
+            ))}
+          </div>
+        </>
       ) : (
         <p>Loading weather data...</p>
       )}

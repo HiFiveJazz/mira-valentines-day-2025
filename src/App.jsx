@@ -43,27 +43,21 @@ function App() {
           element={
             <div>
               <DateSelector/>
-              {/* <Weather  */}
-              {/*   lat="33.9533"  */}
-              {/*   lon="-117.3962"  */}
-              {/*   heading="5-Day Weather Forecast for Riverside"  */}
-              {/* /> */}
-              {/* <Weather  */}
-              {/*   lat="32.7157"  */}
-              {/*   lon="-117.1611"  */}
-              {/*   heading="5-Day Weather Forecast for San Diego"  */}
-              {/* /> */}
               <Weather 
-                // lat="10.8231" 
-                // lon="106.6297" 
-                city="Ho Chi Minh City"
-                heading="5-Day Weather Forecast for Ho Chi Minh City" 
+                city="Riverside"
+                heading="6-Day Weather Forecast for Riverside" 
               />
               <Weather 
-                // lat="45.0725" 
-                // lon="-93.4558" 
+                city="San Diego"
+                heading="6-Day Weather Forecast for San Diego" 
+              />
+              <Weather 
+                city="Ho Chi Minh City"
+                heading="6-Day Weather Forecast for Ho Chi Minh City" 
+              />
+              <Weather 
                 city="Maple Grove"
-                heading="5-Day Weather Forecast for Maple Grove" 
+                heading="6-Day Weather Forecast for Maple Grove" 
               />
               <Divider title='2024'/>
               <CardSlider images={riversideImages} title="Riverside Lights" />
