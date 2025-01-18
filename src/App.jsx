@@ -54,13 +54,15 @@ function App() {
               {/*   heading="5-Day Weather Forecast for San Diego"  */}
               {/* /> */}
               <Weather 
-                lat="10.8231" 
-                lon="106.6297" 
+                // lat="10.8231" 
+                // lon="106.6297" 
+                city="Ho Chi Minh City"
                 heading="5-Day Weather Forecast for Ho Chi Minh City" 
               />
               <Weather 
-                lat="45.0725" 
-                lon="-93.4558" 
+                // lat="45.0725" 
+                // lon="-93.4558" 
+                city="Maple Grove"
                 heading="5-Day Weather Forecast for Maple Grove" 
               />
               <Divider title='2024'/>

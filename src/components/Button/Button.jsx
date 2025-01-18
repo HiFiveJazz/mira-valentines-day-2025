@@ -12,7 +12,7 @@ const Button = ({ text, target }) => {
 
   return (
     <div className="button-container">
-      <button className="get-started-button" onClick={handleClick}>
+      <button className="homepage-button" onClick={handleClick}>
         {text} {/* Use the text prop for button text */}
       </button>
     </div>

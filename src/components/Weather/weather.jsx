@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react';
 import './weather.css';
 import Card3D from '../Card3D';
 
-const Weather = ({ lat, lon, heading }) => {
+const Weather = ({ city, heading }) => {
   const [forecast, setForecast] = useState(null);
 
   useEffect(() => {
-    const hash = atob('ZmFlMTMwNjcxZmJmYWE5MWUyNDNkMTE3ZmVjOThlMTM=');
+    const string = 'NjM3NGI5NDU3ZTQ5OWM3NjQ1MTBjOTNjZWE0YzMyMWU=';
+    const decodeHash = (encoded) => {
+      return atob(encoded);
+    };
 
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${hash}&units=imperial`;
+    const hash = decodeHash(string);
+
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${hash}&units=imperial`;
 
     const fetchWeather = async () => {
       try {
@@ -18,10 +23,48 @@ const Weather = ({ lat, lon, heading }) => {
         }
         const data = await response.json();
 
-        // Filter forecast to one entry per day, closest to 12:00:00
-        const dailyForecast = data.list.filter(item =>
-          new Date(item.dt * 1000).getHours() === 12
-        );
+        // Group data by day
+        const groupedByDay = data.list.reduce((acc, item) => {
+          const date = new Date(item.dt * 1000).toISOString().split('T')[0];
+          if (!acc[date]) acc[date] = [];
+          acc[date].push(item);
+          return acc;
+        }, {});
+
+        // Calculate daily averages
+        const dailyForecast = Object.keys(groupedByDay).map((date) => {
+          const dayData = groupedByDay[date];
+
+          const avgTemp = (
+            dayData.reduce((sum, item) => sum + item.main.temp, 0) / dayData.length
+          ).toFixed(1);
+
+          const avgFeelsLike = (
+            dayData.reduce((sum, item) => sum + item.main.feels_like, 0) / dayData.length
+          ).toFixed(1);
+
+          const avgHumidity = (
+            dayData.reduce((sum, item) => sum + item.main.humidity, 0) / dayData.length
+          ).toFixed(1);
+
+          const avgWind = (
+            dayData.reduce((sum, item) => sum + item.wind.speed, 0) / dayData.length
+          ).toFixed(1);
+
+          const avgPop = (
+            dayData.reduce((sum, item) => sum + (item.pop || 0), 0) / dayData.length
+          ).toFixed(2);
+
+          return {
+            date,
+            avgTemp,
+            avgFeelsLike,
+            avgHumidity,
+            avgWind,
+            avgPop,
+            weather: dayData[0].weather[0], // Use the first weather description/icon for simplicity
+          };
+        });
 
         setForecast({ city: data.city, list: dailyForecast });
       } catch (error) {
@@ -30,12 +73,12 @@ const Weather = ({ lat, lon, heading }) => {
     };
 
     fetchWeather();
-  }, [lat, lon]);
+  }, [city]);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(date);
-  };
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(date);
+};
 
   return (
     <div className="weather-container">
@@ -45,17 +88,18 @@ const Weather = ({ lat, lon, heading }) => {
           {forecast.list.map((item, index) => (
             <Card3D
               key={index}
-              imageUrl={`http://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png`}
-              title={formatDate(item.dt_txt)}
+              imageUrl={`http://openweathermap.org/img/wn/${item.weather.icon}@4x.png`}
+              title={formatDate(item.date)}
               description={
                 <div style={{ lineHeight: '1.5', margin: 0 }}>
-                  <div>{item.main.temp}°F, feels like {item.main.feels_like}°F</div>
-                  <div>Humidity: {item.main.humidity}%</div>
-                  <div><strong>Wind:</strong> {item.wind.speed} mph</div>
+                  <div>{item.avgTemp}°F, Feels like {item.avgFeelsLike}°F</div>
+                  <div>Humidity: {item.avgHumidity}%</div>
+                  <div>Wind: {item.avgWind} mph</div>
+                  <div>Precipitation Chance: {(item.avgPop * 100).toFixed(0)}%</div>
                 </div>
               }
               disableConfetti={true}
-              onClick={() => console.log(`Selected: ${item.weather[0].description}`)}
+              onClick={() => console.log(`Selected: ${item.weather.description}`)}
             />
           ))}
         </div>

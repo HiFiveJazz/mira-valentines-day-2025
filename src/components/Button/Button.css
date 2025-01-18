@@ -8,7 +8,9 @@
   padding-bottom: 50px;
 }
 
-.get-started-button {
+.homepage-button {
+  width: 15rem;
+  height: 5rem;
   font-family: 'Montserrat', sans-serif;
   background-image: linear-gradient(to top left, #5540d8, #9c1112, #5540d8);
   /* background-color: #3d3191;  */
@@ -36,6 +38,6 @@
 }
 
 
-.get-started-button:hover {
+.homepage-button:hover {
   background-color: #9587ed;
 }
