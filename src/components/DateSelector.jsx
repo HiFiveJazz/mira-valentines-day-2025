@@ -144,7 +144,14 @@ const DateSelector = () => {
         <div className={`popup ${isFadingOut ? 'hide' : 'show'}`}>
           <p>Are you sure you want to cancel your selection?</p>
           <button onClick={handleNo}>No</button>
-          <button onClick={handleCancel}>Yes</button>
+          <button
+            onClick={() => {
+              const selectedLocation = locations[selectedCard];
+              handleCancel(selectedLocation.title);
+            }}
+          >
+            Yes
+          </button>
         </div>
       )}
     </div>
@@ -152,3 +159,4 @@ const DateSelector = () => {
 };
 
 export default DateSelector;
+
