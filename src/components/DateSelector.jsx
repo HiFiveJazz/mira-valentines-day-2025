@@ -7,6 +7,8 @@ import '../CSS/DateSelector.css';
 const DateSelector = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [confettiTriggered, setConfettiTriggered] = useState(false);
+  const [confirmCancel, setConfirmCancel] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   const locations = [
     {
@@ -38,22 +40,25 @@ const DateSelector = () => {
     const savedData = JSON.parse(localStorage.getItem('selectionData'));
     if (savedData && savedData.hash === currentHash) {
       setSelectedCard(savedData.index);
-      setConfettiTriggered(true); // Prevent confetti
+      setConfettiTriggered(true); // Prevent further confetti
     }
   }, [currentHash]);
 
-  const sendEmail = (title, description) => {
-    const browserInfo = navigator.userAgent;
-    const timeStamp = new Date().toLocaleString();
-    const templateParams = {
-      title: title,
-      description: description,
-      timeStamp: timeStamp,
-      browserInfo: browserInfo,
-    };
+  useEffect(() => {
+    if (confirmCancel) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflow = ''; // Re-enable scrolling
+    }
 
+    return () => {
+      document.body.style.overflow = ''; // Cleanup on unmount
+    };
+  }, [confirmCancel]);
+
+  const sendEmail = (templateId, templateParams) => {
     emailjs
-      .send('service_2dy3gsm', 'template_jik1mne', templateParams, '2LMXKhz6epWRPg3MK')
+      .send('service_2dy3gsm', templateId, templateParams, '2LMXKhz6epWRPg3MK')
       .then(
         (response) => {
           console.log('Email sent successfully!', response.status, response.text);
@@ -65,15 +70,53 @@ const DateSelector = () => {
   };
 
   const handleCardClick = (index, title, description) => {
-    if (!confettiTriggered) {
+    if (selectedCard === index) {
+      if (!confirmCancel) {
+        setConfirmCancel(true);
+      }
+    } else {
       setSelectedCard(index);
-      setConfettiTriggered(true); // Prevent further confetti
+      setConfettiTriggered(true);
+      setConfirmCancel(false);
 
-      // Save selection and hash to localStorage
       const selectionData = { index, hash: currentHash };
       localStorage.setItem('selectionData', JSON.stringify(selectionData));
-      sendEmail(title, description);
+
+      const templateParams = {
+        title,
+        description,
+        timeStamp: new Date().toLocaleString(),
+        browserInfo: navigator.userAgent,
+      };
+      sendEmail('template_jik1mne', templateParams);
     }
+  };
+
+  const handleCancel = () => {
+    setIsFadingOut(true);
+    setTimeout(() => {
+      const selectedLocation = locations[selectedCard];
+      const templateParams = {
+        title: selectedLocation.title,
+        timeStamp: new Date().toLocaleString(),
+        browserInfo: navigator.userAgent,
+      };
+      sendEmail('template_t07eubq', templateParams);
+      setSelectedCard(null);
+      setConfettiTriggered(false);
+      setConfirmCancel(false);
+      setIsFadingOut(false);
+      localStorage.removeItem('selectionData');
+      console.log(`Date at ${selectedLocation.title} canceled.`);
+    }, 500);
+  };
+
+  const handleNo = () => {
+    setIsFadingOut(true);
+    setTimeout(() => {
+      setConfirmCancel(false);
+      setIsFadingOut(false);
+    }, 500);
   };
 
   return (
@@ -92,14 +135,20 @@ const DateSelector = () => {
             selected={selectedCard === index}
             blurred={selectedCard !== null && selectedCard !== index}
             confettiDisabled={confettiTriggered}
-            disableConfetti={false} // Ensure these cards can trigger confetti
+            disableConfetti={false}
             onClick={() => handleCardClick(index, location.title, location.description)}
           />
         ))}
       </div>
+      {confirmCancel && (
+        <div className={`popup ${isFadingOut ? 'hide' : 'show'}`}>
+          <p>Are you sure you want to cancel your selection?</p>
+          <button onClick={handleNo}>No</button>
+          <button onClick={handleCancel}>Yes</button>
+        </div>
+      )}
     </div>
   );
 };
 
 export default DateSelector;
-

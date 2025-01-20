@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
-import totalWordsSent from '../../images/relationship-rewind-2024/bingo-card.svg';
+import bingoCard from '../../images/relationship-rewind-2024/bingo-card.svg';
 const BingoCard = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -20,9 +20,9 @@ const BingoCard = () => {
     {
       id: 1,
       type: 'image',
-      imageUrl: totalWordsSent,
-      height: isMobile ? '400px' : '700px',
-      width: isMobile ? '400px' : '700px',
+      imageUrl: bingoCard,
+      height: isMobile ? '28rem' : '700px',
+      width: isMobile ? '28rem' : '700px',
     },
   ];
 

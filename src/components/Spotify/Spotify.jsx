@@ -3,7 +3,7 @@ import React from 'react';
 const Spotify = ({ playlistId, width = '100%', height = '650' }) => {
   return (
 
-    <div style={{ borderRadius: '12px', overflow: 'hidden', maxWidth: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: '4rem', marginRight: '4rem',}}>
+    <div style={{ borderRadius: '12px', overflow: 'hidden', maxWidth: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: '4rem', marginRight: '3.8rem',}}>
       <iframe
         style={{ borderRadius: '12px',}}
         src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}
