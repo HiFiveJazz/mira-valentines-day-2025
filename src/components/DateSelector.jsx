@@ -9,6 +9,7 @@ const DateSelector = () => {
   const [confettiTriggered, setConfettiTriggered] = useState(false);
   const [confirmCancel, setConfirmCancel] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [renderedState, setRenderedState] = useState(false);
 
   const locations = [
     {
@@ -69,32 +70,32 @@ const DateSelector = () => {
       );
   };
 
-  const handleCardClick = (index, title, description) => {
-    if (selectedCard === index) {
-      if (!confirmCancel) {
-        setConfirmCancel(true);
-      }
-    } else {
-      setSelectedCard(index);
-      setConfettiTriggered(true);
-      setConfirmCancel(false);
-
-      const selectionData = { index, hash: currentHash };
-      localStorage.setItem('selectionData', JSON.stringify(selectionData));
-
-      const templateParams = {
-        title,
-        description,
-        timeStamp: new Date().toLocaleString(),
-        browserInfo: navigator.userAgent,
-      };
-      sendEmail('template_jik1mne', templateParams);
+const handleCardClick = (index, title, description) => {
+  if (selectedCard === index) {
+    if (!confirmCancel) {
+      setConfirmCancel(true);
     }
-  };
+  } else {
+    setIsFadingOut(false);
+    setSelectedCard(index);
+    setConfettiTriggered(true);
+    setConfirmCancel(false);
+    setRenderedState(false);
+    const selectionData = { index, hash: currentHash };
+    localStorage.setItem('selectionData', JSON.stringify(selectionData));
+
+    const templateParams = {
+      title,
+      description,
+      timeStamp: new Date().toLocaleString(),
+      browserInfo: navigator.userAgent,
+    };
+    sendEmail('template_jik1mne', templateParams);
+  }
+};
 
   const handleCancel = () => {
     setIsFadingOut(true);
-    setTimeout(() => {
       const selectedLocation = locations[selectedCard];
       const templateParams = {
         title: selectedLocation.title,
@@ -106,18 +107,17 @@ const DateSelector = () => {
       setConfettiTriggered(false);
       setConfirmCancel(false);
       setIsFadingOut(false);
+      setRenderedState(true);
       localStorage.removeItem('selectionData');
-      console.log(`Date at ${selectedLocation.title} canceled.`);
-    }, 500);
   };
 
   const handleNo = () => {
     setIsFadingOut(true);
-    setTimeout(() => {
-      setConfirmCancel(false);
-      setIsFadingOut(false);
-    }, 500);
+    setConfirmCancel(false);
+    setIsFadingOut(false);
   };
+
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   return (
     <div className="date-selector-container">
@@ -128,7 +128,9 @@ const DateSelector = () => {
       <div className="date-selector">
         {locations.map((location, index) => (
           <Card3D
-            key={index}
+            key={isSafari ? `${index}-${selectedCard}` : index} // Conditional key
+            // key={index}
+            // key={`${index}-${selectedCard}`} // Dynamic key to force re-render
             imageUrl={location.imageUrl}
             title={location.title}
             description={location.description}
@@ -159,4 +161,3 @@ const DateSelector = () => {
 };
 
 export default DateSelector;
-
