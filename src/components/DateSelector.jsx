@@ -3,47 +3,27 @@ import emailjs from '@emailjs/browser';
 import hash from 'object-hash';
 import Card3D from './Card3D';
 import '../CSS/DateSelector.css';
+import locations from './locations';
 
 const DateSelector = () => {
+  const [displayedLocations, setDisplayedLocations] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confettiTriggered, setConfettiTriggered] = useState(false);
   const [confirmCancel, setConfirmCancel] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [renderedState, setRenderedState] = useState(false);
-
-  const locations = [
-    {
-      imageUrl:
-        'https://lh5.googleusercontent.com/p/AF1QipNVTsBYzInsgFj7vEfV1nhUrP8IOh8jidmAjGcK=w1080-h624-n-k-no',
-      title: 'Birch Aquarium',
-      description:
-        'This aquarium serves as the public outreach center for Scripps at the UCSD, with over half a million people visiting the aquarium each year.',
-    },
-    {
-      imageUrl:
-        'https://lajollamom.com/wp-content/uploads/2018/05/la-jolla-cove-guide.jpg',
-      title: 'La Jolla Cove',
-      description:
-        'A small cove with a beach, surrounded by cliffs! The area is protected as part of a marine reserve and is popular with swimmers and scuba divers.',
-    },
-    {
-      imageUrl:
-        'https://static01.nyt.com/images/2024/05/01/multimedia/01dc-pandas-mwbq/01dc-pandas-mwbq-videoSixteenByNineJumbo1600.jpg',
-      title: 'San Diego Zoo',
-      description:
-        'Located in Balboa Park, it began as a collection of animals left over from the Panama–California Exposition.',
-    },
-  ];
-
-  const currentHash = hash(locations);
+  const [notification, setNotification] = useState("");
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('selectionData'));
-    if (savedData && savedData.hash === currentHash) {
+    if (savedData) {
+      setDisplayedLocations(savedData.locations);
       setSelectedCard(savedData.index);
-      setConfettiTriggered(true); // Prevent further confetti
+      setConfettiTriggered(true); // Keep the confetti disabled for a previously selected card
+    } else {
+      const initialLocations = locations.slice(0, 3);
+      setDisplayedLocations(initialLocations);
     }
-  }, [currentHash]);
+  }, []);
 
   useEffect(() => {
     if (confirmCancel) {
@@ -70,45 +50,59 @@ const DateSelector = () => {
       );
   };
 
-const handleCardClick = (index, title, description) => {
-  if (selectedCard === index) {
-    if (!confirmCancel) {
-      setConfirmCancel(true);
-    }
-  } else {
-    setIsFadingOut(false);
-    setSelectedCard(index);
-    setConfettiTriggered(true);
-    setConfirmCancel(false);
-    setRenderedState(false);
-    const selectionData = { index, hash: currentHash };
+  const saveStateToLocalStorage = (index, displayedLocations) => {
+    const selectionData = { index, locations: displayedLocations };
     localStorage.setItem('selectionData', JSON.stringify(selectionData));
+  };
 
-    const templateParams = {
-      title,
-      description,
-      timeStamp: new Date().toLocaleString(),
-      browserInfo: navigator.userAgent,
-    };
-    sendEmail('template_jik1mne', templateParams);
-  }
-};
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setNotification(`Copied Address to Clipboard!`);
+      setTimeout(() => setNotification(""), 3000); // Clear notification after 3 seconds
+    }).catch((err) => {
+      console.error("Failed to copy to clipboard:", err);
+    });
+  };
 
-  const handleCancel = () => {
-    setIsFadingOut(true);
-      const selectedLocation = locations[selectedCard];
+  const handleCardClick = (index, title, description) => {
+    if (selectedCard === index) {
+      if (!confirmCancel) {
+        setConfirmCancel(true);
+      }
+    } else {
+      const selectedLocation = displayedLocations[index];
+      copyToClipboard(selectedLocation.clipboard); // Copy clipboard value on click
+
+      setIsFadingOut(false);
+      setSelectedCard(index);
+      setConfettiTriggered(true);
+      setConfirmCancel(false);
+      saveStateToLocalStorage(index, displayedLocations);
+
       const templateParams = {
-        title: selectedLocation.title,
+        title,
+        description,
         timeStamp: new Date().toLocaleString(),
         browserInfo: navigator.userAgent,
       };
-      sendEmail('template_t07eubq', templateParams);
-      setSelectedCard(null);
-      setConfettiTriggered(false);
-      setConfirmCancel(false);
-      setIsFadingOut(false);
-      setRenderedState(true);
-      localStorage.removeItem('selectionData');
+      // sendEmail('template_jik1mne', templateParams);
+    }
+  };
+
+  const handleCancel = () => {
+    setIsFadingOut(true);
+    const selectedLocation = displayedLocations[selectedCard];
+    const templateParams = {
+      title: selectedLocation.title,
+      timeStamp: new Date().toLocaleString(),
+      browserInfo: navigator.userAgent,
+    };
+    // sendEmail('template_t07eubq', templateParams);
+    setSelectedCard(null);
+    setConfettiTriggered(false);
+    setConfirmCancel(false);
+    setIsFadingOut(false);
+    localStorage.removeItem('selectionData');
   };
 
   const handleNo = () => {
@@ -117,20 +111,40 @@ const handleCardClick = (index, title, description) => {
     setIsFadingOut(false);
   };
 
+  const handleShuffleClick = () => {
+    const shuffled = [...locations].sort(() => Math.random() - 0.5);
+    const newDisplayedLocations = shuffled.slice(0, 3);
+    setDisplayedLocations(newDisplayedLocations);
+    setSelectedCard(null); // Reset selected card
+    localStorage.removeItem('selectionData'); // Clear previous saved state
+  };
+
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   return (
     <div className="date-selector-container">
       <h2 className="date-selector-heading">Pick our next Date Location!</h2>
       <h3 className="date-selector-subheading">
-        Note: if you don't like this selection, feel free to message me :)
+        Note: Message me for date ideas outside this! (New feature soon!)
       </h3>
+      <button
+        className={`shuffle-button ${selectedCard !== null ? 'disabled' : ''}`}
+        onClick={() => {
+          if (selectedCard === null) {
+            handleShuffleClick();
+          } else {
+            setConfirmCancel(true); // Show the popover if selection exists
+          }
+        }}
+        disabled={selectedCard !== null} // Disable the button if a card is selected
+      >
+        Shuffle Locations
+      </button>
+      {notification && <div className="notification">{notification}</div>} {/* Notification display */}
       <div className="date-selector">
-        {locations.map((location, index) => (
+        {displayedLocations.map((location, index) => (
           <Card3D
             key={isSafari ? `${index}-${selectedCard}` : index} // Conditional key
-            // key={index}
-            // key={`${index}-${selectedCard}`} // Dynamic key to force re-render
             imageUrl={location.imageUrl}
             title={location.title}
             description={location.description}
@@ -148,7 +162,7 @@ const handleCardClick = (index, title, description) => {
           <button onClick={handleNo}>No</button>
           <button
             onClick={() => {
-              const selectedLocation = locations[selectedCard];
+              const selectedLocation = displayedLocations[selectedCard];
               handleCancel(selectedLocation.title);
             }}
           >
@@ -161,3 +175,4 @@ const handleCardClick = (index, title, description) => {
 };
 
 export default DateSelector;
+

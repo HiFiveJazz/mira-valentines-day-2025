@@ -75,6 +75,7 @@
 }
 
 .popup button {
+  font-family: 'Montserrat', sans-serif;
   margin: 10px;
   padding: 10px 20px;
   border: none;
@@ -84,9 +85,63 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
 .popup button:hover {
   background-color: #d30010;
+}
+.shuffle-button {
+  font-family: 'Montserrat', sans-serif;
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #9c1112;
+  color: white;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shuffle-button:hover {
+  background-color: #d30010;
+}
+
+.shuffle-button.disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+.notification {
+  position: fixed;
+  bottom: 10%; /* Position it 25% from the bottom */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Adjust for the element's width */
+  background-color: #181818;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 1.25rem;
+  animation: fadeInOut 3s ease-in-out; /* Apply fade-in-out animation */
+  opacity: 0; /* Start hidden */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 30%);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 25%);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 25%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 30%);
+  }
 }
 @media (max-width: 768px) {
   .date-selector {
@@ -94,3 +149,4 @@
     align-items: center; 
   }
 }
+
