@@ -127,19 +127,6 @@ const DateSelector = () => {
       <h3 className="date-selector-subheading">
         Note: Message me for date ideas outside this! (New feature soon!)
       </h3>
-      <button
-        className={`shuffle-button ${selectedCard !== null ? 'disabled' : ''}`}
-        onClick={() => {
-          if (selectedCard === null) {
-            handleShuffleClick();
-          } else {
-            setConfirmCancel(true); // Show the popover if selection exists
-          }
-        }}
-        disabled={selectedCard !== null} // Disable the button if a card is selected
-      >
-        Shuffle Locations
-      </button>
       {notification && <div className="notification">{notification}</div>} {/* Notification display */}
       <div className="date-selector">
         {displayedLocations.map((location, index) => (
@@ -156,6 +143,19 @@ const DateSelector = () => {
           />
         ))}
       </div>
+      <button
+        className={`shuffle-button ${selectedCard !== null ? 'disabled' : ''}`}
+        onClick={() => {
+          if (selectedCard === null) {
+            handleShuffleClick();
+          } else {
+            setConfirmCancel(true); // Show the popover if selection exists
+          }
+        }}
+        disabled={selectedCard !== null} // Disable the button if a card is selected
+      >
+        Shuffle Locations
+      </button>
       {confirmCancel && (
         <div className={`popup ${isFadingOut ? 'hide' : 'show'}`}>
           <p>Are you sure you want to cancel your selection?</p>
