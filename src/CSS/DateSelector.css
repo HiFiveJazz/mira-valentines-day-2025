@@ -147,11 +147,13 @@
   .date-selector {
     max-width: 100%;
     overflow-x: hidden;
-    gap: 0px;
+    gap: 2px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
   .date-selector .card {
-    grid-template-columns: 130px;
-    grid-template-rows: 220px 320px 0px;
+    grid-template-columns: 120px;
+    grid-template-rows: 220px 250px 120px;
     max-width: 100%;
     margin: 0px; /* Reduce margin */
   }
@@ -162,19 +164,21 @@
   .date-selector-container .date {
     margin-top: -10px;
     margin-bottom: 0px;
-    margin-left: -23px;
-    margin-right: -23px;
-    height: 20px;
+    margin-left: -24px;
+    margin-right: -24px;
+    height: 22px;
   }
 
   .date-selector .card-text h2 {
-    font-size: 0.9rem; /* Smaller title font */
+    font-size: 0.85rem; /* Smaller title font */
   }
   .date-selector .card:hover {
     transform: scale(1.01);
   }
   .date-selector .card-text p {
-    font-size: 0.825rem; /* Smaller text font */
+    text-align: start; 
+    font-size: 0.8rem; /* Smaller text font */
+    padding: 0;
   }
  .shuffle-button {
     width: 60%; /* Full width button */
