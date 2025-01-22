@@ -105,28 +105,28 @@
 
 /* Adjustments for Mobile Screens */
 @media (max-width: 768px) {
-  .card {
+  .forecast-grid .card {
     grid-template-columns: 175px;
     grid-template-rows: 175px 175px 60px;
     max-width: 175px;
     margin: 0px; /* Reduce margin */
   }
 
-  .card-image {
+  .forecast-grid .card-image {
     height: 200px; /* Smaller image height */
   }
-  .card-text .date{
+  .forecast-grid .card-text .date{
     margin-top: -10px;
     margin-bottom: -3px;
     height: 22px;
   }
 
 
-  .card-text h2 {
+  .forecast-grid .card-text h2 {
     font-size: 14px; /* Smaller title font */
   }
 
-  .card-text p {
+  .forecast-grid .card-text p {
     font-size: 14px; /* Smaller text font */
   }
 }

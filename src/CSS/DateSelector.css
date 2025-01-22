@@ -144,53 +144,49 @@
 }
 
 @media (max-width: 768px) {
-  .date-selector-container {
-    padding: 0; /* Remove all padding from the container */
-  }
-
   .date-selector {
-    scale: 0.9; /* Reduce the overall size */
-    display: flex;
-    flex-wrap: nowrap; /* Ensure cards are displayed in a single row */
-    padding: 0; /* Ensure no extra padding around the cards */
-    gap: 4px; /* Minimize spacing between cards */
-    justify-content: space-between; /* Spread cards evenly */
-    align-items: center; /* Align cards vertically */
-    width: 100%; /* Fit the entire width of the viewport */
+    max-width: 100%;
+    overflow-x: hidden;
+    gap: 0px;
+  }
+  .date-selector .card {
+    grid-template-columns: 140px;
+    grid-template-rows: 225px 280px 0px;
+    max-width: 100%;
+    margin: 0px; /* Reduce margin */
   }
 
-  .date-selector > * {
-    flex-shrink: 0; /* Prevent cards from shrinking */
-    width: 100%; /* Divide the viewport equally among 3 cards with gap compensation */
+  .date-selector-container .card-image {
+    height: 250px; /* Smaller image height */
+  }
+  .date-selector-container .date {
+    margin-top: -10px;
+    margin-bottom: 0px;
+    margin-left: -18px;
+    margin-right: -18px;
+    height: 20px;
   }
 
-  .shuffle-button {
-    width: 100%; /* Full width button */
+  .date-selector .card-text h2 {
+    font-size: 0.9rem; /* Smaller title font */
+  }
+
+  .date-selector .card-text p {
+    font-size: 13px; /* Smaller text font */
+  }
+ .shuffle-button {
+    width: 60%; /* Full width button */
     font-size: 1.2rem; /* Adjust font size for better readability */
     margin: 10px 0; /* Add some vertical spacing */
   }
 
   .popup {
-    width: 70%; /* Adjust the popup size */
+    width: 80%; /* Adjust the popup size */
     font-size: 14px; /* Adjust the text size */
   }
 
   .popup button {
-    width: 40%; /* Full width buttons for mobile */
-    margin: 20px 0; /* Add spacing between buttons */
-  }
-
-  .card {
-    transform: scale(0.9); /* Slightly reduce card size */
-    transition: transform 0.2s ease; /* Smooth transition for scaling */
-  }
-
-  .card:hover {
-    transform: scale(1); /* Restore original size on hover */
-  }
-
-  .card-text {
-    font-size: 12px; /* Adjust text size for better readability */
+    width: 30%; /* Full width buttons for mobile */
+    margin: 5px 5px; /* Add spacing between buttons */
   }
 }
-
