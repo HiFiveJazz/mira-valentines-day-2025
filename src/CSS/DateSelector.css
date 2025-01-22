@@ -150,8 +150,8 @@
     gap: 0px;
   }
   .date-selector .card {
-    grid-template-columns: 140px;
-    grid-template-rows: 225px 280px 0px;
+    grid-template-columns: 130px;
+    grid-template-rows: 220px 320px 0px;
     max-width: 100%;
     margin: 0px; /* Reduce margin */
   }
@@ -162,22 +162,24 @@
   .date-selector-container .date {
     margin-top: -10px;
     margin-bottom: 0px;
-    margin-left: -18px;
-    margin-right: -18px;
+    margin-left: -23px;
+    margin-right: -23px;
     height: 20px;
   }
 
   .date-selector .card-text h2 {
     font-size: 0.9rem; /* Smaller title font */
   }
-
+  .date-selector .card:hover {
+    transform: scale(1.01);
+  }
   .date-selector .card-text p {
-    font-size: 13px; /* Smaller text font */
+    font-size: 0.825rem; /* Smaller text font */
   }
  .shuffle-button {
     width: 60%; /* Full width button */
     font-size: 1.2rem; /* Adjust font size for better readability */
-    margin: 10px 0; /* Add some vertical spacing */
+    margin: 0px; /* Add some vertical spacing */
   }
 
   .popup {
