@@ -217,7 +217,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin-top: -50px;
+    margin-top: -20px;
   }
 
   .tag {
