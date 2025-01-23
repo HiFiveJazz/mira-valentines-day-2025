@@ -128,21 +128,22 @@ const DateSelector = () => {
         Note: Message me for date ideas outside this! (New feature soon!)
       </h3>
       {notification && <div className="notification">{notification}</div>} {/* Notification display */}
-      <div className="date-selector">
-        {displayedLocations.map((location, index) => (
-          <Card3D
-            key={isSafari ? `${index}-${selectedCard}` : index} // Conditional key
-            imageUrl={location.imageUrl}
-            title={location.title}
-            description={location.description}
-            selected={selectedCard === index}
-            blurred={selectedCard !== null && selectedCard !== index}
-            confettiDisabled={confettiTriggered}
-            disableConfetti={false}
-            onClick={() => handleCardClick(index, location.title, location.description)}
-          />
-        ))}
-      </div>
+        <div className="date-selector">
+          {displayedLocations.map((location, index) => (
+            <Card3D
+              key={isSafari ? `${index}-${selectedCard}` : index}
+              imageUrl={location.imageUrl}
+              title={location.title}
+              description={location.description}
+              tags={location.tags} // Pass tags array
+              selected={selectedCard === index}
+              blurred={selectedCard !== null && selectedCard !== index}
+              confettiDisabled={confettiTriggered}
+              disableConfetti={false}
+              onClick={() => handleCardClick(index, location.title, location.description)}
+            />
+          ))}
+        </div>
       <button
         className={`shuffle-button ${selectedCard !== null ? 'disabled' : ''}`}
         onClick={() => {
@@ -175,4 +176,3 @@ const DateSelector = () => {
 };
 
 export default DateSelector;
-

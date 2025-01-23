@@ -11,9 +11,11 @@ const Card3D = ({
   blurred,
   onClick,
   confettiDisabled,
-  disableConfetti, // New prop to control confetti behavior
+  disableConfetti, 
+  tags = [], // Default to empty array
 }) => {
   const cardRef = useRef(null);
+  const tagsRef = useRef(null);
 
   useEffect(() => {
     const currentCard = cardRef.current;
@@ -72,7 +74,6 @@ const Card3D = ({
             ? 'contain'
             : 'cover',
           backgroundRepeat: 'no-repeat',
-          // backgroundPosition: 'center',
         }}
       ></div>
       <div className="card-text">
@@ -80,6 +81,11 @@ const Card3D = ({
           <h2>{title}</h2>
         </div>
         <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
+      </div>
+      <div className="card-tags" ref={tagsRef}>
+        {tags.map((tag, index) => (
+          <span key={index} className="tag">{tag}</span>
+        ))}
       </div>
       <div className="card-stats"></div>
     </div>

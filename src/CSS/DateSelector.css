@@ -142,7 +142,25 @@
     transform: translate(-50%, 30%);
   }
 }
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
 
+.tag {
+  height: 16px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 12px;
+  background-color: #151515;
+  color: #e0e0e0;
+  text-transform: capitalize;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
 @media (max-width: 768px) {
   .date-selector {
     max-width: 100%;
@@ -194,5 +212,21 @@
   .popup button {
     width: 30%; /* Full width buttons for mobile */
     margin: 5px 5px; /* Add spacing between buttons */
+  }
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: -50px;
+  }
+
+  .tag {
+    height: 16px;
+    padding: 2px 2px;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    text-transform: capitalize;
+    margin-top: 0;
+    margin-bottom: 5px;
   }
 }

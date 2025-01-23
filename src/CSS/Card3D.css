@@ -6,7 +6,6 @@
 
   border-radius: 18px;
   background-color: #9c1112;
-  /* background-image: linear-gradient(to top left, #9c1112, #9c8888); */
   box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
   text-align: center;
 
@@ -59,10 +58,10 @@
   background-color: white;
 }
 .card.blurred {
-  filter: blur(5px) grayscale(100%); /* Apply Gaussian blur and grayscale */
-  pointer-events: none; /* Prevent interaction with blurred cards */
+  filter: blur(5px) grayscale(100%); 
+  pointer-events: none; 
   transition: filter 0.3s ease-in-out;
 }
 .card.selected {
-  z-index: 10; /* Ensure the selected card appears above blurred cards */
+  z-index: 10; 
 }
