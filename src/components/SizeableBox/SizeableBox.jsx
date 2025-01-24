@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import VanillaTilt from 'vanilla-tilt';
-import './SizeableBox.css';
+import './CSS/SizeableBox.css';
 
 const SizeableBox = ({
   type, // Determines the box type: 'image' or 'text'

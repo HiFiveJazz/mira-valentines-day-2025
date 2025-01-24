@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './poem.css';
+import './CSS/poem.css';
 
 const poem = () => {
   const dividerRef = useRef(null);

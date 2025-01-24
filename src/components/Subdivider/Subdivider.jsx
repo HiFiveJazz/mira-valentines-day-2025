@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Subdivider.css';
+import './CSS/Subdivider.css';
 
 const Subdivider = ({ title }) => {
   const dividerRef = useRef(null);

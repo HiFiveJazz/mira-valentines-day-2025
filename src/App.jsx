@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Heading from './components/Heading';
 import CardSlider from './components/CardSlider';
-import DateSelector from './components/DateSelector';
+import DateSelector from './components/DateSelector/DateSelector';
 import BentoBoxGrid from './components/BentoBox/BentoBoxGrid'
 import Writing from './components/Writing/Writing'
 import CircleImageHeading from './components/CircleImageHeading/CircleImageHeading'

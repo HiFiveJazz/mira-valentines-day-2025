@@ -11,14 +11,6 @@ const rawLocations = [
       '2300 Expedition Way, La Jolla, CA 92037',
     tags: ['San Diego','Date'],
   },
-  //template
-  // {
-  //   imageUrl:
-  //     '',
-  //   title: "",
-  //   description:
-  //     "",
-  // },
   {
     imageUrl:
       'https://www.sandiego.org/-/media/e8a868a304da438a9e09a90070519db2.jpg',
@@ -26,7 +18,7 @@ const rawLocations = [
     description:
       "An attraction every spring, Flower Fields is a rainbow of beautiful ranunculus flowers set on a hillside that overlooks the coastline. ",
     clipboard:
-      '5225 Canyon Crest Dr, Riverside, CA 92507',
+      '5704 Paseo Del Norte, Carlsbad, CA 92008',
     tags: ['San Diego','Date','Nature'],
   },
   {
@@ -225,13 +217,13 @@ const rawLocations = [
   },
   {
     imageUrl:
-      'https://cdn.vox-cdn.com/thumbor/BbM1mVDrZay-C7qG-Do5G1kGzfo=/0x0:612x612/1200x800/filters:focal(91x71:187x167)/cdn.vox-cdn.com/uploads/chorus_image/image/68950505/31239512_194128024729821_5298312909506478080_n.0.jpg',
+      'https://ichibanyausa.com/cdn/shop/files/Q9A8784.jpg?v=1712705336&width=3840',
     title: "Coco Ichibanya",
     description:
       "Located in Riverside and SD, known for its Japanese curry and omurice, coming in a variety of spice levels!",
     clipboard:
       '4428 Convoy St, San Diego, CA 92111',
-    tags: ['San Diego','Food'],
+    tags: ['San Diego','Riverside','Food'],
   },
   {
     imageUrl:

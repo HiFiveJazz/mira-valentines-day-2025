@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './PasswordRedirect.css';
+import './CSS/PasswordRedirect.css';
 
 const PasswordRedirect = ({ text, correctPassword, target }) => {
   const [password, setPassword] = useState('');

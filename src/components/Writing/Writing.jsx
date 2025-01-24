@@ -1,6 +1,6 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
-import './Writing.css';
+import './CSS/Writing.css';
 
 const Writing = () => {
   return (

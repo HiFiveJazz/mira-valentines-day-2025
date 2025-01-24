@@ -1,5 +1,5 @@
 import React from 'react';
-import './CircleImageHeading.css';
+import './CSS/CircleImageHeading.css';
 
 const CircleImageHeading = ({ imageUrl, title, description }) => {
   return (
