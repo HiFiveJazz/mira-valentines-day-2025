@@ -45,35 +45,37 @@ const SizeableBox = ({
   }, []);
 
   return (
-    <div
-      className="box"
-      ref={cardRef}
-      onClick={onClick}
-      style={{
-        height,
-        width,
-      }}
-    >
-      {type === 'image' && (
-        <div
-          className="box-image"
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-            height: '100%', // Fill the entire box
-            width: '100%',
-            borderRadius: 'inherit',
-          }}
-        ></div>
-      )}
-      {type === 'text' && (
-        <div className="box-text" style={{ height: '100%' }}>
-          <div className="box-title">
-            <h2>{title}</h2>
+      <div
+        className="box"
+        ref={cardRef}
+        onClick={onClick}
+        style={{
+          height,
+          width,
+        }}
+      >
+        {type === 'image' && (
+          <div
+            className="box-image"
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              height: '100%',
+              width: '100%',
+              borderRadius: 'inherit',
+            }}
+          ></div>
+        )}
+        {type === 'text' && (
+          <div className="box-text" style={{ height: '100%' }}>
+            <div className="box-title">
+              <h2>{title}</h2>
+            </div>
+            <div className="box-description">
+              {description}
+            </div>
           </div>
-          <p>{description}</p>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
   );
 };
 

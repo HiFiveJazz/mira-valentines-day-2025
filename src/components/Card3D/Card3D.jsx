@@ -58,37 +58,39 @@ const Card3D = ({
   };
 
   return (
-    <div
-      className={`card ${blurred ? 'blurred' : ''} ${selected ? 'selected' : ''}`}
-      ref={cardRef}
-      onClick={handleClick}
-    >
-      <div
-        className="card-image"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-          backgroundColor: imageUrl.includes('openweathermap.org')
-            ? '#000'
-            : '#9c1112',
-          backgroundSize: imageUrl.includes('openweathermap.org')
-            ? 'contain'
-            : 'cover',
-          backgroundRepeat: 'no-repeat',
-        }}
-      ></div>
-      <div className="card-text">
-        <div className="date">
-          <h2>{title}</h2>
-        </div>
-        <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
-      </div>
-      <div className="card-tags" ref={tagsRef}>
-        {tags.map((tag, index) => (
-          <span key={index} className="tag">{tag}</span>
-        ))}
-      </div>
-      <div className="card-stats"></div>
-    </div>
+          <div
+            className={`card ${blurred ? 'blurred' : ''} ${selected ? 'selected' : ''}`}
+            ref={cardRef}
+            onClick={handleClick}
+          >
+            <div
+              className="card-image"
+              style={{
+                backgroundImage: `url(${imageUrl})`,
+                backgroundColor: imageUrl.includes('openweathermap.org')
+                  ? '#000'
+                  : '#9c1112',
+                backgroundSize: imageUrl.includes('openweathermap.org')
+                  ? 'contain'
+                  : 'cover',
+                backgroundRepeat: 'no-repeat',
+              }}
+            ></div>
+            <div className="card-text">
+              <div className="date">
+                <h2>{title}</h2>
+              </div>
+              <div className="description" style={{ whiteSpace: 'pre-line' }}>
+                {description}
+              </div>
+            </div>
+            <div className="card-tags" ref={tagsRef}>
+              {tags.map((tag, index) => (
+                <span key={index} className="tag">{tag}</span>
+              ))}
+            </div>
+            <div className="card-stats"></div>
+          </div>
   );
 };
 
