@@ -21,8 +21,8 @@ const BingoCard = () => {
       id: 1,
       type: 'image',
       imageUrl: bingoCard,
-      height: isMobile ? '28rem' : '700px',
-      width: isMobile ? '28rem' : '700px',
+      height: isMobile ? '26rem' : '700px',
+      width: isMobile ? '26rem' : '700px',
     },
   ];
 

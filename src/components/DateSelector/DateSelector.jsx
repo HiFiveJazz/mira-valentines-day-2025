@@ -36,6 +36,19 @@ const DateSelector = () => {
     };
   }, [confirmCancel]);
 
+  const sendEmail = (templateId, templateParams) => {
+      emailjs
+        .send('service_2dy3gsm', templateId, templateParams, '2LMXKhz6epWRPg3MK')
+        .then(
+          (response) => {
+            console.log('Email sent successfully!', response.status, response.text);
+          },
+          (error) => {
+            console.error('Failed to send email.', error);
+          }
+        );
+    };
+
   const saveStateToLocalStorage = (index, displayedLocations) => {
     const selectionData = { index, locations: displayedLocations };
     localStorage.setItem('selectionData', JSON.stringify(selectionData));
@@ -71,7 +84,7 @@ const DateSelector = () => {
         timeStamp: new Date().toLocaleString(),
         browserInfo: navigator.userAgent,
       };
-      // sendEmail('template_jik1mne', templateParams);
+      sendEmail('template_jik1mne', templateParams);
     }
   };
 
@@ -83,7 +96,7 @@ const DateSelector = () => {
       timeStamp: new Date().toLocaleString(),
       browserInfo: navigator.userAgent,
     };
-    // sendEmail('template_t07eubq', templateParams);
+    sendEmail('template_t07eubq', templateParams);
     setSelectedCard(null);
     setConfettiTriggered(false);
     setConfirmCancel(false);
