@@ -1,20 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Homepage from './pages/Homepage'
+import Dates from './pages/Dates'
+import Stats from './pages/Stats'
 import Heading from './components/Heading';
 import CardSlider from './components/CardSlider';
-import DateSelector from './components/DateSelector/DateSelector';
 import BentoBoxGrid from './components/BentoBox/BentoBoxGrid'
-import Writing from './components/Writing/Writing'
-import CircleImageHeading from './components/CircleImageHeading/CircleImageHeading'
-import Button from './components/Button/Button'
 import riversideImages from './data/riverside';
 import iceskatingImages from './data/ice-skating';
-import CircleImage from './images/riverside-lights/IMG_2039.jpg';
 import Divider from './components/Divider/Divider'
 import Subdivider from './components/Subdivider/Subdivider';
 import PasswordRedirect from './components/PasswordRedirect/PasswordRedirect';
 import Poem from './components/Poem/poem'
 import LoveLetter from './components/LoveLetter/LoveLetter';
-import Weather from './components/Weather/weather';
 import BingoCard from './components/BingoCard/BingoCard';
 import Spotify from './components/Spotify/Spotify';
 
@@ -26,42 +23,14 @@ function App() {
         <Route path="/" 
           element={
             <div>
-              <Writing/>
-              <CircleImageHeading 
-                imageUrl={CircleImage}
-                title="About Us"
-                description="Hi! We're Mira and Jazz, a California-based couple sharing our little corner of the internet. Welcome to our blog! Here, we post about our fun adventures, share cute and quirky stats about us, amazing food we've eaten, and sprinkle in some other cool, nifty stuff we love! We hope you enjoy your stay!" 
-              />
-              <Button
-                text="Get Started"
-                target ="/relationship-recap"
-              />
+              <Homepage/>
             </div>
           } />
         <Route
           path="/dates"
           element={
             <div>
-              <DateSelector/>
-              <Weather 
-                city="Riverside"
-                heading="6-Day Weather Forecast for Riverside" 
-              />
-              <Weather 
-                city="San Diego"
-                heading="6-Day Weather Forecast for San Diego" 
-              />
-              {/* <Weather  */}
-              {/*   city="Ho Chi Minh City" */}
-              {/*   heading="6-Day Weather Forecast for Ho Chi Minh City"  */}
-              {/* /> */}
-              {/* <Weather  */}
-              {/*   city="Maple Grove" */}
-              {/*   heading="6-Day Weather Forecast for Maple Grove"  */}
-              {/* /> */}
-              <Divider title='2024'/>
-              <CardSlider images={riversideImages} title="Riverside Lights" />
-              <CardSlider images={iceskatingImages} title="Ice Skating" />
+              <Dates/>
             </div>
           }
         />
@@ -69,8 +38,7 @@ function App() {
           path="/stats"
           element={
             <div>
-              <Divider title='2024'/>
-              <BentoBoxGrid/>
+              <Stats/>
             </div>
           }
         />
