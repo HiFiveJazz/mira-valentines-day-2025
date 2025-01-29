@@ -4,6 +4,7 @@ import Dates from './pages/Dates'
 import Stats from './pages/Stats'
 import Invitation from './pages/Invitation'
 import RelationshipRecap from './pages/RelationshipRecap'
+import Photos from './pages/Photos'
 import Heading from './components/Heading';
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
               <Dates/>
           }
         />
+        <Route path="/photos" 
+          element={
+            <Photos/>
+          } />
         <Route
           path="/stats"
           element={

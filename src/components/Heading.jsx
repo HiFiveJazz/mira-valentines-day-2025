@@ -8,6 +8,7 @@ const Heading = () => {
 
   const navItems = [
     { name: 'Home', link: '/' },
+    { name: 'Photos', link: '/photos' },
     { name: 'Dates', link: '/dates' },
     { name: 'Stats', link: '/stats' },
     { name: 'Relationship Recap', link: '/relationship-recap' },
