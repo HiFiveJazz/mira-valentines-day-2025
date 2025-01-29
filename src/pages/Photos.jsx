@@ -1,5 +1,5 @@
 import Divider from '../components/Divider/Divider'
-import PhotoBox from '../components/Photos/PhotoBox'
+import PhotoBox from '../components/PhotoBox/PhotoBox'
 
 const Photos = () => {
 

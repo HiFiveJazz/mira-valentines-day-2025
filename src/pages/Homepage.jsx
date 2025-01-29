@@ -1,7 +1,7 @@
 import Writing from '../components/Writing/Writing'
 import CircleImageHeading from '../components/CircleImageHeading/CircleImageHeading'
 import Button from '../components/Button/Button'
-import CircleImage from '../images/riverside-lights/IMG_2039.jpg';
+import CircleImage from '../images/riverside-lights/IMG_10.jpg';
 
 const Homepage = () => {
 
