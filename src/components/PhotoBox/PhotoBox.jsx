@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
-import imageList from './imageImports'; // Import generated list
+import imageList from './imageImports'; // Now using compressed images
 
 const PhotoBox = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -21,7 +21,7 @@ const PhotoBox = () => {
         <SizeableBox
           key={index}
           type="image"
-          imageUrl={imageUrl} // Corrected path
+          imageUrl={imageUrl}
           height={isMobile ? '300px' : '400px'}
           width={isMobile ? '75%' : '400px'}
           onClick={() => console.log(`Image ${index + 1} clicked!`)}

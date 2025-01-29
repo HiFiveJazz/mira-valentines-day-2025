@@ -5,21 +5,17 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Path to the photography images inside /public/
-const imagesDir = join(__dirname, '../public/photography/');
+// Use the new compressed folder
+const imagesDir = join(__dirname, '../public/photography-compressed/');
 const outputFile = join(__dirname, '../src/components/PhotoBox/imageImports.js');
 
 (async () => {
   try {
     const files = await readdir(imagesDir);
+    const imageFiles = files.filter(file => /\.(webp)$/i.test(file)); // Use only webp
 
-    // Filter only image files
-    const imageFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file));
+    const imageArray = `const imageList = [\n  ${imageFiles.map(file => `'photography-compressed/${file}'`).join(',\n  ')}\n];\n\nexport default imageList;`;
 
-    // Generate an array of image URLs (relative to /public/)
-    const imageArray = `const imageList = [\n  ${imageFiles.map(file => `'photography/${file}'`).join(',\n  ')}\n];\n\nexport default imageList;`;
-
-    // Write the output file
     await writeFile(outputFile, imageArray);
     console.log('✅ Image import file generated successfully!');
   } catch (err) {
