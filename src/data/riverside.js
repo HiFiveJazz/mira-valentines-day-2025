@@ -1,14 +1,14 @@
 // riverside.js
-import img1 from '../images/riverside-lights/IMG_01.jpg';
-import img2 from '../images/riverside-lights/IMG_02.jpg';
-import img3 from '../images/riverside-lights/IMG_03.jpg';
-import img4 from '../images/riverside-lights/IMG_04.jpg';
-import img5 from '../images/riverside-lights/IMG_05.jpg';
-import img6 from '../images/riverside-lights/IMG_06.jpg';
-import img7 from '../images/riverside-lights/IMG_07.jpg';
-import img8 from '../images/riverside-lights/IMG_08.jpg';
-import img9 from '../images/riverside-lights/IMG_09.jpg';
-import img10 from '../images/riverside-lights/IMG_10.jpg';
+import img1 from '../images-compressed/riverside-lights/IMG_01.webp'
+import img2 from '../images-compressed/riverside-lights/IMG_02.webp'
+import img3 from '../images-compressed/riverside-lights/IMG_03.webp'
+import img4 from '../images-compressed/riverside-lights/IMG_04.webp'
+import img5 from '../images-compressed/riverside-lights/IMG_05.webp'
+import img6 from '../images-compressed/riverside-lights/IMG_06.webp'
+import img7 from '../images-compressed/riverside-lights/IMG_07.webp'
+import img8 from '../images-compressed/riverside-lights/IMG_08.webp'
+import img9 from '../images-compressed/riverside-lights/IMG_09.webp'
+import img10 from '../images-compressed/riverside-lights/IMG_10.webp'
 
 const riversideImages = [
   { id: 1, image: img1 },

@@ -1,12 +1,13 @@
 // ice_skating.js
-import img1 from '../images/ice-skating/IMG_01.jpg';
-import img2 from '../images/ice-skating/IMG_02.jpg';
-import img3 from '../images/ice-skating/IMG_03.jpg';
-import img4 from '../images/ice-skating/IMG_04.jpg';
-import img5 from '../images/ice-skating/IMG_05.jpg';
-import img6 from '../images/ice-skating/IMG_06.jpg';
-import img7 from '../images/ice-skating/IMG_07.jpg';
-import img8 from '../images/ice-skating/IMG_08.jpg';
+
+import img1 from '../images-compressed/ice-skating/IMG_01.webp';
+import img2 from '../images-compressed/ice-skating/IMG_02.webp';
+import img3 from '../images-compressed/ice-skating/IMG_03.webp';
+import img4 from '../images-compressed/ice-skating/IMG_04.webp';
+import img5 from '../images-compressed/ice-skating/IMG_05.webp';
+import img6 from '../images-compressed/ice-skating/IMG_06.webp';
+import img7 from '../images-compressed/ice-skating/IMG_07.webp';
+import img8 from '../images-compressed/ice-skating/IMG_08.webp';
 
 const iceskatingImages = [
   { id: 1, image: img1 },
