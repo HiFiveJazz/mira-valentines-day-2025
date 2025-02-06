@@ -5,6 +5,8 @@ import img3 from '../images-compressed/jazz-bday-2024/IMG_03.webp';
 import img4 from '../images-compressed/jazz-bday-2024/IMG_04.webp';
 import img5 from '../images-compressed/jazz-bday-2024/IMG_05.webp';
 import img6 from '../images-compressed/jazz-bday-2024/IMG_06.webp';
+import img7 from '../images-compressed/jazz-bday-2024/IMG_07.webp';
+import img8 from '../images-compressed/jazz-bday-2024/IMG_08.webp';
 
 const bday2024Images = [
   { id: 1, image: img1 },
@@ -13,6 +15,8 @@ const bday2024Images = [
   { id: 4, image: img4 },
   { id: 5, image: img5 },
   { id: 6, image: img6 },
+  { id: 7, image: img7 },
+  { id: 8, image: img8 },
 ];
 
 export default bday2024Images;
