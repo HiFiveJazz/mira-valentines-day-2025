@@ -1,0 +1,77 @@
+.circle-video-heading-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  margin: 50px;
+}
+
+.circle-video {
+  flex-shrink: 0;
+  width: 17rem;
+  height: 17rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Ensure video stays inside the circular frame */
+.circle-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+}
+
+.text-content {
+  flex: 1;
+}
+
+.text-content p {
+  font-size: 2.5rem;
+  line-height: 1.4;
+  color: #fff;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .text-content p {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .circle-video-heading-container {
+    flex-direction: column;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .circle-video {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  .text-content p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .circle-video-heading-container {
+    margin: 10px;
+    gap: 15px;
+  }
+
+  .circle-video {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .text-content p {
+    font-size: 1.2rem;
+  }
+}
+

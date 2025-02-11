@@ -12,7 +12,7 @@ const Heading = () => {
     { name: 'Photography', link: '/photography' },
     { name: 'Dates', link: '/dates' },
     { name: 'Stats', link: '/stats' },
-    { name: 'Relationship Recap', link: '/relationship-recap' },
+    { name: 'R&R', link: '/relationship-recap' },
   ];
 
   const toggleMenu = () => {
