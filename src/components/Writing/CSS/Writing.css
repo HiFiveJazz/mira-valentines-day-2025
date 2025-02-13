@@ -16,3 +16,24 @@
 .highlight {
   color: #9587ed;
 }
+
+@media (max-width: 768px) {
+  .writing-header {
+    font-size: 3.75rem;
+  }
+
+  .writing-subtext {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .writing-header {
+    font-size: 3.25rem;
+  }
+
+  .writing-subtext {
+    font-size: 2rem;
+  }
+}
+
