@@ -39,9 +39,8 @@ const Valentines = () => {
       <SizeableBox 
         type="video" 
         videoUrl={Bunny}
-        autoplay={true} 
-        loop={true} 
-        controls={false} 
+        // autoplay={true} 
+        // loop={true} 
         height={size}
         width={size}
       />
@@ -52,4 +51,3 @@ const Valentines = () => {
 };
 
 export default Valentines;
-

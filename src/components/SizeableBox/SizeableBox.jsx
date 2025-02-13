@@ -11,9 +11,8 @@ const SizeableBox = ({
   onClick,
   height = '300px',
   width = '300px',
-  autoplay = false, // Whether the video should autoplay
-  loop = false, // Whether the video should loop
-  controls = true, // Whether to show controls
+  autoplay = true, // Default: autoplay videos
+  loop = true, // Default: loop videos
 }) => {
   const cardRef = useRef(null);
 
@@ -70,12 +69,16 @@ const SizeableBox = ({
         <video
           className="box-video"
           src={videoUrl}
-          height="100%"
-          width="100%"
-          style={{ borderRadius: 'inherit' }}
-          autoPlay={autoplay}
-          loop={loop}
-          controls={controls}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover", // Ensures no black bars
+            borderRadius: "inherit",
+          }}
+          autoPlay
+          loop
+          muted
+          playsInline
         />
       )}
 

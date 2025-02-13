@@ -22,7 +22,7 @@
 .falling-objects img{
   width: 100px;
   height: auto;
-  filter: brightness(48%);
+  filter: brightness(40%);
 }
 
 .click-the-hearts img{
@@ -33,37 +33,37 @@
 
 .falling-objects .objects div:nth-child(1) {
   left: 20%;
-  animation: object-rotate 15s linear infinite;
+  animation: object-rotate 7s linear infinite;
   animation-delay: -7s;
 }
 .falling-objects .objects div:nth-child(2) {
   left: 50%;
-  animation: object-rotate 20s linear infinite;
+  animation: object-rotate 10s linear infinite;
   animation-delay: -5s;
 }
 .falling-objects .objects div:nth-child(3) {
   left: 75%;
-  animation: object-rotate 10s linear infinite;
+  animation: object-rotate 6s linear infinite;
   animation-delay: 0s;
 }
 .falling-objects .objects div:nth-child(4) {
   left: 95%;
-  animation: object-rotate 5s linear infinite;
+  animation: object-rotate 2s linear infinite;
   animation-delay: -1s;
 }
 .falling-objects .objects div:nth-child(5) {
   left: 60%;
-  animation: object-rotate 7s linear infinite;
+  animation: object-rotate 3s linear infinite;
   animation-delay: -8s;
 }
 .falling-objects .objects div:nth-child(6) {
   left: 10%;
-  animation: object-rotate 11s linear infinite;
+  animation: object-rotate 5s linear infinite;
   animation-delay: 0s;
 }
 .falling-objects .objects div:nth-child(7) {
   left: 30%;
-  animation: object-rotate 30s linear infinite;
+  animation: object-rotate 20s linear infinite;
   animation-delay: -6s;
 }
 .falling-objects .objects div:nth-child(8) {
@@ -86,28 +86,28 @@
   0% {
   opacity: 0;
   top: -10%;
-  transform: translateX(10px) rotate(0deg);
+  transform: translateX(15px) rotate(0deg);
   }
   10% {
   opacity: 1;
   }
   20% {
-  transform: translateX(-10px) rotate(15deg);
+  transform: translateX(-15px) rotate(15deg);
   }
   40% {
-  transform: translateX(-10px) rotate(7deg);
+  transform: translateX(-15px) rotate(7deg);
   width: 100px;
   }
   60% {
-  transform: translateX(10px) rotate(-10deg);
+  transform: translateX(15px) rotate(-10deg);
   }
   80% {
-  transform: translateX(-10px) rotate(-20deg);
+  transform: translateX(15px) rotate(-20deg);
   opacity: 1;
   }
   100% {
   top: 110%; 
-  transform: translateX(-10px) rotate(15deg);
+  transform: translateX(-15px) rotate(15deg);
   opacity: 0;
   }
 }
