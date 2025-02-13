@@ -6,6 +6,7 @@ import riversideImages from '../data/riverside';
 import iceskatingImages from '../data/ice-skating';
 import roundImages from '../data/round-one';
 import bdayImages from '../data/jazz-bday-2024';
+import Footer from '../components/Footer/Footer';
 
 const Dates = () => {
 
@@ -34,6 +35,7 @@ const Dates = () => {
       <Divider title='2024'/>
       <CardSlider images={riversideImages} title="Riverside Lights" />
       <CardSlider images={iceskatingImages} title="Ice Skating" />
+      <Footer/>
     </div>
   );
 };

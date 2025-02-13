@@ -1,5 +1,6 @@
 import Divider from '../components/Divider/Divider'
 import MomentBox from '../components/MomentBox/MomentBox'
+import Footer from '../components/Footer/Footer';
 
 const Moments = () => {
 
@@ -7,6 +8,7 @@ const Moments = () => {
     <div> 
       <Divider title='Moments'/>
       <MomentBox/>
+      <Footer/>
     </div>
   );
 };

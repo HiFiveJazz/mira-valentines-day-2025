@@ -1,5 +1,6 @@
 import Divider from '../components/Divider/Divider'
 import PhotoBox from '../components/PhotoBox/PhotoBox'
+import Footer from '../components/Footer/Footer';
 
 const Photos = () => {
 
@@ -7,6 +8,7 @@ const Photos = () => {
     <div> 
       <Divider title='Photos'/>
       <PhotoBox/>
+      <Footer/>
     </div>
   );
 };
