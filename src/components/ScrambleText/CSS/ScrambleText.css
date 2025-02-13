@@ -1,0 +1,77 @@
+.scramble-redirect-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding-bottom: 30px;
+}
+
+.scramble-form {
+  display: flex;
+  flex-direction: row; /* Align elements in a row */
+  align-items: center; /* Center-align items vertically */
+  gap: 5px; /* Space between the input and button */
+}
+
+.scrambled-text {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 8px;
+  height: 1.9rem;
+  text-align: center;
+}
+
+.scramble-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding: 10px;
+  border: 2px solid #5540d8;
+  border-radius: 8px;
+  height: 1.9rem;
+  width: 48%;
+  text-align: center;
+}
+
+.get-started-button {
+  font-family: 'Montserrat', sans-serif;
+  background-image: linear-gradient(to top left, #5540d8, #9c1112, #5540d8);
+  background-attachment: fixed;
+  animation: bg 12s ease infinite;
+  background-size: 400% 400%; 
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  width: 48%;
+  height: 3.5rem;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.get-started-button:hover {
+  background-color: #9587ed;
+}
+
+.error-message {
+  color: red;
+  font-size: 1.4rem;
+  margin-top: 10px;
+}
+

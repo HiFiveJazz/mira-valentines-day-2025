@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer/Footer';
 import Subdivider from '../components/Subdivider/Subdivider';
-import Bunny from '../images/homepage/bunnies.mp4';
-import SizeableBox from '../components/SizeableBox/SizeableBox';
 
 const Valentines = () => {
   const [size, setSize] = useState("80vw"); // Default to 80% of viewport width
@@ -34,17 +32,11 @@ const Valentines = () => {
         }
       `}</style>
 
-      <Subdivider title="You solved the Valentine's Day secret! Hope you enjoy this teaser! ;>" />
-      
-      <SizeableBox 
-        type="video" 
-        videoUrl={Bunny}
-        // autoplay={true} 
-        // loop={true} 
-        height={size}
-        width={size}
-      />
-
+      <Subdivider title="You found the first Valentine's clue! Hope you put it togther! (1/3)" />
+      <Subdivider title="2 → o" />
+      <Subdivider title="5 → s" />
+      <Subdivider title="8 → i" />
+      <Subdivider title="10 → a" />
       <Footer />
     </div>
   );

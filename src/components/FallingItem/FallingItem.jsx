@@ -11,7 +11,7 @@ const FallingItem = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/valentines-day"); // Use the target prop for navigation
+    navigate("/clue1"); // Use the target prop for navigation
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
