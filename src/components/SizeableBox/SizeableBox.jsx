@@ -1,21 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 import './CSS/SizeableBox.css';
 
 const SizeableBox = ({
-  type, // Determines the box type: 'image' or 'text'
+  type, // Determines the box type: 'image', 'text', or 'video'
   imageUrl,
+  videoUrl,
   title,
   description,
   onClick,
   height = '300px',
   width = '300px',
+  autoplay = false, // Whether the video should autoplay
+  loop = false, // Whether the video should loop
+  controls = true, // Whether to show controls
 }) => {
   const cardRef = useRef(null);
-  const [isScrolling, setIsScrolling] = useState(false);
-  let startX = 0; // Track initial touch X position
-  let startY = 0; // Track initial touch Y position
-  let scrollTimeout;
 
   useEffect(() => {
     const currentCard = cardRef.current;
@@ -45,37 +45,51 @@ const SizeableBox = ({
   }, []);
 
   return (
-      <div
-        className="box"
-        ref={cardRef}
-        onClick={onClick}
-        style={{
-          height,
-          width,
-        }}
-      >
-        {type === 'image' && (
-          <div
-            className="box-image"
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-              height: '100%',
-              width: '100%',
-              borderRadius: 'inherit',
-            }}
-          ></div>
-        )}
-        {type === 'text' && (
-          <div className="box-text" style={{ height: '100%' }}>
-            <div className="box-title">
-              <h2>{title}</h2>
-            </div>
-            <div className="box-description">
-              {description}
-            </div>
+    <div
+      className="box"
+      ref={cardRef}
+      onClick={onClick}
+      style={{
+        height,
+        width,
+      }}
+    >
+      {type === 'image' && (
+        <div
+          className="box-image"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+            height: '100%',
+            width: '100%',
+            borderRadius: 'inherit',
+          }}
+        ></div>
+      )}
+
+      {type === 'video' && (
+        <video
+          className="box-video"
+          src={videoUrl}
+          height="100%"
+          width="100%"
+          style={{ borderRadius: 'inherit' }}
+          autoPlay={autoplay}
+          loop={loop}
+          controls={controls}
+        />
+      )}
+
+      {type === 'text' && (
+        <div className="box-text" style={{ height: '100%' }}>
+          <div className="box-title">
+            <h2>{title}</h2>
           </div>
-        )}
-      </div>
+          <div className="box-description">
+            {description}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -24,6 +24,10 @@
   background-position: center;
 }
 
+.box-video {
+  object-fit: cover;
+}
+
 .box-text {
   padding: 10px;
   color: #fff;

@@ -7,6 +7,7 @@ import Stats from './pages/Stats'
 import RelationshipRecap from './pages/RelationshipRecap'
 import Invitation from './pages/Invitation'
 import Heading from './components/Heading';
+import Valentines from './pages/Valentines';
 
 function App() {
   return (
@@ -47,6 +48,12 @@ function App() {
           path="/invitation"
           element={
               <Invitation/>
+          }
+        />
+        <Route
+          path="/valentines-day"
+          element={
+              <Valentines/>
           }
         />
       </Routes>
