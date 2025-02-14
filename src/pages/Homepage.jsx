@@ -12,16 +12,11 @@ const Homepage = () => {
   return (
     <div> 
       <Writing/>
-      <CircleImageHeading 
-        imageUrl={CircleImage}
+      <Rotating3D
+        videoUrl={Bunnies}
         title="About Us"
         description="Hi! We're Mira and Jazz, a California couple sharing our adventures, favorite eats, fun stats, and other cool stuff we love. Welcome to our blog—enjoy your stay!" 
       />
-      {/* <Rotating3D */}
-      {/*   videoUrl={Bunnies} */}
-      {/*   title="About Us" */}
-      {/*   description="Hi! We're Mira and Jazz, a California couple sharing our adventures, favorite eats, fun stats, and other cool stuff we love. Welcome to our blog—enjoy your stay!"  */}
-      {/* /> */}
       <Button
         text="Get Started"
         target ="/relationship-recap"

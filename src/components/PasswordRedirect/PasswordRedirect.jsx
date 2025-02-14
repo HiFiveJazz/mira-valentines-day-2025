@@ -21,7 +21,7 @@ const PasswordRedirect = ({ text, correctPassword, target }) => {
     <div className="password-redirect-container">
       <form onSubmit={handleSubmit} className="password-form">
         <input
-          type="text"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="One Last Thing :)"

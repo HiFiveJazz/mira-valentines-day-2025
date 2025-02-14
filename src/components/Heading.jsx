@@ -25,22 +25,20 @@ const Heading = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Safari Fix: Ensure we don't trigger at scroll boundaries
       if (currentScrollY <= 0) {
-        setIsHeaderVisible(true); // Always show header at the top
+        setIsHeaderVisible(true);
         return;
       }
 
       if (currentScrollY + window.innerHeight >= document.body.scrollHeight) {
-        setIsHeaderVisible(true); // Always show header at the bottom
+        setIsHeaderVisible(true);
         return;
       }
 
-      // Show or hide header based on scroll direction
       if (currentScrollY > lastScrollY) {
-        setIsHeaderVisible(false); // Scrolling down
+        setIsHeaderVisible(false);
       } else {
-        setIsHeaderVisible(true); // Scrolling up
+        setIsHeaderVisible(true);
       }
 
       lastScrollY = currentScrollY;
@@ -54,13 +52,15 @@ const Heading = () => {
   }, []);
 
   const handleLinkClick = () => {
-      setMenuOpen(false);
-      window.scrollTo(0, 0); // Scroll to the top of the page
-    };
+    setMenuOpen(false);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <header className={`header ${isHeaderVisible ? 'visible' : 'hidden'}`}>
-      <img src="/heart-logo.png" alt="Heart Logo" className="header-logo" />
+      <Link to="/" onClick={handleLinkClick}>
+        <img src="/heart-logo.png" alt="Heart Logo" className="header-logo" />
+      </Link>
       <button className="hamburger-menu" onClick={toggleMenu}>
         ☰
       </button>
@@ -81,3 +81,4 @@ const Heading = () => {
 };
 
 export default Heading;
+

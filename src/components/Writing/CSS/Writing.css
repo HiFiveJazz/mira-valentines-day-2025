@@ -4,6 +4,8 @@
 }
 
 .writing-header {
+  padding-left: 1vh;
+  padding-right: 1vh;
   font-size: 5rem;
   color: #fff;
 }
