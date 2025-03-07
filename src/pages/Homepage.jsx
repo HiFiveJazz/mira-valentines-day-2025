@@ -19,7 +19,7 @@ const Homepage = () => {
       />
       <Button
         text="Get Started"
-        target ="/relationship-recap"
+        target ="/moments"
       />
       <FallingItem/>
       <Footer/>
