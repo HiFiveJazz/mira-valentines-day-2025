@@ -6,7 +6,7 @@ const Writing = () => {
   return (
     <div className="writing-container">
       <h1 className="writing-header">
-        Welcome to <span className="highlight">Our Website!</span>
+        Welcome to <span className="highlight">My Website!</span>
       </h1>
       <div className="writing-subtext">
         <span>Give</span>

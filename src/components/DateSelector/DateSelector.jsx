@@ -125,9 +125,9 @@ const DateSelector = () => {
 
   return (
     <div className="date-selector-container">
-      <h2 className="date-selector-heading">Pick our next Date Location!</h2>
+      <h2 className="date-selector-heading">Pick our next Hangout Location!</h2>
       <h3 className="date-selector-subheading">
-        Note: Message me for date ideas outside this! (New feature soon!)
+        Note: Message me for hangout ideas outside this! (New feature soon!)
       </h3>
 
       {/* Tag Filter Dropdown */}
@@ -175,7 +175,7 @@ const DateSelector = () => {
         <option value="All">All</option>
         <option value="San Diego">San Diego</option>
         <option value="Riverside">Riverside</option>
-        <option value="Date">Date</option>
+        <option value="Hangout">Hangout</option>
         <option value="Nature">Nature</option>
         <option value="Shopping">Shopping</option>
         <option value="Food">Food</option>
@@ -194,4 +194,3 @@ const DateSelector = () => {
 };
 
 export default DateSelector;
-

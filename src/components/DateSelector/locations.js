@@ -9,7 +9,7 @@ const rawLocations = [
       'This aquarium serves as the public outreach center for Scripps at the UCSD, with over half a million people visiting the aquarium each year.',
     clipboard:
       '2300 Expedition Way, La Jolla, CA 92037',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -19,7 +19,7 @@ const rawLocations = [
       "An attraction every spring, Flower Fields is a rainbow of beautiful ranunculus flowers set on a hillside that overlooks the coastline. ",
     clipboard:
       '5704 Paseo Del Norte, Carlsbad, CA 92008',
-    tags: ['San Diego','Date','Nature'],
+    tags: ['San Diego','Hangout','Nature'],
   },
   {
     imageUrl:
@@ -29,7 +29,7 @@ const rawLocations = [
       "Neighborhood shopping center with a variety of retailers & cafes in scenic surrounds with fountains in Riverside.",
     clipboard:
       '5225 Canyon Crest Dr, Riverside, CA 92507',
-    tags: ['Riverside','Date','Shopping'],
+    tags: ['Riverside','Hangout','Shopping'],
   },
   {
     imageUrl:
@@ -39,7 +39,7 @@ const rawLocations = [
       "Picturesque park with an amphitheater & orange grove, plus walking trails & picnic facilities located in Redlands.",
     clipboard:
       '1352 Prospect Dr, Redlands, CA 92373',
-    tags: ['Riverside','Date','Nature'],
+    tags: ['Riverside','Hangout','Nature'],
   },
   {
     imageUrl:
@@ -49,7 +49,7 @@ const rawLocations = [
       "Roller-skating rink in Riverside that has theme nights, pizza cafe & skate classes & is bookable for private parties.",
     clipboard:
       '22080 Commerce Wy, Grand Terrace, CA 92313',
-    tags: ['Riverside','Date'],
+    tags: ['Riverside','Hangout'],
   },
   {
     imageUrl:
@@ -59,7 +59,7 @@ const rawLocations = [
       "A Grand Spanish Mission-style hotel with a 5-story rotunda close to the Riverside Convention Center and the Riverside Art Museum",
     clipboard:
       '3649 Mission Inn Avenue, Riverside, CA 92501',
-    tags: ['Riverside','Date'],
+    tags: ['Riverside','Hangout'],
   },
   {
     imageUrl:
@@ -69,7 +69,7 @@ const rawLocations = [
       "40 acres of botanical gardens containing more than 3,500 plant species from around the world.",
     clipboard:
       '1 Botanic Gardens Dr, Riverside, CA 92507',
-    tags: ['Riverside','Date','Nature'],
+    tags: ['Riverside','Hangout','Nature'],
   },
   {
     imageUrl:
@@ -100,7 +100,7 @@ const rawLocations = [
       "The Japanese Friendship Garden is an expression of friendship between San Diego and its sister city Yokohama in Balboa Park.",
     clipboard:
       '2215 Pan American E Rd, San Diego, CA 92101',
-    tags: ['San Diego','Date', 'Nature'],
+    tags: ['San Diego','Hangout', 'Nature'],
   },
   {
     imageUrl:
@@ -110,7 +110,7 @@ const rawLocations = [
       "A waterfront shopping and dining complex adjacent to San Diego Bay. The complex houses more than 70 shops, galleries, and eateries",
     clipboard:
       '849 W Harbor Dr, San Diego, CA 92101',
-    tags: ['San Diego','Date','Shopping'],
+    tags: ['San Diego','Hangout','Shopping'],
   },
   {
     imageUrl:
@@ -120,7 +120,7 @@ const rawLocations = [
       "Aquarium of the Pacific is a public aquarium on a 5-acre site on Rainbow Harbor in Long Beach, California.",
     clipboard:
       '100 Aquarium Way, Long Beach, CA 90802',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -130,7 +130,7 @@ const rawLocations = [
       "Plethora of restaurants to pick from, from quick bites to fine dining. Comedy shows, music performances, and even rooftop escapes.",
     clipboard:
       'Gaslamp',
-    tags: ['San Diego','Date','Food'],
+    tags: ['San Diego','Hangout','Food'],
   },
   {
     imageUrl:
@@ -140,7 +140,7 @@ const rawLocations = [
       "A waterfront location, on a boat channel off San Diego Bay, just west of San Diego International Airport, with many places to eat.",
     clipboard:
       'Liberty Station',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -150,7 +150,7 @@ const rawLocations = [
       "Take a short ferry trip or drive across the bridge to Coronado Island, visit sandy beaches, art galleries, or shopping.",
     clipboard:
       '838 Ocean Blvd, Coronado, CA 92118',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -172,7 +172,7 @@ const rawLocations = [
       "An upscale, open-air shopping mall in the University City community of San Diego, California.",
     clipboard:
       '4545 La Jolla Village Dr Ste E-25, San Diego, CA 92122',
-    tags: ['San Diego','Date','Shopping'],
+    tags: ['San Diego','Hangout','Shopping'],
   },
   {
     imageUrl:
@@ -182,7 +182,7 @@ const rawLocations = [
       "The Museum of Contemporary Art San Diego (MCASD) is an art museum focused on the art from 1950 to the present.",
     clipboard:
       '700 Prospect St, La Jolla, CA 92037',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -192,7 +192,7 @@ const rawLocations = [
       "Located in the northern part Scripps Beach, is a beach and vacation community in the heart of La Jolla in San Diego.",
     clipboard:
       '2000 Spindrift Dr, La Jolla, CA 92037',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -202,7 +202,7 @@ const rawLocations = [
       "Located in a secluded section of beach beneath the bluffs of Torrey Pines on the Pacific Ocean in La Jolla.",
     clipboard:
       'California 92037',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -213,7 +213,7 @@ const rawLocations = [
 
     clipboard:
       '3793 30th St, San Diego, CA 92104',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -253,7 +253,7 @@ const rawLocations = [
       "Urban cultural park in San Diego, California, hosting various museums, theaters, restaurants, and the San Diego Zoo.",
     clipboard:
       'San Diego, CA',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -263,7 +263,7 @@ const rawLocations = [
       'A multi-entertainment facility offering Bowling, Arcade Games, Billiards and more!',
     clipboard:
       'Round1',
-    tags: ['San Diego','Riverside','Date'],
+    tags: ['San Diego','Riverside','Hangout'],
   },
   {
     imageUrl:
@@ -273,7 +273,7 @@ const rawLocations = [
       "With over 25 rides and attractions, and a charming carousel, there's plenty to keep you entertained throughout the day.",
     clipboard:
       '3500 Polk St, Riverside, CA 92505',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -283,7 +283,7 @@ const rawLocations = [
       'A small cove with a beach, surrounded by cliffs! The area is protected as part of a marine reserve and is popular with scuba divers.',
     clipboard:
       'La Jolla Covek, San Diego, CA 92037',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
   {
     imageUrl:
@@ -293,7 +293,7 @@ const rawLocations = [
       'Located in Balboa Park, it began as a collection of animals left over from the Panama–California Exposition.',
     clipboard:
       '2920 Zoo Dr, San Diego, CA 92101',
-    tags: ['San Diego','Date'],
+    tags: ['San Diego','Hangout'],
   },
 ];
 

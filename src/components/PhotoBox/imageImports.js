@@ -13,6 +13,7 @@ const imageList = [
   'photography-compressed/2.webp',
   'photography-compressed/20.webp',
   'photography-compressed/21.webp',
+  'photography-compressed/22.webp',
   'photography-compressed/3.webp',
   'photography-compressed/4.webp',
   'photography-compressed/5.webp',

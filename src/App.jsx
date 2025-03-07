@@ -26,7 +26,7 @@ function App() {
             <Photos/>
           } />
         <Route
-          path="/dates"
+          path="/hangouts"
           element={
               <Dates/>
           }

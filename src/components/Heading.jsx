@@ -10,9 +10,9 @@ const Heading = () => {
     { name: 'Home', link: '/' },
     { name: 'Moments', link: '/moments' },
     { name: 'Photography', link: '/photography' },
-    { name: 'Dates', link: '/dates' },
+    { name: 'Hangouts', link: '/hangouts' },
     { name: 'Stats', link: '/stats' },
-    { name: 'R&R', link: '/relationship-recap' },
+    // { name: 'R&R', link: '/relationship-recap' },
   ];
 
   const toggleMenu = () => {

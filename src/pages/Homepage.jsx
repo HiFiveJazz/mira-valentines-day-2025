@@ -14,8 +14,8 @@ const Homepage = () => {
       <Writing/>
       <Rotating3D
         videoUrl={Bunnies}
-        title="About Us"
-        description="Hi! We're Mira and Jazz, a California couple sharing our adventures, favorite eats, fun stats, and other cool stuff we love. Welcome to our blog—enjoy your stay!" 
+        title="About Me"
+        description="Hi! I'm Jazz, a Minnesotan living and sharing my favorite moments, fun stats, and other cool stuff I love. Welcome to my blog—enjoy your stay!" 
       />
       <Button
         text="Get Started"
