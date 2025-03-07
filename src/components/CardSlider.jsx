@@ -69,7 +69,7 @@ const CardSlider = ({ images, title }) => {
 
     const currentTouch = e.targetTouches[0].clientX;
     const swipeDistance = touchStart - currentTouch;
-    const swipeThreshold = 60;
+    const swipeThreshold = 40;
 
     if (swipeDistance > swipeThreshold) {
       handleNext();
