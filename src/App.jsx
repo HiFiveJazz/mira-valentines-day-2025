@@ -2,11 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage'
 import Moments from './pages/Moments';
 import Photos from './pages/Photos'
-import Dates from './pages/Dates'
+import Hangouts from './pages/Hangouts'
 import Stats from './pages/Stats'
-import RelationshipRecap from './pages/RelationshipRecap'
-import Invitation from './pages/Invitation'
-import Valentines from './pages/Valentines';
 import Heading from './components/Heading';
 function App() {
   return (
@@ -28,31 +25,13 @@ function App() {
         <Route
           path="/hangouts"
           element={
-              <Dates/>
+              <Hangouts/>
           }
         />
         <Route
           path="/stats"
           element={
               <Stats/>
-          }
-        />
-        <Route
-          path="/relationship-recap"
-          element={
-              <RelationshipRecap/>
-          }
-        />
-        <Route
-          path="/invitation"
-          element={
-              <Invitation/>
-          }
-        />
-        <Route
-          path="/valentines-day"
-          element={
-              <Valentines/>
           }
         />
       </Routes>

@@ -6,8 +6,8 @@ const Stats = () => {
 
   return (
     <div> 
-      <Divider title='2024'/>
-      <BentoBoxGrid/>
+      <Divider title='In Developments :)'/>
+      {/* <BentoBoxGrid/> */}
       <Footer/>
     </div>
   );

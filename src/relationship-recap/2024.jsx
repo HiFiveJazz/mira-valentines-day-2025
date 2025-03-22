@@ -1,7 +1,7 @@
 import CardSlider from '../components/CardSlider';
 import BentoBoxGrid from '../components/BentoBox/BentoBoxGrid'
-import riversideImages from '../data/riverside';
-import iceskatingImages from '../data/ice-skating';
+// import riversideImages from '../data/riverside';
+// import iceskatingImages from '../data/ice-skating';
 import Divider from '../components/Divider/Divider'
 import Subdivider from '../components/Subdivider/Subdivider';
 import PasswordRedirect from '../components/PasswordRedirect/PasswordRedirect';
@@ -25,8 +25,8 @@ const RR24 = () => {
       <BingoCard/>
       <Divider title='Dates'/>
       <Subdivider title="From late-night adventures to cozy resturaunts, here's how we turned ordinary days into extraordinary memories"/>
-      <CardSlider images={riversideImages} title="Riverside Lights" />
-      <CardSlider images={iceskatingImages} title="Ice Skating" />
+      {/* <CardSlider images={riversideImages} title="Riverside Lights" /> */}
+      {/* <CardSlider images={iceskatingImages} title="Ice Skating" /> */}
       <PasswordRedirect correctPassword="sushi" target="/invitation" />
     </div>
   );
