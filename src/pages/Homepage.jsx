@@ -19,8 +19,8 @@ const Homepage = () => {
         text="Get Started"
         target ="/moments"
       />
-      <FallingItem/>
-      <Footer/>
+      {/* <FallingItem/> */}
+      {/* <Footer/> */}
     </div>
   );
 };
