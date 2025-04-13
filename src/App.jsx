@@ -14,7 +14,7 @@ function App() {
       <div className="gradient"></div>
       <div className="app">
         <Router>
-          <Heading />
+          {/* <Heading /> */}
           <Routes>
             <Route path="/" element={<Homepage/>} />
             <Route path="/moments" element={<Moments/>} />
