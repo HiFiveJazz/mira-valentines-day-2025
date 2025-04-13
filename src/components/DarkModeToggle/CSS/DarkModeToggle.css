@@ -1,0 +1,119 @@
+/* Define base colors */
+:root {
+
+  --light-shade: hsl(215, 7%, 70%);
+  --dark-moon: hsl(215, 7%, 75%); /* Base color for the moon (crescent) */
+  --dark-moon-hover: hsl(215, 7%, 95%); /* Base color for the moon (crescent) */
+}
+
+/* --------------------------- */
+/* Toggle Button Base Styles   */
+/* --------------------------- */
+.darkmode-button {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+/* --------------------------- */
+/* Light Mode - Sun Icon       */
+/* --------------------------- */
+/* In light mode, we center a small sun circle with rays */
+.darkmode-button::before {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--light-shade);
+  border-radius: 50%;
+  /* Rays using box-shadow */
+  box-shadow: 
+    10px 0 0 -3.5px var(--light-shade),
+    -10px 0 0 -3.5px var(--light-shade),
+    0 -10px 0 -3.5px var(--light-shade),
+    0 10px 0 -3.5px var(--light-shade),
+    7px -7px 0 -3.5px var(--light-shade),
+    7px 7px 0 -3.5px var(--light-shade),
+    -7px 7px 0 -3.5px var(--light-shade),
+    -7px -7px 0 -3.5px var(--light-shade);
+  transition: transform 0.8s ease, box-shadow 0.8s ease;
+}
+
+/* --------------------------- */
+/* Dark Mode - Crescent Icon   */
+/* --------------------------- */
+/* When dark mode is active (<html class="dark">), override the ::before */
+:root.dark .darkmode-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 30px;
+  height: 30px;
+  background-color: var(--dark-moon);
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at 80% 30%, transparent 40%, black 42%);
+  transition: all 0.8s ease;
+}
+
+/* --------------------------- */
+/* Existing Global Styles      */
+/* --------------------------- */
+
+:root {
+  background-color: hsl(0, 0%, 100%);
+  transition: background-color 0.5s;
+}
+
+/* BACKGROUND in dark mode */
+:root.dark {
+  background-color: hsl(0, 0%, 0%);
+  transition: background-color 0.5s;
+}
+
+/* Default: hide gradient in light mode */
+.gradient {
+  display: none;
+}
+
+/* Show and style the gradient only in dark mode */
+:root.dark .gradient {
+  display: block;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  --size: 60vw;
+  --speed: 50s;
+  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  width: var(--size);
+  height: var(--size);
+  filter: blur(calc(var(--size) / 5));
+  /* background-image: linear-gradient(hsl(222, 84%, 60%), hsl(164, 79%, 71%)); */
+  background-image: linear-gradient(hsl(222, 84%, 60%), hsl(2, 83%, 59%));
+  animation: rotate var(--speed) var(--easing) alternate infinite;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  z-index: -1;
+}
+
+/* Define the rotation keyframes ensuring the centering transform remains */
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+

@@ -1,54 +1,79 @@
-html {
-  height: 100%; /* Ensures the html element spans the full height of the page */
-  background-color: #9c0012; 
-  background-image: linear-gradient(to top right, #0ce605, #5540d8, #9c1112, #323177, #3d3191, #5540d8);
-  /* background-image: linear-gradient(to top right, #5540d8, #3d3191, #323177, #9c1112, #323177, #9c1112); */
-  background-attachment: fixed;
-  /* background-size: cover;  */
-  background-size: 400% 400%; 
-  /* background-repeat: no-repeat;  */
-  animation: bg 12s ease infinite;
+/* @font-face { */
+/*     font-family: 'SFProDisplay'; */
+/*     src: url('/fonts/SFProDisplay-Regular.woff2') format('woff2'); */
+/*     font-weight: normal; */
+/*     font-style: normal; */
+/*     font-display: swap; */
+/* } */
+@font-face {
+  font-family: 'Sequel';
+  src: url('/fonts/Sequel/Sequel-Sans-Book-Disp.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
 }
-@keyframes bg{
-  0%{
-    background-position: 0% 50%;
-  }
-  50%{
-    background-position: 100% 100%;
-  }
-  100%{
-    background-position: 0% 50%;
-  }
+@font-face {
+  font-family: 'Sequel';
+  src: url('/fonts/Sequel/Sequel-Sans-Medium-Disp.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
 }
 
+
+/* SF Pro Display */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Thin.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SF-Pro-Display-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  height: 100%; /* Ensures the html element spans the full height of the page */
+  /* background-color: #9c0012;  */
+  background-color: hsl(0, 0%, 100%); 
+  /* background-image: linear-gradient(to top right, #0ce605, #5540d8, #9c1112, #323177, #3d3191, #5540d8); */
+  /* background-attachment: fixed; */
+  /* background-size: 400% 400%;  */
+  /* animation: bg 12s ease infinite; */
+}
 body {
   overflow-x: hidden;
   height: 100vh; 
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   padding: 0;
-  box-sizing: border-box;
-  background: transparent; 
-}
-/* Header styles */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #9c0012;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: transform 0.3s ease-in-out; /* Smooth transition for hiding and showing */
-}
-
-.header.hidden {
-  transform: translateY(-100%); /* Move header out of view */
-}
-
-.header.visible {
-  transform: translateY(0); /* Bring header back into view */
 }
 
 .header-logo {
@@ -56,60 +81,181 @@ body {
   height: 60px;
   object-fit: contain;
 }
-
 .hamburger-menu {
-  display: none;
+  width: 32px;
+  height: 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: none;
   border: none;
-  font-size: 1.8rem;
-  color: #fff;
   cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger-menu .bar {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: hsl(0, 0%, 100%); 
+  border-radius: 2px;
+  transition: all 0.4s ease;
+  transform-origin: center;
+}
+
+/* Animate into an X */
+.hamburger-menu.open .top {
+  transform: rotate(45deg) translate(6.25px, 10px);
+}
+
+.hamburger-menu.open .middle {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bottom {
+  transform: rotate(-45deg) translate(6.25px, -10px);
+}
+
+
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  height: 100px; /* only show top bar initially */
+  /* transition: height 0.5s; */
+  transition: transform 0.5s ease, height 0.5s;
+  z-index: 1000;
+}
+
+.header-container.open {
+  height: 100vh;
+}
+.header-container.hidden {
+  transform: translateY(-110%);
+}
+.header-container.visible {
+  transform: translateY(0);
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  flex: 1;
+  transition: opacity 0.9s ease 0.1s;
+  width: 100%;
+}
+.header-nav.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .header-nav-link {
   text-decoration: none;
-  color: #f5f5f5;
+  color: hsl(0, 0%, 100%); 
+  font-family: 'SF Pro Display', sans-serif;
   font-size: 1.5rem;
-  font-weight: 500;
-  padding: 8px 12px;
+  font-weight: 300;
   border-radius: 4px;
+  padding-left: 4rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   transition: background-color 0.3s;
+  display: block;
 }
 
-.header-nav-link:hover {
-  background-color: #840a0b;
-  color: #fff;
+
+/* DARKMODE */
+.dark .header-container {
+  background-color: rgba(27, 49, 99, 0.6);
+} 
+
+.dark .hamburger-menu .bar {
+  background-color: hsl(215, 7%, 75%); 
 }
 
+.dark .header-nav-link {
+  color: hsl(215, 7%, 75%);
+}
+
+.dark .header-nav-link:hover {
+  color: hsl(215, 7%, 95%);
+}
+.mobile-header-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* adjust spacing as needed */
+  /* Option 1: let them align naturally based on markup order */
+  /* Option 2: if you need specific alignment, use justify-content */
+  justify-content: flex-end; /* if you want both to be on the right, then dark mode toggle will be left of the hamburger */
+}
+/* MOBILE */
 @media (max-width: 768px) {
-  .hamburger-menu {
-    display: block; /* Show the hamburger menu on mobile */
-  }
-
-  .header-nav {
+  .header-inline-nav {
     display: flex;
-    gap: 15px;
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out, visibility 0s;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    gap: 1rem;
+    margin-left: 2rem; /* or whatever spacing you want from the logo */
+  }
+  .header-nav-link:hover {
+    background-color: rgba(0, 0, 10, 0.3);
+  }
+}
+
+@media (min-width: 769px) {
+
+  /* We rely on the isInline logic in your React code 
+     but let’s ensure .header-nav is row-based for desktop 
+     if you do display it. 
+  */
+  .header-nav.inline {
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    justify-content: space-evenly; 
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: none; /* no fade for desktop */
+  }
+  .header-inline-nav {
+    display: flex;
+    justify-content: space-evenly; 
     width: 100%;
-    background-color: #9c0012;
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
   }
 
-  .header-nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-
+  /* 
+    On desktop, the nav links can be smaller or differently styled 
+  */
   .header-nav-link {
-    text-align: center;
-    padding: 15px;
+    padding: 0.5rem 1rem; /* smaller padding for row layout */
+    font-size: 22px;
+    color: hsl(215, 7%, 70%);
+  }
+
+
+  .header-nav-link:hover {
+    color: hsl(215,7%,80%);
+    transition: color 0.2s ease;
+  }
+
+  /* Hide hamburger by default on desktop */
+  .hamburger-menu {
+    display: none !important;
   }
 }

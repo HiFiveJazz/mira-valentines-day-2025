@@ -152,6 +152,11 @@
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
+  .falling-objects img {
+    width: 50px;
+    height: auto;
+    filter: brightness(40%);
+  }
   .falling-objects .objects div {
     left: calc(10% + 5vw); /* Adjust for smaller screens */
   }

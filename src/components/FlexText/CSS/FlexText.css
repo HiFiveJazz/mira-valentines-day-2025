@@ -1,0 +1,91 @@
+/* FlexText.css */
+
+/* Avoid forcing the container to have extra horizontal space. */
+.flextext-container {
+  /* No special width or whitespace needed; let it size naturally. */
+  /* background-color: red; */
+  margin: 0;
+  margin-left: 50px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 
+  The big name.
+  Remove or adjust white-space: pre if you find it causes overflow
+*/
+.gradient-text-name {
+  /* If you truly need multiline, you can do:
+     white-space: pre-wrap; 
+     and put line breaks in your text or add <br> tags 
+  */
+  white-space: normal;  /* allow normal wrapping rather than forcing pre spacing */
+  overflow-wrap: break-word;
+  background-image: linear-gradient(294deg, #3b3d41 0%, rgba(167, 167, 167, 0.8) 108%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-family: 'Sequel', sans-serif;
+  font-size: 150px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -3.2px;
+  margin: 0;
+  padding: 0;
+}
+
+/* The morphing text (H2) */
+.morphing-text {
+  font-family: 'Noto Sans Mono JP', 'Courier New', monospace;
+  /* If you see horizontal overflow, 
+     remove white-space: pre or use pre-wrap */
+  white-space: nowrap; 
+  font-size: 72px;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+  margin: 0;
+  background-image: linear-gradient(294deg, #3b3d41 0%, rgba(167,167,167,0.8) 108%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.flextext-container h3 {
+  color: hsl(215, 7%, 65%);
+  font-family: 'Sequel', sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* DARKMODE */
+.dark .flextext-container h3 {
+  color: hsl(215, 7%, 55%);
+}
+
+.dark .morphing-text {
+  background-image: linear-gradient(294deg, hsl(222, 57%, 75%) 0%, hsl(2,88%,33%) 150%);
+}
+
+.dark .gradient-text-name {
+  background-image: linear-gradient(294deg, hsl(222, 57%, 75%) 0%, hsl(2,88%,33%) 150%);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .gradient-text-name {
+    font-size: 100px;
+  }
+  .morphing-text {
+    font-size: 50px;
+  }
+  .flextext-container h3 {
+    font-size: 15px;
+  }
+}
+

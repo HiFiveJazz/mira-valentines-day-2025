@@ -84,7 +84,7 @@ const DateSelector = () => {
         timeStamp: new Date().toLocaleString(),
         browserInfo: navigator.userAgent,
       };
-      sendEmail('template_jik1mne', templateParams);
+      // sendEmail('template_jik1mne', templateParams);
     }
   };
 
@@ -96,7 +96,7 @@ const DateSelector = () => {
       timeStamp: new Date().toLocaleString(),
       browserInfo: navigator.userAgent,
     };
-    sendEmail('template_t07eubq', templateParams);
+    // sendEmail('template_t07eubq', templateParams);
     setSelectedCard(null);
     setConfettiTriggered(false);
     setConfirmCancel(false);
@@ -126,9 +126,9 @@ const DateSelector = () => {
   return (
     <div className="date-selector-container">
       <h2 className="date-selector-heading">Pick our next Hangout Location!</h2>
-      <h3 className="date-selector-subheading">
-        Note: Message me for hangout ideas outside this! (New feature soon!)
-      </h3>
+      {/* <h3 className="date-selector-subheading"> */}
+      {/*   Note: Message me for hangout ideas outside this! (New feature soon!) */}
+      {/* </h3> */}
 
       {/* Tag Filter Dropdown */}
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CSS/FallingItem.css';
 
-
+const imageSrc = '/heart.webp';
 
 const FallingItem = () => {
-  const dividerRef = useRef(null);
-  const setIsVisible = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const fallingItemRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -15,36 +15,36 @@ const FallingItem = () => {
         }
       },
       {
-        threshold: 0.7, // Trigger when 10% of the element is visible
+        threshold: 0.7, // Trigger when 70% of the element is visible.
       }
     );
 
-    if (dividerRef.current) {
-      observer.observe(dividerRef.current);
+    if (fallingItemRef.current) {
+      observer.observe(fallingItemRef.current);
     }
 
     return () => {
-      if (dividerRef.current) {
-        observer.unobserve(dividerRef.current);
+      if (fallingItemRef.current) {
+        observer.unobserve(fallingItemRef.current);
       }
     };
   }, []);
 
   return (
-      <div className="falling-objects">
-        <div className="objects" >
-          <div><img src="/heart.png"/></div>
-          <div><img src="/heart.png"/></div>
-          <div><img src="/heart.png"/></div>
-          <div><img src="/heart.png"/></div>
-          <div><img src="/heart.png"/></div>
-          <div><img src="/heart.png"/></div>
-          <div><img src="/heart.png"/></div>
-          <div><img src="/heart.png"/></div>
-          <div className="click-the-hearts"><img src="./click_the_hearts.jpg"/></div>
-        </div>
+    <div className="falling-objects" ref={fallingItemRef}>
+      <div className="objects">
+        <div><img src={imageSrc} alt="Falling Object" /></div>
+        <div><img src={imageSrc} alt="Falling Object" /></div>
+        <div><img src={imageSrc} alt="Falling Object" /></div>
+        <div><img src={imageSrc} alt="Falling Object" /></div>
+        <div><img src={imageSrc} alt="Falling Object" /></div>
+        <div><img src={imageSrc} alt="Falling Object" /></div>
+        <div><img src={imageSrc} alt="Falling Object" /></div>
+        <div><img src={imageSrc} alt="Falling Object" /></div>
       </div>
+    </div>
   );
 };
 
 export default FallingItem;
+

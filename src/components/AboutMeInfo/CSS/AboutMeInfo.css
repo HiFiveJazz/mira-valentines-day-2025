@@ -1,0 +1,38 @@
+/* 
+  1) A wrapper that uses flex to center the .aboutMeContainer
+  2) Add any top/bottom margin you like here
+*/
+.aboutMeInfo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Default: single-column on narrow screens */
+.aboutMeContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+  align-items: end;
+}
+
+/* Column 1 styles */
+.columnOne {
+  margin-top: 0px; /* smaller top margin by default (mobile) */
+}
+
+/* Column 2 styles */
+.columnTwo {
+  overflow: visible;
+  margin-top: 0px;
+}
+
+/* At 768px and up, switch to two columns and bigger top margin for column 1 */
+@media (min-width: 768px) {
+  .aboutMeContainer {
+    grid-template-columns: 550px 1fr;
+  }
+  .columnOne {
+    margin-top: 0px;
+  }
+}
+

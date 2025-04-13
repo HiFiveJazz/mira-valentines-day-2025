@@ -7,7 +7,13 @@
 }
 
 .weather-container h1 {
-  color: #d9dadb;
+
+  /* FONT */
+  font-family: 'Sequel', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 36px;
+  color: hsl(215, 7%, 24%);
   margin-bottom: 20px;
   font-size: 2rem;
 }
@@ -17,6 +23,11 @@
   width: 100%; /* Make the chart responsive */
   max-width: 800px;
   margin-bottom: 20px;
+}
+
+
+.dark .weather-container h1 {
+  color: hsl(215, 7%, 95%);
 }
 
 @media (max-width: 768px) {
@@ -34,32 +45,32 @@
 }
 
 /* Card Styles */
-.card {
-  display: grid;
-  grid-template-columns: 300px;
-  grid-template-rows: 310px 110px 80px;
-  grid-template-areas: "image" "text" "stats";
-
-  border-radius: 18px;
-  background-color: #9c1112;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
-  text-align: center;
-
-  margin: 20px auto;
-  max-width: 300px;
-  transition: 0.5s ease;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
-  position: relative;
-  z-index: 1;
-}
-
-.card-image {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-size: cover;
-}
+/* .card { */
+/*   display: grid; */
+/*   grid-template-columns: 300px; */
+/*   grid-template-rows: 310px 110px 80px; */
+/*   grid-template-areas: "image" "text" "stats"; */
+/**/
+/*   border-radius: 18px; */
+/*   background-color: #9c1112; */
+/*   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); */
+/*   text-align: center; */
+/**/
+/*   margin: 20px auto; */
+/*   max-width: 300px; */
+/*   transition: 0.5s ease; */
+/*   cursor: pointer; */
+/*   transform-style: preserve-3d; */
+/*   transform: perspective(1000px); */
+/*   position: relative; */
+/*   z-index: 1; */
+/* } */
+/**/
+/* .card-image { */
+/*   border-top-left-radius: 15px; */
+/*   border-top-right-radius: 15px; */
+/*   background-size: cover; */
+/* } */
 
 /* Card Text */
 .card-text {
@@ -69,23 +80,6 @@
   transition: transform 0.2s ease-out;
   will-change: transform;
 }
-
-.card-text p {
-  color: #d9dadb;
-  font-size: 15px;
-  font-weight: 300;
-}
-
-.card-text h2 {
-  color: black;
-  margin-top: 0;
-  font-size: 28px;
-}
-
-.card-stats {
-  grid-area: stats;
-}
-
 /* Hover Effects */
 .card:hover {
   transform: scale(1.09);
@@ -93,15 +87,12 @@
   z-index: 10;
 }
 
-.card.blurred {
-  filter: blur(5px) grayscale(100%);
-  pointer-events: none;
-  transition: filter 0.3s ease-in-out;
-}
+/* .card.blurred { */
+/*   filter: blur(5px) grayscale(100%); */
+/*   pointer-events: none; */
+/*   transition: filter 0.3s ease-in-out; */
+/* } */
 
-.card.selected {
-  z-index: 10;
-}
 
 /* Adjustments for Mobile Screens */
 @media (max-width: 768px) {

@@ -1,6 +1,47 @@
+:root {
+  /* Fallback default gradients for each breakpoint */
+
+  /* background-image: linear-gradient(294deg, hsl(222, 57%, 75%) 0%, hsl(2,88%,33%) 150%); */
+
+  --divider-gradient-lg: linear-gradient(
+    294deg,
+    rgb(0, 0, 0) 20%,
+    rgba(200, 200, 200, 0.3) 65%
+  );
+  --divider-gradient-md: linear-gradient(
+    294deg,
+    rgb(255, 0, 0) 20%,
+    rgba(200, 200, 200, 0.3) 65%
+  );
+  --divider-gradient-sm: linear-gradient(
+    294deg,
+    rgb(0, 128, 255) 20%,
+    rgba(200, 200, 200, 0.3) 65%
+  );
+  /* DARKMODE  */
+  --divider-gradient-lg-dark: linear-gradient(
+    294deg,
+    hsl(222, 57%, 75%) 0%,
+    hsl(2, 88%, 75%) 75%
+  );
+  --divider-gradient-md-dark: linear-gradient(
+    294deg,
+    hsl(222, 57%, 75%) 0%,
+    hsl(2, 88%, 75%) 65%
+  );
+  --divider-gradient-sm-dark: linear-gradient(
+    294deg,
+    hsl(222, 57%, 75%) 0%,
+    hsl(2, 88%, 75%) 75%
+  );
+}
+
 .divider-container {
   text-align: center;
-  padding: 10px 0;
+  padding: 0;
+  margin: 0;
+  /* padding: 10px 0; */
+  /* background-image: linear-gradient(294deg, rgb(59, 61, 65) 0%, rgba(167, 167, 167, 0.8) 108.834%); */
   opacity: 0; /* Start hidden */
   transform: translateY(20px); /* Start slightly below */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth fade-in and move-up */
@@ -11,38 +52,50 @@
   transform: translateY(0); /* Reset position */
 }
 
-.divider-content {
-  display: inline-block;
-  border-bottom: 2px solid #7f69d6;
-  padding-bottom: 10px;
-  margin: 0;
-  margin-bottom: 40px;
+.divider-content h1 {
+  background-image: var(--divider-gradient-lg);  
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text; /* for Safari */
+  -webkit-text-fill-color: transparent; /* for Safari */
+  font-family: 'Sequel', sans-serif;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 140px;
+  letter-spacing: -3.2px;
+
+  margin-top: 0.5em;
+  margin-bottom: 0.4em;
 }
 
-.divider-content h1 {
-  color: #fff;
-  font-size: 5rem;
-  margin-top: 100px;
-  margin-bottom: 0px;
+.dark .divider-content h1 {
+  background-image: var(--divider-gradient-lg-dark);  
 }
 
 @media (max-width: 768px) {
-  .divider-container {
-    margin: 20px auto;
+  .divider-content h1 {
+    background-image: var(--divider-gradient-md);
+    font-size: 4rem;
+    font-size: 4rem;
+    letter-spacing: -1px;
   }
 
-  .divider-content h1 {
-    font-size: 4rem;
+  .dark .divider-content h1 {
+    background-image: var(--divider-gradient-md-dark);  
   }
+
 }
 
 @media (max-width: 480px) {
-  .divider-container {
-    margin: 10px auto;
+  .divider-content h1 {
+    background-image: var(--divider-gradient-sm);
+    font-size: 3rem;
+    margin-top: 15px;
+    letter-spacing: -0.5px;
   }
 
-  .divider-content h1 {
-    font-size: 3rem;
+  .dark .divider-content h1 {
+    background-image: var(--divider-gradient-sm-dark);  
   }
 }
 

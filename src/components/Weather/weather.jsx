@@ -94,9 +94,9 @@ const Weather = ({ city, heading }) => {
     labels: forecast.list.map((item) => formatDate(item.date)),
     datasets: [
       {
-        label: 'Avg Temperature (°F)',
+        label: 'Average Temperature (°F)',
         data: forecast.list.map((item) => item.avgTemp),
-        borderColor: 'rgba(75,192,192,1)',
+        borderColor: 'hsl(215,7%,24%)',
         fill: false,
         tension: 0.4,
       },
@@ -111,10 +111,20 @@ const Weather = ({ city, heading }) => {
         position: 'top',
         labels: {
           color: '#d9dadb', // Legend text color
+          font: {
+            family: 'Sequel', 
+            size: 15,
+          },
         },
       },
       tooltip: {
         enabled: true,
+      },
+      titleFont: {
+        family: 'Sequel', // ✅ Tooltips
+      },
+      bodyFont: {
+        family: 'Sequel',
       },
     },
     scales: {
@@ -123,12 +133,20 @@ const Weather = ({ city, heading }) => {
           display: true,
           text: 'Date',
           color: '#d9dadb', // X-axis title color
+          font: {
+            family: 'SF Pro Display', // Date
+            size: 18,
+          },
         },
         ticks: {
           color: '#d9dadb', // X-axis ticks color
+          font: {
+            family: 'SF Pro Display', // Sat, Mar 29 ...
+            size: 11,
+          },
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.2)', // Optional gridline color
+          color: 'rgba(255, 255, 255, 0.5)', // Optional gridline color
         },
       },
       y: {
@@ -136,12 +154,20 @@ const Weather = ({ city, heading }) => {
           display: true,
           text: 'Temperature (°F)',
           color: '#d9dadb', // Y-axis title color
+          font: {
+            family: 'SF Pro Display', // Temperature (F)
+            size: 10,
+          },
         },
         ticks: {
           color: '#d9dadb', // Y-axis ticks color
+          font: {
+            family: 'SF Pro Display', // 58, 59, 60
+            size: 11,
+          },
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.2)', // Optional gridline color
+          color: 'rgba(255, 255, 255, 0.5)', // Optional gridline color
         },
       },
     },

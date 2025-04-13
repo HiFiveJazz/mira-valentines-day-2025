@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { readdir, mkdir, writeFile } from 'fs/promises';
+import { readdir, mkdir, writeFile, stat } from 'fs/promises';
 import { join, dirname, extname, basename } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -22,9 +22,12 @@ async function compressImages() {
 
     console.log(`🔍 Found ${imageFiles.length} images. Compressing...`);
 
-    // Process images
-    await Promise.all(imageFiles.map(async (file) => {
+    // Process images and store creation times
+    const imageData = await Promise.all(imageFiles.map(async (file) => {
       const inputPath = join(inputDir, file);
+      const fileStat = await stat(inputPath);
+      const creationTime = fileStat.birthtime.getTime(); // Get original creation time
+      
       const outputFileName = `${basename(file, extname(file))}.webp`; // Convert to .webp
       const outputPath = join(outputDir, outputFileName);
 
@@ -34,23 +37,33 @@ async function compressImages() {
         .toFile(outputPath);
 
       console.log(`✅ Compressed: ${file} → ${outputFileName}`);
+
+      return { name: outputFileName, time: creationTime };
     }));
 
     console.log('🎉 All images compressed successfully!');
+    return imageData;
   } catch (err) {
     console.error('❌ Error during compression:', err);
+    return [];
   }
 }
 
-async function generateImageImports() {
+async function generateImageImports(imageData) {
   try {
-    const files = await readdir(outputDir);
-    const imageFiles = files.filter(file => /\.(webp)$/i.test(file)); // Use only webp
+    if (imageData.length === 0) {
+      console.error('❌ No images found for import generation.');
+      return;
+    }
 
-    const imageArray = `const imageList = [\n  ${imageFiles.map(file => `'photography-compressed/${file}'`).join(',\n  ')}\n];\n\nexport default imageList;`;
+    // Sort images so that the newest (by creation time) comes first
+    imageData.sort((a, b) => b.time - a.time);
+    const sortedImageFiles = imageData.map(file => file.name);
+
+    const imageArray = `const imageList = [\n  ${sortedImageFiles.map(file => `'photography-compressed/${file}'`).join(',\n  ')}\n];\n\nexport default imageList;`;
 
     await writeFile(outputFile, imageArray);
-    console.log('✅ Image import file generated successfully!');
+    console.log('✅ Image import file generated successfully, sorted by original creation date (newest first)!');
   } catch (err) {
     console.error('❌ Error during image import generation:', err);
   }
@@ -58,6 +71,7 @@ async function generateImageImports() {
 
 // Run both functions sequentially
 (async () => {
-  await compressImages();
-  await generateImageImports();
+  const imageData = await compressImages();
+  await generateImageImports(imageData);
 })();
+

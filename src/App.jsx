@@ -4,39 +4,31 @@ import Moments from './pages/Moments';
 import Photos from './pages/Photos'
 import Hangouts from './pages/Hangouts'
 import Stats from './pages/Stats'
+import AboutMe from './pages/AboutMe'
 import Heading from './components/Heading';
+import "./App.css"
+
 function App() {
   return (
-    <Router>
-      <Heading />
-      <Routes>
-        <Route path="/" 
-          element={
-              <Homepage/>
-          } />
-        <Route path="/moments" 
-          element={
-            <Moments/>
-          } />
-        <Route path="/photography" 
-          element={
-            <Photos/>
-          } />
-        <Route
-          path="/hangouts"
-          element={
-              <Hangouts/>
-          }
-        />
-        <Route
-          path="/stats"
-          element={
-              <Stats/>
-          }
-        />
-      </Routes>
-    </Router>
+    <>
+      {/* Render the gradient background outside of the main content container */}
+      <div className="gradient"></div>
+      <div className="app">
+        <Router>
+          <Heading />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/moments" element={<Moments />} />
+            <Route path="/photography" element={<Photos />} />
+            <Route path="/hangouts" element={<Hangouts />} />
+            <Route path="/stats" element={<Stats />} />
+            <Route path="/about-me" element={<AboutMe />} />
+          </Routes>
+        </Router>
+      </div>
+    </>
   );
 }
 
 export default App;
+

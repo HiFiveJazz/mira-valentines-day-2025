@@ -1,0 +1,32 @@
+/* AboutMeTitle.css */
+
+/* A vertical (column) flex container, centered horizontally */
+.about-me-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center children horizontally */
+  justify-content: flex-start; /* or 'center' if you want vertical centering in the parent */
+  width: 100%;
+  max-width: 1200px; /* optional max width */
+  margin: 0 auto;    /* center the entire container if its parent is wider */
+  box-sizing: border-box;
+  margin-top: 2rem;
+  /* margin-bottom: 3rem; */
+}
+
+.flex-text-wrapper,
+.panels-wrapper {
+  /* Each child automatically is stacked, 
+     so you can give them their own max-width if you like. */
+  width: 100%;  /* Let them fill the container’s width, or set something narrower */
+  max-width: 800px; /* optional cap so content doesn't stretch too wide */
+  margin-bottom: 2rem; /* space between them */
+}
+
+/* AboutMeTitle.css (partial) */
+@media (max-width: 768px) {
+  .panels-wrapper {
+    display: none; /* Hide FourPanels on mobile */
+  }
+}
+

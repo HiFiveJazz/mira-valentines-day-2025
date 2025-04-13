@@ -9,22 +9,32 @@
 }
 
 .homepage-button {
-  width: 15rem;
-  height: 5rem;
-  font-family: 'Montserrat', sans-serif;
-  background-image: linear-gradient(to top left, #5540d8, #9c1112, #5540d8);
-  /* background-color: #3d3191;  */
-  background-attachment: fixed;
-  animation: bg 12s ease infinite;
-  background-size: 400% 400%; 
-  color: white;
-  font-size: 1.65rem;
-  padding: 20px 30px;
+  /* FONT */
+  font-family: 'Sequel', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 36px;
+  color: hsl(215, 7%, 70%);
+  
+  /* FROSTED GLASS */
+  background-color: rgba(0, 0, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  margin: 20px;
+  padding: 20px 40px;
   border: none;
-  border-radius: 18px;
+  border-radius: 12px;
   cursor: pointer;
+
   transition: background-color 0.3s ease;
+  transition: color 0.2s ease;
 }
+
+.homepage-button:hover {
+  color: hsl(215,7%,80%);
+}
+
 @keyframes bg{
   0%{
     background-position: 0% 50%;
@@ -37,7 +47,38 @@
   }
 }
 
+.dark .homepage-button {
+  background-image: linear-gradient(to top left, hsl(222, 84%, 60%), hsl(2, 83%, 59%));
+  /* background-image: linear-gradient(to top left, #5540d8, #9c1112, #5540d8); */
+  background-attachment: fixed;
+  animation: bg 12s ease infinite;
+  background-size: 400% 400%; 
+  transition: background-color 0.3s ease;
+  color: hsl(215, 7%, 90%);
+}
 
-.homepage-button:hover {
-  background-color: #9587ed;
+/* MOBILE */
+@media (max-width: 1200px) {
+  .homepage-button {
+    width: 13rem;
+    height: 3rem;
+    font-size: 1.7rem;
+    padding: 5px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage-button {
+    width: 12rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-button {
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
 }

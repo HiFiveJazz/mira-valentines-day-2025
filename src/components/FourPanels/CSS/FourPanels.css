@@ -1,0 +1,51 @@
+.fourpanels {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 250px 375;
+  grid-auto-rows: 1fr;
+  gap: 20px;
+  /* padding: 1.9rem; */
+
+  border-radius: 12px;
+  width: fit-content;
+  height: fit-content;
+  z-index: 0;
+  margin-bottom: 1.9rem;
+  margin-right: 1.9rem;
+  margin-left: 1.9rem;
+  margin-top: 1.9rem;
+}
+
+.gradient-mask-four {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gradient-mask-four::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    220deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  mix-blend-mode: normal;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.dark .gradient-mask-four::after {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
