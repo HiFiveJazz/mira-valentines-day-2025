@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage'
 import Moments from './pages/Moments';
 import Photos from './pages/Photos'
 import Hangouts from './pages/Hangouts'
 import AboutMe from './pages/AboutMe'
-import Heading from './components/Heading';
+import Header from './components/Header';
 import "./App.css"
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <div className="gradient"></div>
       <div className="app">
         <Router>
-          <Heading />
+          <Header/>
           <Routes>
             <Route path="/" element={<Homepage/>} />
             <Route path="/moments" element={<Moments/>} />

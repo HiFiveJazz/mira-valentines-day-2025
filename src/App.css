@@ -1,10 +1,3 @@
-/* @font-face { */
-/*     font-family: 'SFProDisplay'; */
-/*     src: url('/fonts/SFProDisplay-Regular.woff2') format('woff2'); */
-/*     font-weight: normal; */
-/*     font-style: normal; */
-/*     font-display: swap; */
-/* } */
 @font-face {
   font-family: 'Sequel';
   src: url('/fonts/Sequel/Sequel-Sans-Book-Disp.otf') format('opentype');
@@ -17,15 +10,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
-
-/* SF Pro Display */
-/* @font-face { */
-/*   font-family: 'SF Pro Display'; */
-/*   src: url('/fonts/SF-Pro-Display-Thin.otf') format('opentype'); */
-/*   font-weight: 200; */
-/*   font-style: normal; */
-/* } */
 @font-face {
   font-family: 'SF Pro Display';
   src: url('/fonts/SF-Pro-Display-Light.otf') format('opentype');
@@ -38,35 +22,9 @@
   font-weight: 400;
   font-style: normal;
 }
-/* @font-face { */
-/*   font-family: 'SF Pro Display'; */
-/*   src: url('/fonts/SF-Pro-Display-Medium.otf') format('opentype'); */
-/*   font-weight: 500; */
-/*   font-style: normal; */
-/* } */
-/**/
-/* @font-face { */
-/*   font-family: 'SF Pro Display'; */
-/*   src: url('/fonts/SF-Pro-Display-Semibold.otf') format('opentype'); */
-/*   font-weight: 600; */
-/*   font-style: normal; */
-/* } */
-/**/
-/* @font-face { */
-/*   font-family: 'SF Pro Display'; */
-/*   src: url('/fonts/SF-Pro-Display-Bold.otf') format('opentype'); */
-/*   font-weight: 700; */
-/*   font-style: normal; */
-/* } */
-
 html {
   height: 100%; 
-  /* background-color: #9c0012;  */
   background-color: hsl(0, 0%, 100%); 
-  /* background-image: linear-gradient(to top right, #0ce605, #5540d8, #9c1112, #323177, #3d3191, #5540d8); */
-  /* background-attachment: fixed; */
-  /* background-size: 400% 400%;  */
-  /* animation: bg 12s ease infinite; */
 }
 body {
   overflow-x: hidden;
@@ -127,9 +85,6 @@ body {
 .hamburger-menu.open .bottom {
   transform: rotate(-45deg) translate(7.5px, -10px);
 }
-
-
-
 .header-container {
   display: flex;
   flex-direction: column;
@@ -140,12 +95,10 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
-  height: 100px; /* only show top bar initially */
-  /* transition: height 0.5s; */
+  height: 100px; 
   transition: transform 0.5s ease, height 0.5s;
   z-index: 1000;
 }
-
 .header-container.open {
   height: 100vh;
 }
@@ -161,7 +114,6 @@ body {
   align-items: center;
   padding: 20px;
 }
-
 .header-nav {
   display: flex;
   flex-direction: column;
@@ -177,7 +129,6 @@ body {
   opacity: 1;
   visibility: visible;
 }
-
 .header-nav-link {
   text-decoration: none;
   color: hsl(0, 0%, 100%); 
@@ -187,11 +138,10 @@ body {
   border-radius: 4px;
   padding-left: 4rem;
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
   transition: background-color 0.3s;
   display: block;
 }
-
 
 /* DARKMODE */
 .dark .header-container {
@@ -230,29 +180,19 @@ body {
 }
 
 @media (min-width: 769px) {
-
-  /* We rely on the isInline logic in your React code 
-     but let’s ensure .header-nav is row-based for desktop 
-     if you do display it. 
-  */
   .header-nav.inline {
     flex-direction: row;
     align-items: center;
-    /* justify-content: space-evenly; */
     justify-content: space-evenly; 
     opacity: 1 !important;
     visibility: visible !important;
-    transition: none; /* no fade for desktop */
+    transition: none;
   }
   .header-inline-nav {
     display: flex;
     justify-content: space-evenly; 
     width: 100%;
   }
-
-  /* 
-    On desktop, the nav links can be smaller or differently styled 
-  */
   .header-nav-link {
     padding: 0.5rem 1rem; /* smaller padding for row layout */
     font-size: 22px;
