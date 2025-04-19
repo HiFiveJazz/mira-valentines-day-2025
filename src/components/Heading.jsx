@@ -104,6 +104,7 @@ const Header = () => {
             {/* Dark mode toggle on mobile */}
             <DarkModeToggle />
             <button
+              type="button"
               className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
               onClick={toggleMenu}
               aria-label="Toggle navigation"

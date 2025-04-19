@@ -22,7 +22,7 @@ const Dates = () => {
       <Divider title='2025'/>
       <CardSlider images={photoshootmichelleImages} title="Photoshoot with Michelle" />
       <CardSlider images={iceskatingImages} title="Cat Cafe" />
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 };

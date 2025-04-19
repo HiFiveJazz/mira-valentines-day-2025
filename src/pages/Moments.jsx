@@ -13,7 +13,7 @@ const Moments = () => {
         gradientSm = 'linear-gradient(294deg, rgb(0,128,255) 20%, rgba(200,200,200,0.3) 65%)'
       />
       <MomentBox/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 };

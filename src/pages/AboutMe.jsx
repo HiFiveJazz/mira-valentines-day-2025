@@ -6,10 +6,10 @@ import Philosophy from '../components/Philosophy/Philosophy'
 const AboutMe = () => {
   return (
     <div> 
-      {/* <AboutMeTitle/> */}
-      {/* <AboutMeInfo/> */}
-      {/* <Education/> */}
-      {/* <Philosophy/> */}
+      <AboutMeTitle/>
+      <AboutMeInfo/>
+      <Education/>
+      <Philosophy/>
     </div>
   );
 };

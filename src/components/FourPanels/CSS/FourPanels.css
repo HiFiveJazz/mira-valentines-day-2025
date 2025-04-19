@@ -1,7 +1,6 @@
 .fourpanels {
   position: relative;
   display: grid;
-  grid-template-columns: 200px 250px 375;
   grid-auto-rows: 1fr;
   gap: 20px;
   border-radius: 12px;
