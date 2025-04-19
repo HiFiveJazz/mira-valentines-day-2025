@@ -1,13 +1,11 @@
-<!-- public/404.html -->
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="refresh" content="0; URL=/" />
     <script>
-      // preserve the pathname into a hash so React can pick it up
-      var p = window.location.pathname;
-      window.location.replace(window.location.origin + '/#' + p);
+      // Redirect any unknown routes to the root and let React handle routing
+      window.location.replace("/");
     </script>
   </head>
   <body></body>
 </html>
-
