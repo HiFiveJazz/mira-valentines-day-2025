@@ -11,6 +11,10 @@ const Dates = () => {
   return (
     <div> 
       <DateSelector/>
+      {/* <Weather  */}
+      {/*   city="Riverside" */}
+      {/*   heading="6-Day Weather Forecast for Riverside"  */}
+      {/* /> */}
       <Weather 
         city="San Diego"
         heading="6-Day Weather Forecast for San Diego" 
@@ -22,7 +26,11 @@ const Dates = () => {
       <Divider title='2025'/>
       <CardSlider images={photoshootmichelleImages} title="Photoshoot with Michelle" />
       <CardSlider images={iceskatingImages} title="Cat Cafe" />
-      {/* <Footer/> */}
+      {/* <CardSlider images={bdayImages} title="Jasmeet's Birthday" /> */}
+      {/* <CardSlider images={roundImages} title="Round One" /> */}
+      {/* <Divider title='2024'/> */}
+      {/* <CardSlider images={riversideImages} title="Riverside Lights" /> */}
+      <Footer/>
     </div>
   );
 };

@@ -1,23 +1,17 @@
 .date-selector-container {
   text-align: center;
-  margin: 50px auto; 
+  margin: 20px auto; 
 }
 .date-selector-heading {
-  font-family: 'Sequel', sans-serif;
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 36px;
-  letter-spacing: -0.28px;
-  color: hsl(220, 5%, 24%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: white; 
   margin-bottom: 20px;
 }
 .date-selector-subheading {
-  font-family: 'Sequel', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 300;
-  line-height: 36px;
-  letter-spacing: -0.28px;
-  color: hsl(215, 7%, 65%);
+  font-size: 1 rem; 
+  font-weight: 100;
+  color: #bdbebf; 
   margin-bottom: 10px; 
 }
 .date-selector {
@@ -31,28 +25,6 @@
 .date-selector > * {
   scroll-snap-align: center;
 }
-
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.tag {
-  font-family: 'SF Pro Display', sans-serif;
-  height: 16px;
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  border-radius: 12px;
-  background-color: hsl(0, 0%, 8%);
-  color: hsl(215, 7%, 70%);
-  text-transform: capitalize;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -79,12 +51,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  /* Frosted glass blur */
-  background-color: rgba(0, 0, 10, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
+  background: #9c1112;
   padding: 20px;
   border-radius: 18px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
@@ -102,124 +69,84 @@
   animation: fadeOut 0.5s ease forwards;
 }
 .popup p {
-  font-family: 'Sequel', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 36px;
-  letter-spacing: -0.28px;
-  color: hsl(215, 7%, 70%);
+  color: #fff;
+  font-size: 1.25rem;
 }
 
 .popup button {
-  /* FONT */
-  font-family: 'SF Pro Display', sans-serif;
-  color: hsl(215, 7%, 70%);
-  font-size: 1.5rem;
-  font-weight: 300;
-  background-color: rgba(0, 0, 10, 0.3);
-
+  font-family: 'Montserrat', sans-serif;
   margin: 10px;
   padding: 10px 20px;
   border: none;
+  font-size: 1.25rem;
+  background-color: #8a0707;
+  color: white;
   border-radius: 5px;
   cursor: pointer;
 }
 .popup button:hover {
-  background-color: rgba(0, 0, 10, 0.6);
+  background-color: #d30010;
 }
 .shuffle-button {
-  /* FONT */
-  font-family: 'Sequel', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 300;
-  line-height: 36px;
-  color: hsl(215, 7%, 70%);
-  
-  /* FROSTED GLASS */
-  background-color: rgba(0, 0, 10, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-
-
+  font-family: 'Montserrat', sans-serif;
   margin: 20px;
   padding: 10px 20px;
+  background-color: #9c1112;
+  color: white;
+  font-size: 1.3rem;
   border: none;
-  border-radius: 12px;
+  border-radius: 18px;
   cursor: pointer;
-
   transition: background-color 0.3s ease;
-  transition: color 0.2s ease;
 }
 
 .shuffle-button:hover {
-  color: hsl(215,7%,80%);
-  /* background-color: rgba(0, 0, 10, 0.9); */
+  background-color: #d30010;
 }
 
 .shuffle-button.disabled {
-  /* background-color: #555; */
+  background-color: #555;
   cursor: not-allowed;
 }
 .tag-filter {
-  font-family: 'Sequel', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 300;
-  line-height: 36px;
-  color: hsl(215, 7%, 70%);
-  text-align: center;
-
-  /* FROSTED GLASS */
-  background-color: rgba(0, 0, 10, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  
+  font-family: 'Montserrat', sans-serif;
   padding: 10px 20px;
+  background-color: #121212;
+  color: white;
+  font-size: 1.3rem;
+  text-align: center;
   border: none;
-  border-radius: 12px;
-  appearance: none; /* Remove default dropdown styles for consistency */
+  border-radius: 18px;
   cursor: pointer;
-
   transition: background-color 0.3s ease;
-  transition: color 0.2s ease;
+  appearance: none; /* Remove default dropdown styles for consistency */
 }
 
 .tag-filter:hover {
-  color: hsl(215,7%,80%);
+  background-color: #d30010;
 }
 
 .tag-filter:focus {
   outline: none;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.5); /* Add a subtle glow on focus */
 }
 
 .tag-filter option {
-  background-color: rgba(0, 0, 10, 0.6);
-  color: hsl(215, 7%, 70%);
+  background-color: #ffffff; /* Dropdown background for options */
+  color: #000000; /* Option text color */
 }
 .notification {
-  /* Font */
-  font-family: 'SF Pro Display', sans-serif;
-  color: hsl(215, 7%, 70%);
-  background-color: hsl(215, 7%, 0%);
-  font-size: 1.25rem;
-  font-weight: 400;
-  line-height: 36px;
-
-
-  /* Frosted Glass Blur */
-  background-color: rgba(0, 0, 10, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
   position: fixed;
   bottom: 10%; /* Position it 25% from the bottom */
   left: 50%; /* Center it horizontally */
   transform: translateX(-50%); /* Adjust for the element's width */
-
+  background-color: #181818;
+  color: white;
   padding: 10px 20px;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  font-size: 1.25rem;
   animation: fadeInOut 3s ease-in-out; /* Apply fade-in-out animation */
   opacity: 0; /* Start hidden */
 }
@@ -242,118 +169,54 @@
     transform: translate(-50%, 30%);
   }
 }
-
-/* DARKMODE */
-.dark .date-selector-heading {
-  color: hsl(220, 5%, 76%);
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-.date-selector-subheading {
-  color: hsl(215, 7%, 35%);
+.tag {
+  height: 16px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 12px;
+  background-color: #151515;
+  color: #e0e0e0;
+  text-transform: capitalize;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
-
-.dark .popup {
-  /* Frosted glass blur */
-  background-color: rgba(255, 255, 245, 0.6);
-  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.3);
-}
-
-.dark .popup p {
-  color: hsl(215, 7%, 30%);
-}
-
-.dark .popup button {
-  color: hsl(215, 7%, 30%);
-  background-color: rgba(255, 255, 245, 0.3);
-}
-.dark .popup button:hover {
-  background-color: rgba(255, 255, 245, 0.6);
-}
-
-.dark .shuffle-button {
-  color: hsl(215, 7%, 30%);
-  background-color: rgba(255, 255, 245, 0.6);
-}
-.dark .shuffle-button:hover {
-  color: hsl(215,7%,20%);
-}
-
-.dark .tag-filter {
-  color: hsl(215, 7%, 30%);
-  /* FROSTED GLASS */
-  background-color: rgba(255, 255, 245, 0.6);
-}
-
-.dark .tag-filter:hover {
-  color: hsl(215,7%,20%);
-}
-
-.dark .tag-filter option {
-  background-color: rgba(255, 255, 245, 0.6);
-  color: hsl(215, 7%, 30%);
-}
-
-.dark .notification {
-  color: hsl(215, 7%, 30%);
-  background-color: rgba(255, 255, 245, 0.6);
-  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
-}
-
-.dark .date-selector .card-text .description {
-  color: hsl(215, 7%, 15%);
-}
-
-/* .dark .tag { */
-  /* background-color: hsl(0, 0%, 92%); */
-  /* color: hsl(215, 7%, 30%); */
-/* } */
-
-/* MOBILE */
-@media (max-width: 800px) {
-  .date-selector .card-text h2 {
-    font-size: 22px; /* Smaller title font */
-
-  }
-  .date-selector .card {
-    grid-template-columns: 28vw;
-    grid-template-rows: 150px 15vw 100px;
-  }
-}
-
 
 @media (max-width: 768px) {
   .date-selector {
     max-width: 100%;
     overflow-x: hidden;
-    gap: 10px;
+    gap: 2px;
     margin-right: 10px;
     margin-left: 10px;
   }
   .date-selector .card {
-    grid-template-columns: 28vw;
-    grid-template-rows: 150px 13vw 125px;
+    grid-template-columns: 120px;
+    grid-template-rows: 220px 250px 120px;
     max-width: 100%;
-    width: 28vw;
     margin: 0px; /* Reduce margin */
   }
 
   .date-selector-container .card-image {
-    height: 20vh; /* Smaller image height */
+    height: 250px; /* Smaller image height */
   }
   .date-selector-container .date {
-    margin-top: -5px;
-    padding-bottom: 12px;
+    margin-top: -10px;
     margin-bottom: 0px;
-    margin-left: -23px;
-    margin-right: -23px;
+    margin-left: -24px;
+    margin-right: -24px;
     height: 22px;
-    border-radius: 14px;
   }
 
   .date-selector .card-text h2 {
-    letter-spacing: -0.28px;
-    font-size: 20px; /* Smaller title font */
-
+    font-size: 0.85rem; /* Smaller title font */
   }
   .date-selector .card:hover {
     transform: scale(1.01);
@@ -364,10 +227,9 @@
     padding: 0;
   }
  .shuffle-button {
-    width: 58%; /* Full width button */
+    width: 60%; /* Full width button */
     font-size: 1.2rem; /* Adjust font size for better readability */
     margin: 0px; /* Add some vertical spacing */
-    margin-right: 10px;
   }
 
   .popup {
@@ -389,40 +251,10 @@
   .tag {
     height: 16px;
     padding: 2px 2px;
-    font-size: 12px;
+    font-size: 0.8rem;
     border-radius: 12px;
     text-transform: capitalize;
     margin-top: 0;
     margin-bottom: 5px;
   }
-}
-
-
-@media (max-width: 600px) {
-  .date-selector .card {
-    grid-template-columns: 28vw;
-    grid-template-rows: 150px 15vw 185px;
-    max-width: 100%;
-    width: 28vw;
-    margin: 0px; /* Reduce margin */
-  }
-}
-
-@media (max-width: 500px) {
-  .date-selector .card-text h2 {
-    font-size: 15px; /* Smaller title font */
-
-  }
-  .date-selector .card {
-    grid-template-columns: 28vw;
-    grid-template-rows: 130px 25vw 240px;
-    max-width: 100%;
-    width: 28vw;
-    margin: 0px; /* Reduce margin */
-  }
-  .tag {
-    height: 14px;
-    padding: 3px 5px;
-  }
-
 }

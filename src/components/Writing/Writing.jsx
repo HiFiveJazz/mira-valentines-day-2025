@@ -6,11 +6,8 @@ const Writing = () => {
   return (
     <div className="writing-container">
       <h1 className="writing-header">
-        Every Photo 
+        Welcome to <span className="highlight">My Website!</span>
       </h1>
-      <h2 className='writing-header-sub'>
-        <span className="highlight">Tells a Story!</span>
-      </h2>
       <div className="writing-subtext">
         <span>Give</span>
         <Typewriter
@@ -38,3 +35,4 @@ const Writing = () => {
 };
 
 export default Writing;
+

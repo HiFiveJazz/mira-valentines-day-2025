@@ -1,12 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CSS/Divider.css';
 
-const Divider = ({
-  title,
-  gradientLg = 'linear-gradient(294deg, rgb(0,0,0) 20%, rgba(200,200,200,0.3) 65%)',
-  gradientMd = 'linear-gradient(294deg, rgb(255,255,0) 20%, rgba(200,200,200,0.3) 65%)',
-  gradientSm = 'linear-gradient(294deg, rgb(0,128,255) 20%, rgba(200,200,200,0.3) 65%)'
-}) => {
+const Divider = ({ title }) => {
   const dividerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -17,14 +12,19 @@ const Divider = ({
           setIsVisible(true);
         }
       },
-      { threshold: 0.7 }
+      {
+        threshold: 0.7, // Trigger when 10% of the element is visible
+      }
     );
 
     if (dividerRef.current) {
       observer.observe(dividerRef.current);
     }
+
     return () => {
-      if (dividerRef.current) observer.unobserve(dividerRef.current);
+      if (dividerRef.current) {
+        observer.unobserve(dividerRef.current);
+      }
     };
   }, []);
 
@@ -32,11 +32,6 @@ const Divider = ({
     <div
       className={`divider-container ${isVisible ? 'visible' : 'hidden'}`}
       ref={dividerRef}
-      style={{
-        '--divider-gradient-lg': gradientLg,
-        '--divider-gradient-md': gradientMd,
-        '--divider-gradient-sm': gradientSm
-      }}
     >
       <div className="divider-content">
         <h1>{title}</h1>
