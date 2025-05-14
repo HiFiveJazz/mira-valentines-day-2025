@@ -5,6 +5,7 @@ import BunniesWEBM from '../images/homepage/bunnies.webm';
 import BunniesMP4 from '../images/homepage/bunnies-compressed.mp4';
 import FallingItem from '../components/FallingItem/FallingItem';
 import Footer from '../components/Footer/Footer';
+import Spotify from '../components/Spotify/Spotify'
 
 const Homepage = () => {
 
@@ -22,6 +23,13 @@ const Homepage = () => {
         target ="/moments"
       />
       <FallingItem/>
+      {/* <Spotify */}
+      {/*   // playlistId='7CFN9cnIW33njzMLKptrK8' */}
+      {/*   playlistId='3NkV3yyTJPxG5yaObwHSm4' */}
+      {/*   // playlistId='3NkV3yyTJPxG5yaObw' */}
+      {/*   width='100%' */}
+      {/* /> */}
+{/* playlistId, width = '100%', height = '650' */}
       {/* <Footer/> */}
     </div>
   );

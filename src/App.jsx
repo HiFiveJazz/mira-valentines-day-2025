@@ -1,27 +1,34 @@
+// App.jsx
+import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Homepage from './pages/Homepage'
-import Moments from './pages/Moments';
-import Photos from './pages/Photos'
-import Hangouts from './pages/Hangouts'
-import AboutMe from './pages/AboutMe'
 import Header from './components/Header';
-import "./App.css"
+import "./App.css";
+
+// lazy‑load each page
+const Homepage  = lazy(() => import('./pages/Homepage'));
+const Moments   = lazy(() => import('./pages/Moments'));
+const Photos    = lazy(() => import('./pages/Photos'));
+const Hangouts  = lazy(() => import('./pages/Hangouts'));
+const AboutMe   = lazy(() => import('./pages/AboutMe'));
 
 function App() {
   return (
     <>
-      {/* Render the gradient background outside of the main content container */}
-      <div className="gradient"></div>
+      <div className="gradient" />
       <div className="app">
         <Router>
-          <Header/>
-          <Routes>
-            <Route path="/" element={<Homepage/>} />
-            <Route path="/moments" element={<Moments/>} />
-            <Route path="/photography" element={<Photos/>} />
-            <Route path="/hangouts" element={<Hangouts/>} />
-            <Route path="/about-me" element={<AboutMe/>} />
-          </Routes>
+          <Header />
+
+          {/* wrap your Routes in Suspense with a fallback UI */}
+          <Suspense fallback={<div className="loading">Loading…</div>}>
+            <Routes>
+              <Route path="/"           element={<Homepage />} />
+              <Route path="/moments"    element={<Moments />} />
+              <Route path="/photography" element={<Photos />} />
+              <Route path="/hangouts"   element={<Hangouts />} />
+              <Route path="/about-me"   element={<AboutMe />} />
+            </Routes>
+          </Suspense>
         </Router>
       </div>
     </>

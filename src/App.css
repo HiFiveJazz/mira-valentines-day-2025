@@ -146,6 +146,7 @@ body {
 /* DARKMODE */
 .dark .header-container {
   background-color: rgba(27, 49, 99, 0.6);
+  /* background-color: hsl(222,57%,15%); */
 } 
 
 .dark .hamburger-menu .bar {
@@ -177,6 +178,14 @@ body {
   .header-nav-link:hover {
     background-color: rgba(0, 0, 10, 0.3);
   }
+  .header-container {
+    background-color: hsl(0,0%,10%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .dark .header-container {
+    background-color: hsl(222,57%,15%);
+  } 
 }
 
 @media (min-width: 769px) {
