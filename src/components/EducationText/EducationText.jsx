@@ -9,7 +9,6 @@ const EducationText = () => {
       <h3>2020 - 2024</h3>
       <p>Bachelors of Science in Bioengineering: Biosystems</p>
       <p>Minor in General Biology</p>
-      <p>Electrical Engineering PhD Candidate</p>
       </div>
     </div>
   );

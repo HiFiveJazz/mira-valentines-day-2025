@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
-import './CSS/Education.css';
-import EducationText from '../EducationText/EducationText';
-const img11 = '/moments-compressed/DSC_8029.webp';
+import './CSS/Masters.css';
+import MastersText from '../MastersText/MastersText';
+const dartmouth = '/moments-compressed/darmouth.webp';
 
 const Education = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
@@ -18,7 +18,7 @@ const Education = () => {
       <div className="education">
         {/* 1) Intro box: just the heading */}
         <div className="intro-box">
-          <p className="education-intro">UNDERGRADUATE</p>
+          <p className="education-intro">MASTERS</p>
         </div>
 
         {/* 2) Image box */}
@@ -27,18 +27,18 @@ const Education = () => {
             <div className="image-gradient-wrapper">
               <SizeableBox
                 type="image"
-                imageUrl={img11}
+                imageUrl={dartmouth}
                 height={isMobile ? '500px' : '300px'}
                 width={isMobile ? '68vw' : '400px'}
               />
             </div>
-            <p>UC San Diego in January</p>
+            <p>Dartmouth in Spring</p>
           </div>
         </div>
 
         {/* 3) Text box: your <EducationText /> */}
         <div className="text-box">
-          <EducationText />
+          <MastersText/>
         </div>
 
       </div>
@@ -46,5 +46,4 @@ const Education = () => {
   );
 };
 
-export default Education;
-
+export default Masters;

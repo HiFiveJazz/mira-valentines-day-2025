@@ -1,6 +1,7 @@
 import AboutMeTitle from '../components/AboutMeTitle/AboutMeTitle';
 import AboutMeInfo from '../components/AboutMeInfo/AboutMeInfo';
 import Education from '../components/Education/Education';
+import Masters from '../components/Masters/Masters'
 import Philosophy from '../components/Philosophy/Philosophy'
 import Spotify from '../components/Spotify/Spotify';
 
@@ -10,6 +11,7 @@ const AboutMe = () => {
       <AboutMeTitle/>
       <AboutMeInfo/>
       <Education/>
+      <Masters/>
       <Philosophy/>
       <Spotify
         playlistId='3NkV3yyTJPxG5yaObwHSm4'

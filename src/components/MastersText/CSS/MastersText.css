@@ -1,0 +1,99 @@
+.education-text-container .university {
+  outline:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  flex-shrink:0;
+  transform:none;
+  width: auto;
+}
+
+.education-text-container h1 {
+  font-family: 'Sequel', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: -0.28px;
+  color: hsl(220, 5%, 24%);
+  margin: 0;
+  margin-bottom: 0.25rem;
+}
+.education-text-container h2 {
+  margin: 0px;
+  font-family: 'Sequel', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: -0.28px;
+  color: hsl(215, 7%, 65%);
+}
+
+.education-text-container h3 {
+  margin: 0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 21px;
+  color: hsl(215, 7%, 65%);
+}
+
+.education-text-container p {
+  margin: 0;
+  margin-bottom: 0.25rem;
+  font-family: "SF Pro Display";
+  font-size: 16px;
+  font-weight: 300;
+  color: hsl(0, 0%, 25%);
+  text-align: left; 
+}
+
+/* DARK MODE */
+.dark .education-text-container h1 {
+  color: hsl(220, 5%, 90%);
+}
+
+.dark .education-text-container h2 {
+  color: hsl(215, 7%, 55%);
+}
+
+.dark .education-text-container h3 {
+  color: hsl(215, 7%, 55%);
+}
+
+
+.dark .education-text-container p {
+  color: hsl(0, 0%, 75%);
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+.university {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+.education-text-container h1 {
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+.education-text-container h2 {
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+
+.education-text-container h3 {
+  margin-top: 1.15rem;
+  margin-bottom: 1.15rem;
+  font-size: 14px;
+  line-height: 10px;
+}
+
+
+.education-text-container p {
+  margin-bottom: 0.25rem;
+  font-size: 16px;
+}
+}

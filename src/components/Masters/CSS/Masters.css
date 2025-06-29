@@ -2,7 +2,7 @@
 .education-overlay-wrapper {
   display: flex;
   justify-content: center; 
-  margin-top: 2rem;       
+  margin-top: 1rem;       
 }
 
 .education::before {
@@ -28,7 +28,7 @@
   height: fit-content;
   z-index: 0;
   margin-left: 50px;
-  margin-top: 5rem;
+  margin-top: 1.5rem;
 }
 
 .education-intro {
