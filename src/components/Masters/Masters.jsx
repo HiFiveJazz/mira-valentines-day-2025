@@ -4,7 +4,7 @@ import './CSS/Masters.css';
 import MastersText from '../MastersText/MastersText';
 const dartmouth = '/moments-compressed/darmouth.webp';
 
-const Education = () => {
+const Masters = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
 
   useEffect(() => {

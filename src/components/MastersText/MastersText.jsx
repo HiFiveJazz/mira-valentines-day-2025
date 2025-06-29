@@ -1,6 +1,6 @@
 import './CSS/MastersText.css'
 
-const EducationText = () => {
+const MastersText = () => {
   return (
     <div className = "education-text-container">
       <div className = "university">
