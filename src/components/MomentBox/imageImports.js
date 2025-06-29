@@ -1,4 +1,8 @@
 const imageList = [
+  'moments-compressed/DSC_9646.webp',
+  'moments-compressed/DSC_9625.webp',
+  'moments-compressed/DSC_9592.webp',
+  'moments-compressed/DSC_9550.webp',
   'moments-compressed/DSC_8495.webp',
   'moments-compressed/DSC_8413.webp',
   'moments-compressed/DSC_8100.webp',

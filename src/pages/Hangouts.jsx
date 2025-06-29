@@ -3,6 +3,7 @@ import Weather from '../components/Weather/weather';
 import Divider from '../components/Divider/Divider'
 import CardSlider from '../components/CardSlider';
 import photoshootmichelleImages from '../data/photoshoot-michelle';
+import jinmaoGraduation from '../data/jinmao-graduation';
 import iceskatingImages from '../data/ice-skating';
 import Footer from '../components/Footer/Footer';
 
@@ -20,6 +21,7 @@ const Dates = () => {
         heading="6-Day Weather Forecast for Maple Grove" 
       />
       <Divider title='2025'/>
+      <CardSlider images={jinmaoGraduation} title="Jinmao's Graduation" />
       <CardSlider images={photoshootmichelleImages} title="Photoshoot with Michelle" />
       <CardSlider images={iceskatingImages} title="Cat Cafe" />
       {/* <Footer/> */}
