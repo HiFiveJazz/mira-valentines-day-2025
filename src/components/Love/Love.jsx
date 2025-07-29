@@ -34,11 +34,11 @@ const Love = () => {
       ref={dividerRef}
     >
       <div className="subdivider-content">
-        <p>hi</p>
+        <p>One month ago, you said yes to being mine. Every day since has been a gift.
+So today, I have one for you.</p>
       </div>
     </div>
   );
 };
 
 export default Love;
-

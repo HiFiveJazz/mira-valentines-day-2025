@@ -10,6 +10,7 @@ const Moments   = lazy(() => import('./pages/Moments'));
 const Photos    = lazy(() => import('./pages/Photos'));
 const Hangouts  = lazy(() => import('./pages/Hangouts'));
 const AboutMe   = lazy(() => import('./pages/AboutMe'));
+const Katrina   = lazy(() => import('./pages/Katrina'));
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/photography" element={<Photos />} />
               <Route path="/hangouts"   element={<Hangouts />} />
               <Route path="/about-me"   element={<AboutMe />} />
+              <Route path="/katrina"   element={<Katrina/>} />
             </Routes>
           </Suspense>
         </Router>

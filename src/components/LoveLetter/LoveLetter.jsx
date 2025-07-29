@@ -43,11 +43,11 @@ const LoveLetter = () => {
           <div className={`letter ${isOpen ? 'open' : ''}`}>
             <div className="heart"></div>
             <div className="text">
-              <p>Will you be my Valentine?</p>
+              <p>Happy 1 Month :)</p>
             </div>
           </div>
           <div className={`front ${isOpen ? 'open' : ''}`}></div>
-          <div className={`top ${isOpen ? 'open' : ''}`}></div>
+          <div className={`envelope-top ${isOpen ? 'open' : ''}`}></div>
           <div className="shadow"></div>
           <div className="text1"></div>
         </div>
