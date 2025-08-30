@@ -1,9 +1,119 @@
-.spotify-container {
+/* Reuse your existing wrapper */
+.philosophy-overlay-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* 2-col grid matching Philosophy */
+.spotify {
+  position: relative;
+  display: grid;
+  grid-template-columns: 400px 400px;
+  grid-template-rows: auto;
+  gap: 50px;
+  border-radius: 12px;
+  z-index: 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 0;
+}
+
+/* Top horizontal line */
+.spotify::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: hsl(0, 0%, 90%);
+  z-index: 1;
+}
+
+/* Section label style (same as Philosophy) */
+.philosophy-intro {
+  color: hsl(215, 7%, 65%);
+  font-family: "Inter";
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 400;
+  letter-spacing: 1.86px;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* Grid placement */
+.intro-box {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.second-box {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 1.5rem;
+}
+
+/* Embed wrapper */
+.embed {
+  margin-top: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
-  width: 100%;
-  max-width: 800px; /* Adjust as needed */
-  margin: 0 auto; /* Center it horizontally */
+
+  /* mirror your Philosophy side padding if desired */
+  margin-left: 4rem;
+  margin-right: 3.8rem;
 }
+
+.embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* Optional placeholder styling */
+.embed.placeholder {
+  background: hsl(0 0% 97%);
+  height: 352px;
+  color: hsl(0 0% 40%);
+  font-family: "SF Pro Display";
+  font-size: 14px;
+}
+
+/* MOBILE: collapse to 1 column like Philosophy */
+@media (max-width: 800px) {
+  .spotify {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    margin-top: 0;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    gap: 0;
+  }
+
+  .intro-box,
+  .second-box {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .second-box {
+    grid-row: 2;
+  }
+
+  .philosophy-overlay-wrapper {
+    margin-top: 2rem;
+  }
+
+  .embed {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+

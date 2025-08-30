@@ -13,13 +13,53 @@ const rawLocations = [
   },
   {
     imageUrl:
-      'https://www.sandiego.org/-/media/e8a868a304da438a9e09a90070519db2.jpg',
+      'https://6amcity.brightspotcdn.com/dims4/default/811b6b1/2147483647/strip/true/crop/3888x2189+0+202/resize/1000x563!/format/webp/quality/90/?url=https%3A%2F%2Fk1-prod-sixam-city.s3.us-east-2.amazonaws.com%2Fbrightspot%2Fda%2F6c%2F8533a0794d82844eabbb41604a92%2Ftheflowerfields-by-marciegonzalez-14.jpg',
     title: "Flower Fields",
     description:
       "An attraction every spring, Flower Fields is a rainbow of beautiful ranunculus flowers set on a hillside that overlooks the coastline. ",
     clipboard:
       '5704 Paseo Del Norte, Carlsbad, CA 92008',
     tags: ['San Diego','Hangout','Nature'],
+  },
+  {
+    imageUrl:
+      'https://bloximages.newyork1.vip.townnews.com/kitv.com/content/tncms/assets/v3/editorial/4/1c/41cf7460-1600-11ee-9b9d-4752e3d4f39b/649caf60b37d4.image.jpg?resize=400%2C400',
+    title: 'Safari Park',
+    description:
+      "Potato Corner is a Filipino-founded global food chain that sells flavored french fries, which are a popular snack in the Philippines and internationally. Founded in 1992, the company serves various seasoned fries.",
+    clipboard:
+      'Potato Corner, 3030 Plaza Bonita Rd, National City, CA 91950',
+    tags: ['San Diego','Food'],
+  },
+  {
+    imageUrl:
+      'https://bloximages.newyork1.vip.townnews.com/kitv.com/content/tncms/assets/v3/editorial/4/1c/41cf7460-1600-11ee-9b9d-4752e3d4f39b/649caf60b37d4.image.jpg?resize=400%2C400',
+    title: 'Potato Corner',
+    description:
+      "Potato Corner is a Filipino-founded global food chain that sells flavored french fries, which are a popular snack in the Philippines and internationally. Founded in 1992, the company serves various seasoned fries.",
+    clipboard:
+      'Potato Corner, 3030 Plaza Bonita Rd, National City, CA 91950',
+    tags: ['San Diego','Food'],
+  },
+  {
+    imageUrl:
+      'https://www.top100golfcourses.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F03mhssoh%2Fproduction%2F0497979982b5bec3f77447355b0120ba50153091-1600x899.jpg&w=3840&q=75',
+    title: 'Torrey Pines',
+    description:
+      "Several scenic hiking trails in La Jolla, California, renowned for its breathtaking coastal views, unique geology, and rare Torrey trees.",
+    clipboard:
+      '12600 N Torrey Pines Rd, La Jolla, CA 92037',
+    tags: ['San Diego','Hiking'],
+  },
+  {
+    imageUrl:
+      'https://tableagent.s3.amazonaws.com/media/originals/2421_5595.jpg',
+    title: "Ikuru Sushi",
+    description:
+      "Located in San Diego, known for its Japanese sushi variety!",
+    clipboard:
+      '2850 Womble Rd Ste 105 San Diego, CA 92106',
+    tags: ['San Diego','Food'],
   },
   {
     imageUrl:
@@ -63,7 +103,7 @@ const rawLocations = [
   },
   {
     imageUrl:
-      'https://visitriverside.com/wp-content/uploads/2024/02/UCR.jpg',
+      'https://plantly.io/wp-content/uploads/2022/12/UCR.jpg',
     title: "UCR Gardens",
     description:
       "40 acres of botanical gardens containing more than 3,500 plant species from around the world.",
@@ -217,7 +257,7 @@ const rawLocations = [
   },
   {
     imageUrl:
-      'https://ichibanyausa.com/cdn/shop/files/Q9A8784.jpg?v=1712705336&width=3840',
+      'https://ichibanyausa.com/cdn/shop/files/Q9A7988.jpg?v=1712943522&width=3840',
     title: "Coco Ichibanya",
     description:
       "Located in Riverside and SD, known for its Japanese curry and omurice, coming in a variety of spice levels!",
@@ -234,16 +274,6 @@ const rawLocations = [
     clipboard:
       '10246 Indiana Ave, Riverside, CA 92503',
     tags: ['San Diego','Food'],
-  },
-  {
-    imageUrl:
-      'https://www.sandiego.org/-/media/images/sdta-site/things-to-do/parks-and-gardens/torrey-pines-bluff-1233x860.jpg?bc=white&h=500&w=700&c=1',
-    title: 'Torrey Pines',
-    description:
-      "Several scenic hiking trails in La Jolla, California, renowned for its breathtaking coastal views, unique geology, and rare Torrey trees.",
-    clipboard:
-      '12600 N Torrey Pines Rd, La Jolla, CA 92037',
-    tags: ['San Diego','Hiking'],
   },
   {
     imageUrl:
@@ -267,7 +297,7 @@ const rawLocations = [
   },
   {
     imageUrl:
-      'https://www.castlepark.com/content/dam/ctp/images/attractions/sky-rider/CASTLE_SkyRider_2018_RCA73P9957.JPG',
+      'https://castlepark.com/wp-content/uploads/2025/07/fireball-attraction-688313d7c2d1e.webp',
     title: 'Castle Park',
     description:
       "With over 25 rides and attractions, and a charming carousel, there's plenty to keep you entertained throughout the day.",

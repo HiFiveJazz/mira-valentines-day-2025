@@ -14,9 +14,10 @@ const AboutMe = () => {
       <Masters/>
       <Philosophy/>
       <Spotify
-        playlistId='3NkV3yyTJPxG5yaObwHSm4'
-        width='100%'
-        height='500vh'
+        leftId='3NkV3yyTJPxG5yaObwHSm4'
+        rightId='4zq29ES7hggbT08kft4yoK'
+        // width='500px'
+        // height='500vh'
       />
     </div>
   );

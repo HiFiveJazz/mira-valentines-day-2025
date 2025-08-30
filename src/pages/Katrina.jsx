@@ -15,10 +15,7 @@ const Moments = () => {
       <OneMonth
         webmUrl={ScrapbookWEBM}
         mp4Url={ScrapbookCompressedMP4}        
-        // title="About Me"
-        // description="Hi! I'm Jazz, a Minnesotan living in California sharing my favorite moments, photos, and other cool stuff I love. Enjoy your stay!" 
       />
-      {/* <Footer/> */}
     </div>
   );
 };
