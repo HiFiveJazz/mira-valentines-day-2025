@@ -300,7 +300,7 @@
 }
 
 .dark .date-selector .card-text .description {
-  color: hsl(215, 7%, 15%);
+  color: hsl(215, 7%, 100%);
 }
 
 /* .dark .tag { */
