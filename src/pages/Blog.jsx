@@ -4,7 +4,6 @@ import Education from '../components/Education/Education';
 import Masters from '../components/Masters/Masters'
 import Philosophy from '../components/Philosophy/Philosophy'
 import Spotify from '../components/Spotify/Spotify';
-import Footer from '../components/Footer/Footer';
 
 const AboutMe = () => {
   return (
@@ -20,7 +19,6 @@ const AboutMe = () => {
         // width='500px'
         // height='500vh'
       />
-      <Footer/>
     </div>
   );
 };

@@ -1,4 +1,10 @@
+/* FallingItem.css */
+
 .falling-objects {
+  /* Theme-tunable defaults (overridden via inline style vars or theme-classes) */
+  --fall-size: 100px;
+  --fall-brightness: 0.4;
+
   margin: 0;
   padding: 0;
   display: flex;
@@ -21,11 +27,12 @@
 }
 
 .falling-objects img {
-  width: 100px;
+  width: var(--fall-size);
   height: auto;
-  filter: brightness(40%);
+  filter: brightness(var(--fall-brightness));
 }
 
+/* Your existing special-case style (kept as-is) */
 .click-the-hearts img {
   width: 200px;
   filter: brightness(100%);
@@ -34,46 +41,47 @@
 
 /* For the first 8 children */
 .falling-objects .objects div:nth-child(1) {
-  left: calc(20% + 5vw); /* Adjusting dynamically */
+  left: calc(20% + 5vw);
   animation: object-rotate 7s linear infinite;
   animation-delay: -7s;
 }
 .falling-objects .objects div:nth-child(2) {
-  left: calc(50% + 5vw); /* Adjusting dynamically */
+  left: calc(50% + 5vw);
   animation: object-rotate 10s linear infinite;
   animation-delay: -5s;
 }
 .falling-objects .objects div:nth-child(3) {
-  left: calc(65% + 5vw); /* Adjusting dynamically */
+  left: calc(65% + 5vw);
   animation: object-rotate 6s linear infinite;
   animation-delay: 0s;
 }
 .falling-objects .objects div:nth-child(4) {
-  left: calc(65% + 25vw); /* Adjusting dynamically */
+  left: calc(65% + 25vw);
   animation: object-rotate 2s linear infinite;
   animation-delay: -1s;
 }
 .falling-objects .objects div:nth-child(5) {
-  left: calc(60% + 20vw); /* Adjusting dynamically */
+  left: calc(60% + 20vw);
   animation: object-rotate 3s linear infinite;
   animation-delay: -8s;
 }
 .falling-objects .objects div:nth-child(6) {
-  left: calc(10% + 5vw); /* Adjusting dynamically */
+  left: calc(10% + 5vw);
   animation: object-rotate 5s linear infinite;
   animation-delay: 0s;
 }
 .falling-objects .objects div:nth-child(7) {
-  left: calc(30% + 5vw); /* Adjusting dynamically */
+  left: calc(30% + 5vw);
   animation: object-rotate 20s linear infinite;
   animation-delay: -6s;
 }
 .falling-objects .objects div:nth-child(8) {
-  left: calc(1% + 5vw); /* Adjusting dynamically */
+  left: calc(1% + 5vw);
   animation: object-rotate 6s linear infinite;
   animation-delay: -3s;
 }
 
+/* (You had a 9th child rule; keeping it for compatibility even though you render 8) */
 .falling-objects .objects div:nth-child(9) {
   opacity: 1;
   width: 100px;
@@ -99,7 +107,7 @@
   }
   40% {
     transform: translateX(-15px) rotate(7deg);
-    width: 100px;
+    width: var(--fall-size);
   }
   60% {
     transform: translateX(15px) rotate(-10deg);
@@ -109,7 +117,7 @@
     opacity: 1;
   }
   100% {
-    top: 110%; 
+    top: 110%;
     transform: translateX(-15px) rotate(15deg);
     opacity: 0;
   }
@@ -141,7 +149,7 @@
     opacity: 1;
   }
   30% {
-    top: 110%; 
+    top: 110%;
     transform: translateX(-20px) rotate(-150deg);
     opacity: 0;
   }
@@ -153,13 +161,15 @@
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .falling-objects img {
-    width: 50px;
+    width: calc(var(--fall-size) * 0.5);
     height: auto;
-    filter: brightness(40%);
+    filter: brightness(var(--fall-brightness));
   }
+
   .falling-objects .objects div {
-    left: calc(10% + 5vw); /* Adjust for smaller screens */
+    left: calc(10% + 5vw);
   }
+
   .falling-objects .objects div:nth-child(1) {
     left: 10%;
   }
@@ -185,4 +195,3 @@
     left: 35%;
   }
 }
-

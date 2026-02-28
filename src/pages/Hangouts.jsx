@@ -24,7 +24,7 @@ const Dates = () => {
       <CardSlider images={jinmaoGraduation} title="Jinmao's Graduation" />
       <CardSlider images={photoshootmichelleImages} title="Photoshoot with Michelle" />
       <CardSlider images={iceskatingImages} title="Cat Cafe" />
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 };

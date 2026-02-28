@@ -19,12 +19,19 @@
 }
 
 .footer-content p {
-  color: #f8f8f8;
+  font-family: "SF Pro Display";
+  color: hsl(0, 0%, 25%);
   font-style: italic;
   font-size: 1.2rem;
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+/* DARKMODE */
+.dark .footer-content p {
+  color: hsl(0, 0%, 85%);
+}
+
 
 @media (max-width: 768px) {
   .footer-container {
