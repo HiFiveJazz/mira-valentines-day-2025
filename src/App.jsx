@@ -5,13 +5,14 @@ import Header from './components/Header';
 import "./App.css";
 
 // lazy‑load each page
-const Homepage  = lazy(() => import('./pages/Homepage'));
-const Moments   = lazy(() => import('./pages/Moments'));
-const Photos    = lazy(() => import('./pages/Photos'));
-const Hangouts  = lazy(() => import('./pages/Hangouts'));
-const AboutMe   = lazy(() => import('./pages/AboutMe'));
-const Blog = lazy(() => import('./pages/Blog'));
-const Katrina   = lazy(() => import('./pages/Katrina'));
+const Homepage      = lazy(() => import('./pages/Homepage'));
+const Moments       = lazy(() => import('./pages/Moments'));
+const Photos        = lazy(() => import('./pages/Photos'));
+const Hangouts      = lazy(() => import('./pages/Hangouts'));
+const Blog          = lazy(() => import('./pages/Blog'));
+const BlogPostPage  = lazy(() => import('./pages/BlogPostPage'));
+const AboutMe       = lazy(() => import('./pages/AboutMe'));
+const Katrina       = lazy(() => import('./pages/Katrina'));
 
 function App() {
   return (
@@ -25,10 +26,11 @@ function App() {
           <Suspense fallback={<div className="loading">Loading…</div>}>
             <Routes>
               <Route path="/"           element={<Homepage />} />
-              <Route path="/blog"           element={<Blog/>} />
               <Route path="/moments"    element={<Moments />} />
               <Route path="/photography" element={<Photos />} />
               <Route path="/hangouts"   element={<Hangouts />} />
+              <Route path="/blog"           element={<Blog/>} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/about-me"   element={<AboutMe />} />
               <Route path="/katrina"   element={<Katrina/>} />
             </Routes>
@@ -40,4 +42,3 @@ function App() {
 }
 
 export default App;
-

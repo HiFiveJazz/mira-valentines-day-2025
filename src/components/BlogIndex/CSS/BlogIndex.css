@@ -1,0 +1,117 @@
+.blog-index {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 0 2.5rem 0;
+  width: calc(100% - 4rem);
+}
+
+/* clickable card */
+.blog-index__card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  border-radius: 22px;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  margin: 1.5rem 0;
+  transition: transform 0.15s ease, background 0.15s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.blog-index__card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.dark .blog-index__card {
+  background: rgba(0, 0, 10, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.dark .blog-index__card:hover {
+  background: rgba(0, 0, 10, 0.65);
+}
+
+/* inner spacing */
+.blog-index__inner {
+  padding: 1.6rem 1.8rem;
+}
+
+/* title */
+.blog-index__title {
+  font-family: "SF Pro Display";
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+  color: hsl(0, 0%, 15%);
+}
+
+.dark .blog-index__title {
+  color: hsl(0, 0%, 92%);
+}
+
+/* meta */
+.blog-index__meta {
+  margin-top: 0.6rem;
+  margin-bottom: 0.9rem;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: hsl(0, 0%, 45%);
+}
+
+.dark .blog-index__meta {
+  color: hsl(0, 0%, 75%);
+}
+
+/* preview */
+.blog-index__preview {
+  margin: 0;
+
+  font-family: "SF Pro Display";
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: justify;
+
+  color: hsl(0, 0%, 32%);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dark .blog-index__preview {
+  color: hsl(0, 0%, 78%);
+}
+
+/* MOBILE — match your AboutMeText padding vibe */
+@media (max-width: 768px) {
+  .blog-index {
+    width: 100%;
+    max-width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  .blog-index__inner {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .blog-index__title {
+    font-size: 20px;
+  }
+
+  .blog-index__preview {
+    font-size: 14px;
+  }
+}

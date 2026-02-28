@@ -1,4 +1,6 @@
-/* BlogPost.css */
+/* ===============================
+   BLOG POST CONTAINER
+================================= */
 
 .blog-post {
   border-radius: 22px;
@@ -9,14 +11,13 @@
   -webkit-backdrop-filter: blur(10px);
 
   margin: 2.5rem auto;
-  padding: 2rem 2rem;
+  padding: 2rem;
 
   max-width: 900px;
   width: calc(100% - 4rem);
 
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 
-  /* fade-in like your slider */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -27,20 +28,14 @@
   transform: translateY(0);
 }
 
-.blog-post.fade-out {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
 .dark .blog-post {
   background: rgba(0, 0, 10, 0.55);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-.blog-post__header {
-  margin-bottom: 1.25rem;
-  margin-right: 1.5rem;
-}
+/* ===============================
+   HEADER
+================================= */
 
 .blog-post__title {
   font-family: "SF Pro Display";
@@ -69,80 +64,121 @@
   color: hsl(0, 0%, 75%);
 }
 
+/* ===============================
+   CONTENT
+================================= */
+
 .blog-post__content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* Headings */
+
+.blog-post__h2,
+.blog-post__h3 {
+  font-family: "SF Pro Display";
+  font-weight: 400;
+  margin: 0.8rem 0 0.25rem 0;
+  color: hsl(0, 0%, 18%);
+}
+
+.dark .blog-post__h2,
+.dark .blog-post__h3 {
+  color: hsl(0, 0%, 90%);
+}
+
+.blog-post__h2 {
+  font-size: 22px;
+}
+
+.blog-post__h3 {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* Paragraphs */
+
 .blog-post__p {
   font-family: "SF Pro Display";
   font-size: 16px;
   font-weight: 300;
   line-height: 1.65;
-  color: hsl(0, 0%, 32%);
   margin: 0;
   text-align: justify;
+  color: hsl(0, 0%, 32%);
 }
 
 .dark .blog-post__p {
   color: hsl(0, 0%, 78%);
 }
 
-/* media */
+/* ===============================
+   CODE
+================================= */
+
+.blog-post__code-inline {
+  font-family: "SF Mono", monospace;
+  font-weight: 400;
+
+  background: rgba(0, 0, 0, 0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+
+  font-size: 0.9em;
+  letter-spacing: 0.3px;
+
+  color: hsl(0, 0%, 20%);
+}
+
+.dark .blog-post__code-inline {
+  background: rgba(255, 255, 255, 0.12);
+  color: hsl(0, 0%, 92%);
+}
+
+.blog-post__code-block {
+  font-family: "SF Mono", monospace;
+  font-weight: 400;
+
+  background: rgba(0, 0, 0, 0.08);
+  padding: 1.2rem;
+  border-radius: 14px;
+
+  overflow-x: auto;
+  margin: 0.5rem 0;
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+
+  color: hsl(0, 0%, 20%);
+}
+
+.dark .blog-post__code-block {
+  background: rgba(255, 255, 255, 0.12);
+  color: hsl(0, 0%, 92%);
+}
+
+/* ===============================
+   MEDIA
+================================= */
+
 .blog-post__media {
-  margin: 1rem 0 0.5rem 0;
+  margin-top: 1rem;
 }
 
 .blog-post__img {
   width: 100%;
   height: auto;
+  border-radius: 18px;
   display: block;
-  border-radius: 18px;
-  object-fit: cover; /* overridden per-image via fit prop if needed */
-}
-
-/* width options */
-.blog-post__media--normal {
-  width: 100%;
-}
-
-.blog-post__media--wide {
-  width: 100%;
-}
-
-.blog-post__media--full {
-  width: calc(100% + 4rem);
-  margin-left: -2rem;
-  margin-right: -2rem;
-}
-
-/* fixed-height media using vh */
-.blog-post__media--fixed {
-  --media-h: 28vh;
-}
-
-.blog-post__media--fixed .blog-post__img {
-  height: var(--media-h);
-}
-
-/* placeholder shown before visible */
-.blog-post__media--placeholder {
-  border-radius: 18px;
-  height: var(--media-h, 260px);
-  background: rgba(0, 0, 0, 0.08);
-}
-
-.dark .blog-post__media--placeholder {
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .blog-post__caption {
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
   font-family: "Inter", sans-serif;
-  font-weight: 300;
   font-size: 13px;
-  letter-spacing: 0.4px;
+  font-weight: 300;
   color: hsl(0, 0%, 45%);
 }
 
@@ -150,44 +186,111 @@
   color: hsl(0, 0%, 75%);
 }
 
-/* MOBILE (match AboutMeText padding style: 10vw sides / 80vw max) */
+/* ===============================
+   DOWNLOAD
+================================= */
+
+.blog-post__download {
+  margin-top: 1rem;
+}
+
+.blog-post__download-link {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+
+  font-family: "SF Pro Display";
+  font-size: 15px;
+  font-weight: 400;
+
+  text-decoration: none;
+
+  background: rgba(0, 0, 0, 0.06);
+  color: hsl(0, 0%, 20%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.blog-post__download-link:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.dark .blog-post__download-link {
+  background: rgba(255, 255, 255, 0.1);
+  color: hsl(0, 0%, 92%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dark .blog-post__download-link:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ===============================
+   SOURCES
+================================= */
+
+.blog-post__sources {
+  margin-top: 1.5rem;
+}
+
+.blog-post__sources-title {
+  font-family: "SF Pro Display";
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: hsl(0, 0%, 18%);
+}
+
+.dark .blog-post__sources-title {
+  color: hsl(0, 0%, 90%);
+}
+
+.blog-post__sources-list {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.blog-post__sources-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: hsl(0, 0%, 32%);
+}
+
+.dark .blog-post__sources-link {
+  color: hsl(0, 0%, 78%);
+}
+
+.blog-post__sources-link:hover {
+  opacity: 0.85;
+}
+
+/* ===============================
+   MOBILE
+================================= */
+
 @media (max-width: 768px) {
   .blog-post {
-    width: 100%;
     max-width: 80vw;
     margin-left: 10vw;
     margin-right: 10vw;
-
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-
-    /* keep inside padding for content, like a card */
-    padding: 1.25rem 1.25rem;
-
-    border-radius: 18px;
+    padding: 1.25rem;
   }
 
   .blog-post__title {
     font-size: 24px;
   }
 
+  .blog-post__h2 {
+    font-size: 20px;
+  }
+
+  .blog-post__h3 {
+    font-size: 17px;
+  }
+
   .blog-post__p {
     font-size: 15px;
-  }
-
-  /* Ensure full images don't break the 10vw padding rule */
-  .blog-post__media--full {
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 100px;
-  }
-
-  /* Make vh-based images behave nicely on smaller screens */
-  .blog-post__media--fixed .blog-post__img {
-    height: clamp(160px, var(--media-h), 320px);
-  }
-
-  .blog-post__media--placeholder {
-    height: clamp(160px, var(--media-h, 200px), 320px);
   }
 }
