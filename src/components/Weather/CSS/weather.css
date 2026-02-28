@@ -23,11 +23,17 @@
   width: 100%; /* Make the chart responsive */
   max-width: 800px;
   margin-bottom: 20px;
+  /* color: hsl(215, 7%, 100%); */
 }
+
 
 
 .dark .weather-container h1 {
   color: hsl(215, 7%, 95%);
+}
+
+.dark .forecast-grid .card .description {
+  color: hsl(215, 7%, 100%);
 }
 
 @media (max-width: 768px) {
