@@ -24,7 +24,7 @@ const rawLocations = [
   {
     imageUrl:
       'https://bloximages.newyork1.vip.townnews.com/kitv.com/content/tncms/assets/v3/editorial/4/1c/41cf7460-1600-11ee-9b9d-4752e3d4f39b/649caf60b37d4.image.jpg?resize=400%2C400',
-    title: 'Safari Park',
+    title: 'Potato Corner',
     description:
       "Potato Corner is a Filipino-founded global food chain that sells flavored french fries, which are a popular snack in the Philippines and internationally. Founded in 1992, the company serves various seasoned fries.",
     clipboard:
