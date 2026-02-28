@@ -5,39 +5,42 @@ function getFallingTheme(date = new Date()) {
   const month = date.getMonth() + 1;
   const day = date.getDate();
 
-  const isLunarNewYear=
+  const isLunarNewYear =
     (month === 1 && day >= 20) || (month === 2 && day <= 23);
   const isStPatricks = month === 3 && day >= 1 && day <= 17;
   const isHalloween = month === 10;
   const isThanksgiving = month === 11;
   const isChristmas = month === 12 || month === 1;
-  
 
-  // Priority: holiday > month > default hearts
+  // All assets now in /public/seasonal/
+
   if (isStPatricks) {
     return {
-      src: "/clover.webp",
+      src: "/seasonal/clover.webp",
       key: "stpatricks",
       vars: { "--fall-size": "125px", "--fall-brightness": "0.9" },
     };
   }
+
   if (isHalloween) {
     return {
-      src: "/candy-corn.webp",
+      src: "/seasonal/candy-corn.webp",
       key: "halloween",
       vars: { "--fall-size": "80px", "--fall-brightness": "1.2" },
     };
   }
+
   if (isLunarNewYear) {
     return {
-      src: "/lantern.webp",
+      src: "/seasonal/lantern.webp",
       key: "lunar",
       vars: { "--fall-size": "250px", "--fall-brightness": "0.7" },
     };
   }
+
   if (isChristmas) {
     return {
-      src: "/snowflake.webp",
+      src: "/seasonal/snowflake.webp",
       key: "christmas",
       vars: { "--fall-size": "105px", "--fall-brightness": "1.0" },
     };
@@ -45,14 +48,14 @@ function getFallingTheme(date = new Date()) {
 
   if (isThanksgiving) {
     return {
-      src: "/thanksgiving.webp",
+      src: "/seasonal/thanksgiving.webp",
       key: "thanksgiving",
       vars: { "--fall-size": "130px", "--fall-brightness": "1.0" },
     };
   }
 
   return {
-    src: "/heart.webp",
+    src: "/seasonal/heart.webp",
     key: "default",
     vars: { "--fall-size": "100px", "--fall-brightness": "0.4" },
   };
@@ -88,7 +91,7 @@ const FallingItem = () => {
 
   return (
     <div
-      className={`falling-objects ${isVisible ? "is-visible" : ""} theme-${theme.key}`}
+      className={`falling-objects is-visible theme-${theme.key}`}
       ref={fallingItemRef}
       style={theme.vars}
     >

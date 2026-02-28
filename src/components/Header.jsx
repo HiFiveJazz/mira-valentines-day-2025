@@ -20,6 +20,7 @@ const Header = () => {
     { name: 'Moments',     link: '/moments' },
     { name: 'Photography', link: '/photography' },
     { name: 'Hangouts',    link: '/hangouts' },
+    { name: 'Blog',        link: '/blog' },
     { name: 'About Me',    link: '/about-me' },
     // { name: 'About Me',    link: '/about-me' },
   ];

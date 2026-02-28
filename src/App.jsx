@@ -10,7 +10,7 @@ const Moments   = lazy(() => import('./pages/Moments'));
 const Photos    = lazy(() => import('./pages/Photos'));
 const Hangouts  = lazy(() => import('./pages/Hangouts'));
 const AboutMe   = lazy(() => import('./pages/AboutMe'));
-// const AboutMe   = lazy(() => import('./pages/Blog'));
+const Blog = lazy(() => import('./pages/Blog'));
 const Katrina   = lazy(() => import('./pages/Katrina'));
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
           <Suspense fallback={<div className="loading">Loading…</div>}>
             <Routes>
               <Route path="/"           element={<Homepage />} />
-              {/* <Route path="/blog"           element={<Blog/>} /> */}
+              <Route path="/blog"           element={<Blog/>} />
               <Route path="/moments"    element={<Moments />} />
               <Route path="/photography" element={<Photos />} />
               <Route path="/hangouts"   element={<Hangouts />} />

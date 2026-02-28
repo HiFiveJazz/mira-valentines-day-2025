@@ -1,0 +1,193 @@
+/* BlogPost.css */
+
+.blog-post {
+  border-radius: 22px;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  margin: 2.5rem auto;
+  padding: 2rem 2rem;
+
+  max-width: 900px;
+  width: calc(100% - 4rem);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  /* fade-in like your slider */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.blog-post.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blog-post.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.dark .blog-post {
+  background: rgba(0, 0, 10, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.blog-post__header {
+  margin-bottom: 1.25rem;
+  margin-right: 1.5rem;
+}
+
+.blog-post__title {
+  font-family: "SF Pro Display";
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0;
+  color: hsl(0, 0%, 15%);
+}
+
+.dark .blog-post__title {
+  color: hsl(0, 0%, 92%);
+}
+
+.blog-post__meta {
+  margin-top: 0.6rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: hsl(0, 0%, 45%);
+}
+
+.dark .blog-post__meta {
+  color: hsl(0, 0%, 75%);
+}
+
+.blog-post__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blog-post__p {
+  font-family: "SF Pro Display";
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: hsl(0, 0%, 32%);
+  margin: 0;
+  text-align: justify;
+}
+
+.dark .blog-post__p {
+  color: hsl(0, 0%, 78%);
+}
+
+/* media */
+.blog-post__media {
+  margin: 1rem 0 0.5rem 0;
+}
+
+.blog-post__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  object-fit: cover; /* overridden per-image via fit prop if needed */
+}
+
+/* width options */
+.blog-post__media--normal {
+  width: 100%;
+}
+
+.blog-post__media--wide {
+  width: 100%;
+}
+
+.blog-post__media--full {
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+
+/* fixed-height media using vh */
+.blog-post__media--fixed {
+  --media-h: 28vh;
+}
+
+.blog-post__media--fixed .blog-post__img {
+  height: var(--media-h);
+}
+
+/* placeholder shown before visible */
+.blog-post__media--placeholder {
+  border-radius: 18px;
+  height: var(--media-h, 260px);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.dark .blog-post__media--placeholder {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.blog-post__caption {
+  margin-top: 0.6rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  color: hsl(0, 0%, 45%);
+}
+
+.dark .blog-post__caption {
+  color: hsl(0, 0%, 75%);
+}
+
+/* MOBILE (match AboutMeText padding style: 10vw sides / 80vw max) */
+@media (max-width: 768px) {
+  .blog-post {
+    width: 100%;
+    max-width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    /* keep inside padding for content, like a card */
+    padding: 1.25rem 1.25rem;
+
+    border-radius: 18px;
+  }
+
+  .blog-post__title {
+    font-size: 24px;
+  }
+
+  .blog-post__p {
+    font-size: 15px;
+  }
+
+  /* Ensure full images don't break the 10vw padding rule */
+  .blog-post__media--full {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 100px;
+  }
+
+  /* Make vh-based images behave nicely on smaller screens */
+  .blog-post__media--fixed .blog-post__img {
+    height: clamp(160px, var(--media-h), 320px);
+  }
+
+  .blog-post__media--placeholder {
+    height: clamp(160px, var(--media-h, 200px), 320px);
+  }
+}
