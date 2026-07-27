@@ -16,7 +16,7 @@ const rawLocations = [
       'https://6amcity.brightspotcdn.com/dims4/default/811b6b1/2147483647/strip/true/crop/3888x2189+0+202/resize/1000x563!/format/webp/quality/90/?url=https%3A%2F%2Fk1-prod-sixam-city.s3.us-east-2.amazonaws.com%2Fbrightspot%2Fda%2F6c%2F8533a0794d82844eabbb41604a92%2Ftheflowerfields-by-marciegonzalez-14.jpg',
     title: "Flower Fields",
     description:
-      "An attraction every spring, Flower Fields is a rainbow of beautiful ranunculus flowers set on a hillside that overlooks the coastline. ",
+      "An attraction every spring, Flower Fields is a rainbow of beautiful ranunculus flowers set on a hillside that overlooks the coastline.",
     clipboard:
       '5704 Paseo Del Norte, Carlsbad, CA 92008',
     tags: ['San Diego','Hangout','Nature'],
@@ -29,17 +29,17 @@ const rawLocations = [
       "Potato Corner is a Filipino-founded global food chain that sells flavored french fries, which are a popular snack in the Philippines and internationally. Founded in 1992, the company serves various seasoned fries.",
     clipboard:
       'Potato Corner, 3030 Plaza Bonita Rd, National City, CA 91950',
-    tags: ['San Diego','Food'],
+    tags: ['San Diego','Hangout','Food'],
   },
   {
     imageUrl:
       'https://www.top100golfcourses.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F03mhssoh%2Fproduction%2F0497979982b5bec3f77447355b0120ba50153091-1600x899.jpg&w=3840&q=75',
-    title: 'Torrey Pines',
+    title: 'Torrey Pines Reserve',
     description:
       "Several scenic hiking trails in La Jolla, California, renowned for its breathtaking coastal views, unique geology, and rare Torrey trees.",
     clipboard:
       '12600 N Torrey Pines Rd, La Jolla, CA 92037',
-    tags: ['San Diego','Hiking'],
+    tags: ['San Diego','Hangout', 'Hiking'],
   },
   {
     imageUrl:
@@ -49,7 +49,7 @@ const rawLocations = [
       "Located in San Diego, known for its Japanese sushi variety!",
     clipboard:
       '2850 Womble Rd Ste 105 San Diego, CA 92106',
-    tags: ['San Diego','Food'],
+    tags: ['San Diego','Hangout','Food'],
   },
   {
     imageUrl:
@@ -86,7 +86,7 @@ const rawLocations = [
       'https://image-tc.galaxy.tf/wijpeg-efwu5khipe9ne56kh7ufaw6sn/mi-authorsrow-newopt-result.jpg',
     title: "Mission Inn",
     description:
-      "A Grand Spanish Mission-style hotel with a 5-story rotunda close to the Riverside Convention Center and the Riverside Art Museum",
+      'A grand Spanish Mission-style hotel with a five-story rotunda near the Riverside Convention Center and Riverside Art Museum.',
     clipboard:
       '3649 Mission Inn Avenue, Riverside, CA 92501',
     tags: ['Riverside','Hangout'],
@@ -119,7 +119,7 @@ const rawLocations = [
       "Formerly known as Tyler Mall, is a shopping mall located in Riverside, features JCPenney, and Macy's, in addition to an AMC Theatres.",
     clipboard:
       '1299 Galleria at Tyler, Riverside, CA 92503',
-    tags: ['Riverside','Shopping'],
+    tags: ['Riverside','Hangout','Shopping'],
   },
   //San Diego
   {
@@ -150,7 +150,7 @@ const rawLocations = [
       "Aquarium of the Pacific is a public aquarium on a 5-acre site on Rainbow Harbor in Long Beach, California.",
     clipboard:
       '100 Aquarium Way, Long Beach, CA 90802',
-    tags: ['San Diego','Hangout'],
+    tags: ['Long Beach','Hangout'],
   },
   {
     imageUrl:
@@ -238,10 +238,10 @@ const rawLocations = [
       'https://ichibanyausa.com/cdn/shop/files/Q9A7988.jpg?v=1712943522&width=3840',
     title: "Coco Ichibanya",
     description:
-      "Located in Riverside and SD, known for its Japanese curry and omurice, coming in a variety of spice levels!",
+      'Located in Riverside and San Diego, this restaurant is known for Japanese curry and omurice offered in a variety of spice levels.',
     clipboard:
       '4428 Convoy St, San Diego, CA 92111',
-    tags: ['San Diego','Riverside','Food'],
+    tags: ['San Diego','Hangout','Riverside','Food'],
   },
   {
     imageUrl:
@@ -251,7 +251,7 @@ const rawLocations = [
       "American Breakfast, Lunch, and Dinner in Riverside. Serves burgers, sandwiches, main courses, sides, desserts.",
     clipboard:
       '10246 Indiana Ave, Riverside, CA 92503',
-    tags: ['San Diego','Food'],
+    tags: ['Riverside','Hangout','Food'],
   },
   {
     imageUrl:
@@ -281,7 +281,7 @@ const rawLocations = [
       "With over 25 rides and attractions, and a charming carousel, there's plenty to keep you entertained throughout the day.",
     clipboard:
       '3500 Polk St, Riverside, CA 92505',
-    tags: ['San Diego','Hangout'],
+    tags: ['Riverside','Hangout'],
   },
   {
     imageUrl:
@@ -290,7 +290,7 @@ const rawLocations = [
     description:
       'A small cove with a beach, surrounded by cliffs! The area is protected as part of a marine reserve and is popular with scuba divers.',
     clipboard:
-      'La Jolla Covek, San Diego, CA 92037',
+      'La Jolla Cove, San Diego, CA 92037',
     tags: ['San Diego','Hangout'],
   },
   {
@@ -315,4 +315,3 @@ const locations = rawLocations.map((location) => ({
 }));
 
 export default locations;
-
