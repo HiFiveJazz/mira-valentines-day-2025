@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import posts from "../blog";
 import BlogPost from "../components/BlogPost/BlogPost";
 import Divider from "../components/Divider/Divider";

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'; // Ensure you're using react-router-dom
+import { useNavigate } from 'react-router';
 import './CSS/Button.css';
 
 const Button = ({ text, target }) => {

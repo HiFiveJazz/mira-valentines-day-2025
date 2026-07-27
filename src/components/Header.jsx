@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import '../App.css';
 import DarkModeToggle from './DarkModeToggle/DarkModeToggle';
 

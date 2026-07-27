@@ -1,5 +1,10 @@
 // BlogPost.jsx
-import { useEffect, useRef, useState } from 'react';
+import {
+  Fragment,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import "./CSS/BlogPost.css";
 
 /*
@@ -23,7 +28,7 @@ function renderInlineCodeAndNewlines(text) {
     const parts = line.split(/(``[^`]+``|`[^`]+`)/g);
 
     return (
-      <React.Fragment key={lineIdx}>
+      <Fragment key={lineIdx}>
         {parts.map((part, i) => {
           const isDouble =
             part.startsWith("``") && part.endsWith("``");
@@ -46,10 +51,10 @@ function renderInlineCodeAndNewlines(text) {
             );
           }
 
-          return <React.Fragment key={i}>{part}</React.Fragment>;
+          return <Fragment key={i}>{part}</Fragment>;
         })}
         {lineIdx !== lines.length - 1 ? <br /> : null}
-      </React.Fragment>
+      </Fragment>
     );
   });
 }
@@ -68,7 +73,7 @@ function renderTextWithCodeBlocks(text) {
 
     if (before.trim() !== "" || before.includes("\n")) {
       nodes.push(
-        <span key={`t-${key++}`} className="blog-post__text-span">
+        <span key={`t-${key}`} className="blog-post__text-span">
           {renderInlineCodeAndNewlines(before)}
         </span>
       );
@@ -89,7 +94,7 @@ function renderTextWithCodeBlocks(text) {
 
   if (after.trim() !== "" || after.includes("\n")) {
     nodes.push(
-      <span key={`t-${key++}`} className="blog-post__text-span">
+      <span key={`t-${key}`} className="blog-post__text-span">
         {renderInlineCodeAndNewlines(after)}
       </span>
     );
