@@ -218,6 +218,7 @@ const DateSelector = () => {
         <option value="All">All</option>
         <option value="San Diego">San Diego</option>
         <option value="Riverside">Riverside</option>
+        <option value="Long Beach">Long Beach</option>
         <option value="Hangout">Hangout</option>
         <option value="Nature">Nature</option>
         <option value="Shopping">Shopping</option>
