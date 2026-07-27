@@ -11,37 +11,64 @@ const Card3D = ({
   blurred,
   onClick,
   confettiDisabled,
-  disableConfetti, 
-  tags = [], // Default to empty array
+  disableConfetti,
+  tags = [],
 }) => {
   const cardRef = useRef(null);
   const tagsRef = useRef(null);
+  const tiltInitializedRef = useRef(false);
 
   useEffect(() => {
-    const currentCard = cardRef.current;
+    const card = cardRef.current;
 
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!card) {
+      return;
+    }
 
-    if (!isMobile) {
-      VanillaTilt.init(currentCard, {
+    const isMobile =
+      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    const initializeTilt = () => {
+      if (isMobile || tiltInitializedRef.current) {
+        return;
+      }
+
+      VanillaTilt.init(card, {
         max: 25,
         speed: 400,
         glare: true,
         'max-glare': 0.5,
         gyroscope: false,
+        reset: true,
       });
-    }
+
+      tiltInitializedRef.current = true;
+    };
+
+    /*
+     * Initialize only when this particular card is first used.
+     * Afterward VanillaTilt remains dormant whenever the mouse is not moving
+     * over it.
+     */
+    card.addEventListener('pointerenter', initializeTilt, {
+      once: true,
+    });
 
     return () => {
-      if (currentCard && currentCard.vanillaTilt) {
-        currentCard.vanillaTilt.destroy();
+      card.removeEventListener('pointerenter', initializeTilt);
+
+      if (card.vanillaTilt) {
+        card.vanillaTilt.destroy();
       }
+
+      tiltInitializedRef.current = false;
     };
   }, []);
 
   const handleClick = () => {
     if (!blurred && !confettiDisabled && !disableConfetti) {
       const rect = cardRef.current.getBoundingClientRect();
+
       confetti({
         particleCount: 100,
         spread: 70,
@@ -52,47 +79,55 @@ const Card3D = ({
       });
     }
 
-    if (onClick) {
-      onClick();
-    }
+    onClick?.();
   };
 
   return (
-          <div
-            className={`card ${blurred ? 'blurred' : ''} ${selected ? 'selected' : ''}`}
-            ref={cardRef}
-            onClick={handleClick}
-          >
-            <div
-              className="card-image"
-              style={{
-                backgroundImage: `url(${imageUrl})`,
-                backgroundColor: imageUrl.includes('openweathermap.org')
-                  ? '#000'
-                  : '#9c1112',
-                backgroundSize: imageUrl.includes('openweathermap.org')
-                  ? 'contain'
-                  : 'cover',
-                backgroundRepeat: 'no-repeat',
-              }}
-            ></div>
-            <div className="card-text">
-              <div className="date">
-                <h2>{title}</h2>
-              </div>
-              <div className="description" style={{ whiteSpace: 'pre-line' }}>
-                {description}
-              </div>
-            </div>
-            <div className="card-tags" ref={tagsRef}>
-              {tags.map((tag, index) => (
-                <span key={index} className="tag">{tag}</span>
-              ))}
-            </div>
-            <div className="card-stats"></div>
-          </div>
+    <div
+      className={`card ${blurred ? 'blurred' : ''} ${
+        selected ? 'selected' : ''
+      }`}
+      ref={cardRef}
+      onClick={handleClick}
+    >
+      <div
+        className="card-image"
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+          backgroundColor: imageUrl.includes('openweathermap.org')
+            ? '#000'
+            : '#9c1112',
+          backgroundSize: imageUrl.includes('openweathermap.org')
+            ? 'contain'
+            : 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+
+      <div className="card-text">
+        <div className="date">
+          <h2>{title}</h2>
+        </div>
+
+        <div
+          className="description"
+          style={{ whiteSpace: 'pre-line' }}
+        >
+          {description}
+        </div>
+      </div>
+
+      <div className="card-tags" ref={tagsRef}>
+        {tags.map((tag, index) => (
+          <span key={`${tag}-${index}`} className="tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <div className="card-stats" />
+    </div>
   );
 };
 
 export default Card3D;
-

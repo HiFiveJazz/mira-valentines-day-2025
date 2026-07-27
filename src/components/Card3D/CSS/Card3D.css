@@ -50,7 +50,7 @@
   /* margin: 25px; */
   transform: translateZ(15px) translateY(0px); 
   transition: transform 0.2s ease-out; 
-  will-change: transform; 
+  /* will-change: transform;  */
 }
 .description {
   margin-top: 15px;
@@ -120,7 +120,13 @@
   filter: blur(15px);
   opacity: 0.9;
   background-size: 400% 400%; /* Enlarged background for smooth animation */
-  animation: gradientAnimation -10s ease infinite;
+  /* animation: gradientAnimation -10s ease infinite; */
+  animation-play-state: paused;
+}
+
+.dark .card:hover::before,
+.dark .card.selected::before {
+  animation-play-state: running;
 }
 
 @keyframes gradientAnimation {
