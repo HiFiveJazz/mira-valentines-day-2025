@@ -62,9 +62,12 @@
 
   border-radius: 12px;
   padding: 20px;
-  transition: 0.5s;
   left: calc(50% - 177px);
   top: 0;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    filter 0.5s ease;
 }
 
 #next,
@@ -113,14 +116,3 @@
     opacity: 0;
   }
 }
-
-@media (max-width: 480px) {
-  #prev {
-    opacity: 0;
-  }
-
-  #next {
-    opacity: 0;
-  }
-}
-

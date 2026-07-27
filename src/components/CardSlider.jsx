@@ -11,6 +11,7 @@ import './CardSlider.css';
 const AUTO_SCROLL_DELAY = 3000;
 const RESUME_DELAY = 2000;
 const SWIPE_THRESHOLD = 40;
+const RENDER_DISTANCE = 3;
 const VISIBLE_DISTANCE = 2;
 
 const CardSlider = ({ images = [], title }) => {
@@ -136,13 +137,11 @@ const CardSlider = ({ images = [], title }) => {
 
   useEffect(() => {
     return () => {
-      clearAutoScroll();
-
       if (manualControlTimeoutRef.current !== null) {
         clearTimeout(manualControlTimeoutRef.current);
       }
     };
-  }, [clearAutoScroll]);
+  }, []);
 
   const handleTouchStart = (event) => {
     pauseAfterManualControl();
@@ -204,12 +203,14 @@ const CardSlider = ({ images = [], title }) => {
       })
       .filter(
         ({ distance }) =>
-          Math.abs(distance) <= VISIBLE_DISTANCE,
+          Math.abs(distance) <= RENDER_DISTANCE,
       )
       .map((item) => {
         const { distance } = item;
         const absoluteDistance = Math.abs(distance);
         const isActive = distance === 0;
+        const isWithinVisibleRange =
+          absoluteDistance <= VISIBLE_DISTANCE;
 
         return {
           ...item,
@@ -218,17 +219,27 @@ const CardSlider = ({ images = [], title }) => {
               ? 'none'
               : `
                   translateX(${120 * distance}px)
-                  scale(${1 - 0.2 * absoluteDistance})
+                  scale(${Math.max(
+                    1 - 0.2 * absoluteDistance,
+                    0.2,
+                  )})
                   perspective(16px)
                   rotate(${1.5 * distance}deg)
                 `,
-            zIndex: isActive
-              ? 1
-              : -absoluteDistance,
+            zIndex: isActive ? 1 : -absoluteDistance,
             filter: isActive
               ? 'none'
-              : 'blur(2px)',
-            opacity: isActive ? 1 : 0.6,
+              : isWithinVisibleRange
+                ? 'blur(2px)'
+                : 'none',
+            opacity: isActive
+              ? 1
+              : isWithinVisibleRange
+                ? 0.6
+                : 0,
+            pointerEvents: isWithinVisibleRange
+              ? 'auto'
+              : 'none',
           },
         };
       });
@@ -270,9 +281,14 @@ const CardSlider = ({ images = [], title }) => {
                 `${title ?? 'Gallery'} slide ${item.index + 1}`
               }
               loading={
-                item.distance === 0
+                item.distance & item.distance === 0
                   ? 'eager'
                   : 'lazy'
+              }
+              fetchPriority={
+                isVisible && item.distance === 0
+                  ? 'high'
+                  : 'auto'
               }
               decoding="async"
               draggable="false"
