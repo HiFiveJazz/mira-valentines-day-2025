@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
 import Card3D from '../Card3D/Card3D';
 import './CSS/DateSelector.css';
 import locations from './locations';
@@ -36,19 +35,6 @@ const DateSelector = () => {
     };
   }, [confirmCancel]);
 
-  const sendEmail = (templateId, templateParams) => {
-      emailjs
-        .send('service_2dy3gsm', templateId, templateParams, '2LMXKhz6epWRPg3MK')
-        .then(
-          (response) => {
-            console.log('Email sent successfully!', response.status, response.text);
-          },
-          (error) => {
-            console.error('Failed to send email.', error);
-          }
-        );
-    };
-
   const saveStateToLocalStorage = (index, displayedLocations) => {
     const selectionData = { index, locations: displayedLocations };
     localStorage.setItem('selectionData', JSON.stringify(selectionData));
@@ -63,7 +49,7 @@ const DateSelector = () => {
       .catch((err) => console.error("Failed to copy to clipboard:", err));
   };
 
-  const handleCardClick = (index, title, description) => {
+  const handleCardClick = (index) => {
     if (selectedCard === index) {
       if (!confirmCancel) {
         setConfirmCancel(true);
@@ -77,26 +63,11 @@ const DateSelector = () => {
       setConfettiTriggered(true);
       setConfirmCancel(false);
       saveStateToLocalStorage(index, displayedLocations);
-
-      const templateParams = {
-        title,
-        description,
-        timeStamp: new Date().toLocaleString(),
-        browserInfo: navigator.userAgent,
-      };
-      // sendEmail('template_jik1mne', templateParams);
     }
   };
 
   const handleCancel = () => {
     setIsFadingOut(true);
-    const selectedLocation = displayedLocations[selectedCard];
-    const templateParams = {
-      title: selectedLocation.title,
-      timeStamp: new Date().toLocaleString(),
-      browserInfo: navigator.userAgent,
-    };
-    // sendEmail('template_t07eubq', templateParams);
     setSelectedCard(null);
     setConfettiTriggered(false);
     setConfirmCancel(false);
@@ -105,11 +76,8 @@ const DateSelector = () => {
   };
 
   const handleNo = () => {
-    setIsFadingOut(true);
     setConfirmCancel(false);
-    setIsFadingOut(false);
   };
-
   const handleShuffleClick = () => {
     const filteredLocations =
       selectedTag === "All"
@@ -146,7 +114,7 @@ const DateSelector = () => {
             blurred={selectedCard !== null && selectedCard !== index}
             confettiDisabled={confettiTriggered}
             disableConfetti={false}
-            onClick={() => handleCardClick(index, location.title, location.description)}
+            onClick={() => handleCardClick(index)}
           />
         ))}
       </div>
