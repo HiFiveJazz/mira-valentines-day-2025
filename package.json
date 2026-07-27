@@ -15,13 +15,9 @@
   "dependencies": {
     "canvas-confetti": "^1.9.3",
     "chart.js": "^4.4.7",
-    "fs-extra": "^11.3.0",
-    "gsap": "^3.12.7",
-    "object-hash": "^3.0.0",
     "react": "^19.2.8",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.2.8",
-    "react-responsive": "^10.0.1",
     "react-router": "^8.3.0",
     "typewriter-effect": "^2.21.0",
     "vanilla-tilt": "^1.8.1"
@@ -36,7 +32,6 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "gh-pages": "^6.2.0",
     "globals": "^17.8.0",
-    "react-scan": "^0.5.7",
     "sharp": "^0.35.3",
     "vite": "^6.3.5"
   },

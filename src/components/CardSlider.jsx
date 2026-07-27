@@ -94,16 +94,6 @@ const CardSlider = ({ images = [], title }) => {
     advancePrevious();
   }, [advancePrevious, pauseAfterManualControl]);
 
-  useEffect(() => {
-    if (imageCount === 0) {
-      setActive(0);
-      return;
-    }
-
-    setActive((current) =>
-      Math.min(current, imageCount - 1),
-    );
-  }, [imageCount]);
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -179,6 +169,10 @@ const CardSlider = ({ images = [], title }) => {
   const renderedItems = useMemo(() => {
     if (imageCount === 0) {
       return [];
+    }
+
+    if (imageCount === 0) {
+      return null;
     }
 
     return images
