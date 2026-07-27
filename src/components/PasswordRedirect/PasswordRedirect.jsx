@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CSS/PasswordRedirect.css';
 
-const PasswordRedirect = ({ text, correctPassword, target }) => {
+const PasswordRedirect = ({ correctPassword, target }) => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();

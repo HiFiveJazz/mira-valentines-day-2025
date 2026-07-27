@@ -6,6 +6,12 @@ const Subdivider = ({ title }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const divider = dividerRef.current;
+
+    if (!divider) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -13,25 +19,23 @@ const Subdivider = ({ title }) => {
         }
       },
       {
-        threshold: 0.7, // Trigger when 10% of the element is visible
-      }
+        threshold: 0.7,
+      },
     );
 
-    if (dividerRef.current) {
-      observer.observe(dividerRef.current);
-    }
+    observer.observe(divider);
 
     return () => {
-      if (dividerRef.current) {
-        observer.unobserve(dividerRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
   return (
     <div
-      className={`subdivider-container ${isVisible ? 'visible' : 'hidden'}`}
       ref={dividerRef}
+      className={`subdivider-container ${
+        isVisible ? 'visible' : 'hidden'
+      }`}
     >
       <div className="subdivider-content">
         <p>{title}</p>
@@ -41,4 +45,3 @@ const Subdivider = ({ title }) => {
 };
 
 export default Subdivider;
-

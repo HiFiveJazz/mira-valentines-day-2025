@@ -1,81 +1,109 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './CSS/ScrambleText.css';
 
-const ScrambleText = ({ text, correctPassword, target }) => {
+const CHARACTERS =
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+const ScrambleText = ({ text, correctPassword }) => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [displayText, setDisplayText] = useState(text);
   const [isDeciphered, setIsDeciphered] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isDeciphered) {
-      let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      let interval = setInterval(() => {
-        setDisplayText((prevText) =>
-          prevText
-            .split('')
-            .map(() => chars[Math.floor(Math.random() * chars.length)])
-            .join('')
-        );
-      }, 50);
-
-      return () => clearInterval(interval);
+    if (isDeciphered) {
+      return;
     }
+
+    const interval = setInterval(() => {
+      setDisplayText((previousText) =>
+        previousText
+          .split('')
+          .map(
+            () =>
+              CHARACTERS[
+                Math.floor(Math.random() * CHARACTERS.length)
+              ],
+          )
+          .join(''),
+      );
+    }, 50);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [isDeciphered]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (password === correctPassword) {
-      setIsDeciphered(true);
-      gradualDecipher();
-    } else {
-      setErrorMessage('Nice Try 🥱 Try putting the clues together!');
-    }
-  };
-
   const gradualDecipher = () => {
-    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let scrambled = displayText.split('');
-    let finalText = text.split('');
+    const finalText = text.split('');
     let currentIndex = 0;
 
     const interval = setInterval(() => {
-      if (currentIndex < finalText.length) {
-        scrambled = scrambled.map((char, index) =>
-          index <= currentIndex ? finalText[index] : chars[Math.floor(Math.random() * chars.length)]
-        );
-        setDisplayText(scrambled.join(''));
-        currentIndex++;
-      } else {
+      if (currentIndex >= finalText.length) {
         clearInterval(interval);
         setErrorMessage('Where does this go? 🤔');
-        // setTimeout(() => navigate(target, { state: { password } }), 1000);
-        // window.scrollTo(0, 0);
+        return;
       }
+
+      scrambled = scrambled.map((character, index) =>
+        index <= currentIndex
+          ? finalText[index]
+          : CHARACTERS[
+              Math.floor(Math.random() * CHARACTERS.length)
+            ],
+      );
+
+      setDisplayText(scrambled.join(''));
+      currentIndex += 1;
     }, 50);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (password === correctPassword) {
+      setErrorMessage('');
+      setIsDeciphered(true);
+      gradualDecipher();
+    } else {
+      setErrorMessage(
+        'Nice Try 🥱 Try putting the clues together!',
+      );
+    }
   };
 
   return (
     <div className="scramble-redirect-container">
       <p className="scrambled-text">{displayText}</p>
-      <form onSubmit={handleSubmit} className="scramble-form">
+
+      <form
+        onSubmit={handleSubmit}
+        className="scramble-form"
+      >
         <input
           type="text"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(event) =>
+            setPassword(event.target.value)
+          }
           placeholder="Good Luck >:)"
           className="scramble-input"
         />
-        <button type="submit" className="get-started-button">
+
+        <button
+          type="submit"
+          className="get-started-button"
+        >
           Submit
         </button>
       </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      {errorMessage && (
+        <p className="error-message">{errorMessage}</p>
+      )}
     </div>
   );
 };
 
 export default ScrambleText;
-

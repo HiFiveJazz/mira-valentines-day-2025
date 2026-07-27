@@ -7,6 +7,12 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
+    const divider = dividerRef.current;
+
+    if (!divider) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -14,32 +20,27 @@ const Footer = () => {
         }
       },
       {
-        threshold: 0.7, // Trigger when 10% of the element is visible
-      }
+        threshold: 0.7,
+      },
     );
 
-    if (dividerRef.current) {
-      observer.observe(dividerRef.current);
-    }
+    observer.observe(divider);
 
     return () => {
-      if (dividerRef.current) {
-        observer.unobserve(dividerRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
   return (
     <div
-      className={`footer-container ${isVisible ? 'visible' : 'hidden'}`}
       ref={dividerRef}
+      className={`footer-container ${isVisible ? 'visible' : 'hidden'}`}
     >
       <div className="footer-content">
-        <p>© {currentYear} Jasmeet Bhatia </p>
+        <p>© {currentYear} Jasmeet Bhatia</p>
       </div>
     </div>
   );
 };
 
 export default Footer;
-

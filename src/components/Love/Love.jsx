@@ -6,6 +6,12 @@ const Love = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const divider = dividerRef.current;
+
+    if (!divider) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -13,29 +19,27 @@ const Love = () => {
         }
       },
       {
-        threshold: 0.7, // Trigger when 10% of the element is visible
-      }
+        threshold: 0.7,
+      },
     );
 
-    if (dividerRef.current) {
-      observer.observe(dividerRef.current);
-    }
+    observer.observe(divider);
 
     return () => {
-      if (dividerRef.current) {
-        observer.unobserve(dividerRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
   return (
     <div
-      className={`subdivider-container ${isVisible ? 'visible' : 'hidden'}`}
       ref={dividerRef}
+      className={`subdivider-container ${isVisible ? 'visible' : 'hidden'}`}
     >
       <div className="subdivider-content">
-        <p>One month ago, you said yes to being mine. Every day since has been a gift.
-So today, I have one for you.</p>
+        <p>
+          One month ago, you said yes to being mine. Every day since has been a
+          gift. So today, I have one for you.
+        </p>
       </div>
     </div>
   );

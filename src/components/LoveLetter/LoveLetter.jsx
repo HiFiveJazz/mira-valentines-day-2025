@@ -7,6 +7,12 @@ const LoveLetter = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    const letter = letterRef.current;
+
+    if (!letter) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -14,18 +20,14 @@ const LoveLetter = () => {
         }
       },
       {
-        threshold: 0.3, // Trigger when 70% of the element is visible
-      }
+        threshold: 0.3,
+      },
     );
 
-    if (letterRef.current) {
-      observer.observe(letterRef.current);
-    }
+    observer.observe(letter);
 
     return () => {
-      if (letterRef.current) {
-        observer.unobserve(letterRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
@@ -35,21 +37,22 @@ const LoveLetter = () => {
 
   return (
     <div
-      className={`envelope-container ${isVisible ? 'visible' : 'hidden'}`}
       ref={letterRef}
+      className={`envelope-container ${isVisible ? 'visible' : 'hidden'}`}
     >
       <div className="envelope" onClick={handleOpen}>
         <div className={`back ${isOpen ? 'open' : ''}`}>
           <div className={`letter ${isOpen ? 'open' : ''}`}>
-            <div className="heart"></div>
+            <div className="heart" />
             <div className="text">
               <p>Happy 1 Month :)</p>
             </div>
           </div>
-          <div className={`front ${isOpen ? 'open' : ''}`}></div>
-          <div className={`envelope-top ${isOpen ? 'open' : ''}`}></div>
-          <div className="shadow"></div>
-          <div className="text1"></div>
+
+          <div className={`front ${isOpen ? 'open' : ''}`} />
+          <div className={`envelope-top ${isOpen ? 'open' : ''}`} />
+          <div className="shadow" />
+          <div className="text1" />
         </div>
       </div>
     </div>
@@ -57,4 +60,3 @@ const LoveLetter = () => {
 };
 
 export default LoveLetter;
-

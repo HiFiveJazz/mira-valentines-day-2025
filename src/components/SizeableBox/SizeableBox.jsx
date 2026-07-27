@@ -70,13 +70,13 @@ const SizeableBox = ({
           className="box-video"
           src={videoUrl}
           style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover", // Ensures no black bars
-            borderRadius: "inherit",
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: 'inherit',
           }}
-          autoPlay
-          loop
+          autoPlay={autoplay}
+          loop={loop}
           muted
           playsInline
         />

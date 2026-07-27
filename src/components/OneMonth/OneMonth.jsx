@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './CSS/OneMonth.css';
 
-const OneMonth = ({ webmUrl, mp4Url, title, description }) => {
+const OneMonth = ({ webmUrl, mp4Url, description }) => {
   const [canPlayWebm, setCanPlayWebm] = useState(false);
   const videoRef = useRef(null);
 
@@ -58,7 +58,11 @@ const OneMonth = ({ webmUrl, mp4Url, title, description }) => {
           <source src={mp4Url} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <button className="fullscreen-button" onClick={handleFullscreen}>
+        <button
+        type="button"
+        className="fullscreen-button"
+        onClick={handleFullscreen}
+        >
           Fullscreen
         </button>
       </div>
