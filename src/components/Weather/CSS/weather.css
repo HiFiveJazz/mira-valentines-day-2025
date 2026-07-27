@@ -1,5 +1,7 @@
 /* Weather Container */
 .weather-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 850px;
   display: flex;
   flex-direction: column;
   align-items: center;

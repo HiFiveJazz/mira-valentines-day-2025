@@ -1,4 +1,6 @@
 .round-video-heading-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
   display: flex;
   flex-direction: column;
   align-items: center;

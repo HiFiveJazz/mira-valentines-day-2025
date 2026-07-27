@@ -1,4 +1,6 @@
 .date-selector-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
   text-align: center;
   margin: 50px auto; 
 }

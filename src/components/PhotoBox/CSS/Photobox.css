@@ -1,0 +1,4 @@
+.photo-box-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 2000px;
+}

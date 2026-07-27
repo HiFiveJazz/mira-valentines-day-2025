@@ -1,0 +1,4 @@
+.moment-box-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1600px;
+}

@@ -23,7 +23,7 @@ const Spotify = ({
   labelText = 'MUSIC',
 }) => {
   return (
-    <div className="philosophy-overlay-wrapper">
+    <div className="spotify-section philosophy-overlay-wrapper">
       <div className="spotify">
         {/* LEFT COLUMN */}
         <div className="intro-box">

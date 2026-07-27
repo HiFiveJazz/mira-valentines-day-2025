@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
 import imageList from './imageImports'; // Now using compressed images
+import './CSS/MomentBox.css'
 
 const MomentBox = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -16,7 +17,15 @@ const MomentBox = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center'}}>
+      <div
+        className="moment-box-container"
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '20px',
+          justifyContent: 'center',
+        }}
+      >
       {imageList.map((imageUrl, index) => (
         <SizeableBox
           key={index}
