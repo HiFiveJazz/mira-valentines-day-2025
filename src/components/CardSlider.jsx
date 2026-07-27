@@ -132,7 +132,7 @@ const CardSlider = ({ images, title }) => {
   };
 
   const renderedItems = images.map((item, index) => {
-    let style = {};
+    let style;
 
     if (index === active) {
       style = {

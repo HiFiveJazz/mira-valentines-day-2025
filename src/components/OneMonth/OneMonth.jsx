@@ -1,46 +1,71 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './CSS/OneMonth.css';
 
-const OneMonth = ({ webmUrl, mp4Url, description }) => {
-  const [canPlayWebm, setCanPlayWebm] = useState(false);
+const detectWebmSupport = () => {
+  if (typeof document === 'undefined') {
+    return false;
+  }
+
+  const video = document.createElement('video');
+
+  return Boolean(
+    video.canPlayType(
+      'video/webm; codecs="vp8, vorbis"',
+    ),
+  );
+};
+
+const OneMonth = ({
+  webmUrl,
+  mp4Url,
+  description,
+}) => {
+  const [canPlayWebm] = useState(
+    detectWebmSupport,
+  );
+
   const videoRef = useRef(null);
 
   useEffect(() => {
-    const video = document.createElement('video');
-    const support = video.canPlayType('video/webm; codecs="vp8, vorbis"');
-    setCanPlayWebm(!!support);
-  }, []);
-
-  useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+
+    if (!video) {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play();
+          video.play().catch(() => {});
         } else {
           video.pause();
         }
       },
-      { threshold: 0.5 } // 50% of the video must be in view
+      {
+        threshold: 0.5,
+      },
     );
 
     observer.observe(video);
 
     return () => {
-      observer.unobserve(video);
+      observer.disconnect();
     };
   }, []);
 
   const handleFullscreen = () => {
     const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if (video.webkitEnterFullscreen) {
-      video.webkitEnterFullscreen(); // iOS Safari
+      video.webkitEnterFullscreen();
     } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen(); // IE/Edge
+      video.msRequestFullscreen();
     }
   };
 
@@ -53,19 +78,32 @@ const OneMonth = ({ webmUrl, mp4Url, description }) => {
           muted
           playsInline
           controls
+          preload="metadata"
         >
-          {canPlayWebm && <source src={webmUrl} type="video/webm" />}
-          <source src={mp4Url} type="video/mp4" />
+          {canPlayWebm && (
+            <source
+              src={webmUrl}
+              type="video/webm"
+            />
+          )}
+
+          <source
+            src={mp4Url}
+            type="video/mp4"
+          />
+
           Your browser does not support the video tag.
         </video>
+
         <button
-        type="button"
-        className="fullscreen-button"
-        onClick={handleFullscreen}
+          type="button"
+          className="fullscreen-button"
+          onClick={handleFullscreen}
         >
           Fullscreen
         </button>
       </div>
+
       <div className="text-content">
         <p>{description}</p>
       </div>

@@ -35,7 +35,7 @@ const Header = () => {
     const y       = window.scrollY;
     const height  = document.documentElement.scrollHeight;
     const viewHt  = window.innerHeight;
-    let   visible = isHeaderVisible;
+    let visible;
 
     if (y + viewHt >= height - 5) {
       visible = true;
