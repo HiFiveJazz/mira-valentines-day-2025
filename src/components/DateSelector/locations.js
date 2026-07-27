@@ -184,18 +184,6 @@ const rawLocations = [
   },
   {
     imageUrl:
-      'https://media-cdn.tripadvisor.com/media/photo-s/0d/50/c2/e1/photo0jpg.jpg',
-    title: "Shiku Sushi",
-    description:
-      "An upscale, open-air shopping mall in the University City community of San Diego, California.",
-    clipboard:
-      '1277 Prospect St, La Jolla, CA 92037',
-    place:
-      'San Diego',
-    tags: ['San Diego','Food'],
-  },
-  {
-    imageUrl:
       'https://img1.10bestmedia.com/Images/Photos/353131/la-jolla-shopping-westfield-UTC_55_660x440.jpg',
     title: "Westfield UTC",
     description:
