@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -9,56 +10,76 @@ import './CardSlider.css';
 
 const AUTO_SCROLL_DELAY = 3000;
 const RESUME_DELAY = 2000;
+const SWIPE_THRESHOLD = 40;
+const VISIBLE_DISTANCE = 2;
 
-const CardSlider = ({ images, title }) => {
-  const [active, setActive] = useState(3);
-  const [touchStart, setTouchStart] = useState(null);
+const CardSlider = ({ images = [], title }) => {
+  const [active, setActive] = useState(() =>
+    Math.min(3, Math.max(images.length - 1, 0)),
+  );
   const [isVisible, setIsVisible] = useState(false);
 
   const sliderRef = useRef(null);
-  const autoScrollInterval = useRef(null);
-  const manualControlTimeout = useRef(null);
+  const touchStartRef = useRef(null);
+  const autoScrollIntervalRef = useRef(null);
+  const manualControlTimeoutRef = useRef(null);
 
-  const advanceNext = useCallback(() => {
-    setActive((previous) => (previous + 1) % images.length);
-  }, [images.length]);
-
-  const advancePrevious = useCallback(() => {
-    setActive(
-      (previous) =>
-        (previous - 1 + images.length) % images.length,
-    );
-  }, [images.length]);
+  const imageCount = images.length;
 
   const clearAutoScroll = useCallback(() => {
-    clearInterval(autoScrollInterval.current);
-    autoScrollInterval.current = null;
+    if (autoScrollIntervalRef.current !== null) {
+      clearInterval(autoScrollIntervalRef.current);
+      autoScrollIntervalRef.current = null;
+    }
   }, []);
+
+  const advanceNext = useCallback(() => {
+    if (imageCount < 2) {
+      return;
+    }
+
+    setActive((previous) => (previous + 1) % imageCount);
+  }, [imageCount]);
+
+  const advancePrevious = useCallback(() => {
+    if (imageCount < 2) {
+      return;
+    }
+
+    setActive(
+      (previous) =>
+        (previous - 1 + imageCount) % imageCount,
+    );
+  }, [imageCount]);
 
   const startAutoScroll = useCallback(() => {
     clearAutoScroll();
 
-    if (!isVisible || images.length < 2) {
+    if (!isVisible || imageCount < 2) {
       return;
     }
 
-    autoScrollInterval.current = setInterval(
+    autoScrollIntervalRef.current = setInterval(
       advanceNext,
       AUTO_SCROLL_DELAY,
     );
   }, [
     advanceNext,
     clearAutoScroll,
-    images.length,
+    imageCount,
     isVisible,
   ]);
 
   const pauseAfterManualControl = useCallback(() => {
     clearAutoScroll();
-    clearTimeout(manualControlTimeout.current);
 
-    manualControlTimeout.current = setTimeout(() => {
+    if (manualControlTimeoutRef.current !== null) {
+      clearTimeout(manualControlTimeoutRef.current);
+    }
+
+    manualControlTimeoutRef.current = setTimeout(() => {
       startAutoScroll();
+      manualControlTimeoutRef.current = null;
     }, RESUME_DELAY);
   }, [clearAutoScroll, startAutoScroll]);
 
@@ -73,6 +94,17 @@ const CardSlider = ({ images, title }) => {
   }, [advancePrevious, pauseAfterManualControl]);
 
   useEffect(() => {
+    if (imageCount === 0) {
+      setActive(0);
+      return;
+    }
+
+    setActive((current) =>
+      Math.min(current, imageCount - 1),
+    );
+  }, [imageCount]);
+
+  useEffect(() => {
     const slider = sliderRef.current;
 
     if (!slider) {
@@ -83,7 +115,10 @@ const CardSlider = ({ images, title }) => {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.5 },
+      {
+        rootMargin: '150px',
+        threshold: 0.25,
+      },
     );
 
     observer.observe(slider);
@@ -96,86 +131,112 @@ const CardSlider = ({ images, title }) => {
   useEffect(() => {
     startAutoScroll();
 
-    return () => {
-      clearAutoScroll();
-    };
+    return clearAutoScroll;
   }, [clearAutoScroll, startAutoScroll]);
 
   useEffect(() => {
     return () => {
-      clearInterval(autoScrollInterval.current);
-      clearTimeout(manualControlTimeout.current);
+      clearAutoScroll();
+
+      if (manualControlTimeoutRef.current !== null) {
+        clearTimeout(manualControlTimeoutRef.current);
+      }
     };
-  }, []);
+  }, [clearAutoScroll]);
 
   const handleTouchStart = (event) => {
     pauseAfterManualControl();
-    setTouchStart(event.targetTouches[0].clientX);
+
+    touchStartRef.current =
+      event.targetTouches[0].clientX;
   };
 
   const handleTouchMove = (event) => {
-    if (touchStart === null) {
+    if (touchStartRef.current === null) {
       return;
     }
 
-    const currentTouch = event.targetTouches[0].clientX;
-    const swipeDistance = touchStart - currentTouch;
-    const swipeThreshold = 40;
+    const currentTouch =
+      event.targetTouches[0].clientX;
 
-    if (swipeDistance > swipeThreshold) {
+    const swipeDistance =
+      touchStartRef.current - currentTouch;
+
+    if (swipeDistance > SWIPE_THRESHOLD) {
       handleNext();
-      setTouchStart(currentTouch);
-    } else if (swipeDistance < -swipeThreshold) {
+      touchStartRef.current = currentTouch;
+    } else if (
+      swipeDistance < -SWIPE_THRESHOLD
+    ) {
       handlePrevious();
-      setTouchStart(currentTouch);
+      touchStartRef.current = currentTouch;
     }
   };
 
-  const renderedItems = images.map((item, index) => {
-    let style;
+  const handleTouchEnd = () => {
+    touchStartRef.current = null;
+  };
 
-    if (index === active) {
-      style = {
-        transform: 'none',
-        zIndex: 1,
-        filter: 'none',
-        opacity: 1,
-      };
-    } else if (index > active) {
-      const distance = index - active;
-
-      style = {
-        transform: `
-          translateX(${120 * distance}px)
-          scale(${1 - 0.2 * distance})
-          perspective(16px)
-          rotate(${1.5 * distance}deg)
-        `,
-        zIndex: -distance,
-        filter: 'blur(5px)',
-        opacity: distance > 2 ? 0 : 0.6,
-      };
-    } else {
-      const distance = active - index;
-
-      style = {
-        transform: `
-          translateX(${-120 * distance}px)
-          scale(${1 - 0.2 * distance})
-          perspective(16px)
-          rotate(${-1.5 * distance}deg)
-        `,
-        zIndex: -distance,
-        filter: 'blur(5px)',
-        opacity: distance > 2 ? 0 : 0.6,
-      };
+  const renderedItems = useMemo(() => {
+    if (imageCount === 0) {
+      return [];
     }
 
-    return {
-      ...item,
-      style,
-    };
-  });
+    return images
+      .map((item, index) => {
+        const forwardDistance =
+          (index - active + imageCount) % imageCount;
+
+        const backwardDistance =
+          forwardDistance - imageCount;
+
+        const distance =
+          Math.abs(forwardDistance) <=
+          Math.abs(backwardDistance)
+            ? forwardDistance
+            : backwardDistance;
+
+        return {
+          ...item,
+          index,
+          distance,
+        };
+      })
+      .filter(
+        ({ distance }) =>
+          Math.abs(distance) <= VISIBLE_DISTANCE,
+      )
+      .map((item) => {
+        const { distance } = item;
+        const absoluteDistance = Math.abs(distance);
+        const isActive = distance === 0;
+
+        return {
+          ...item,
+          style: {
+            transform: isActive
+              ? 'none'
+              : `
+                  translateX(${120 * distance}px)
+                  scale(${1 - 0.2 * absoluteDistance})
+                  perspective(16px)
+                  rotate(${1.5 * distance}deg)
+                `,
+            zIndex: isActive
+              ? 1
+              : -absoluteDistance,
+            filter: isActive
+              ? 'none'
+              : 'blur(2px)',
+            opacity: isActive ? 1 : 0.6,
+          },
+        };
+      });
+  }, [active, imageCount, images]);
+
+  if (imageCount === 0) {
+    return null;
+  }
 
   return (
     <div
@@ -184,22 +245,37 @@ const CardSlider = ({ images, title }) => {
         isVisible ? 'fade-in' : 'fade-out'
       }`}
     >
-      {title && <h2 className="slider-title">{title}</h2>}
+      {title && (
+        <h2 className="slider-title">{title}</h2>
+      )}
 
       <div
         className="slider"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
       >
         {renderedItems.map((item) => (
           <div
             key={item.id}
             className="item"
             style={item.style}
+            aria-hidden={item.distance !== 0}
           >
             <img
               src={item.image}
-              alt={`Slide ${item.id}`}
+              alt={
+                item.alt ??
+                `${title ?? 'Gallery'} slide ${item.index + 1}`
+              }
+              loading={
+                item.distance === 0
+                  ? 'eager'
+                  : 'lazy'
+              }
+              decoding="async"
+              draggable="false"
               style={{
                 width: '100%',
                 height: '100%',
@@ -210,23 +286,27 @@ const CardSlider = ({ images, title }) => {
           </div>
         ))}
 
-        <button
-          id="prev"
-          type="button"
-          onClick={handlePrevious}
-          aria-label="Previous slide"
-        >
-          {'<'}
-        </button>
+        {imageCount > 1 && (
+          <>
+            <button
+              id="prev"
+              type="button"
+              onClick={handlePrevious}
+              aria-label="Previous slide"
+            >
+              {'<'}
+            </button>
 
-        <button
-          id="next"
-          type="button"
-          onClick={handleNext}
-          aria-label="Next slide"
-        >
-          {'>'}
-        </button>
+            <button
+              id="next"
+              type="button"
+              onClick={handleNext}
+              aria-label="Next slide"
+            >
+              {'>'}
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
