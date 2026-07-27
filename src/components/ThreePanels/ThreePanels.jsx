@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
 import img1 from '../../images-compressed/about-me/1.webp';
 import img11 from '../../images-compressed/about-me/11.webp';

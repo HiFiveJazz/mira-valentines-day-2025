@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo } from 'react';
 import "./CSS/FallingItem.css";
 
 function getFallingTheme(date = new Date()) {

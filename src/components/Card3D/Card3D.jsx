@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 import confetti from 'canvas-confetti';
 import './CSS/Card3D.css';

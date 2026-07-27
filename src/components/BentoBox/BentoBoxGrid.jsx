@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
 import totalWordsSent from '../../images/relationship-rewind-2024/total-words-sent.svg';
 import totalMessageSent from '../../images/relationship-rewind-2024/total-message-sent.svg';

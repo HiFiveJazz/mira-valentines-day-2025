@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './CSS/OneMonth.css';
 
 const OneMonth = ({ webmUrl, mp4Url, title, description }) => {

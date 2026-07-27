@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
 import imageList from './imageImports'; // Now using compressed images
 
@@ -14,11 +14,6 @@ const MomentBox = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  const handleCancel = () => {
-    setShowPopover(false);
-    setIsFadingOut(false);
-  };
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center'}}>

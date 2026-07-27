@@ -1,4 +1,3 @@
-import React from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
 import img4 from '../../images-compressed/about-me/4.webp';
 import img6 from '../../images-compressed/about-me/6.webp';

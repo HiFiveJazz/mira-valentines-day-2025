@@ -1,5 +1,5 @@
 // FlexText.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './CSS/FlexText.css';
 
 const source = 'जस्मीभ';

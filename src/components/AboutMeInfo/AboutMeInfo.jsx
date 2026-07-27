@@ -1,4 +1,3 @@
-import React from 'react';
 import ThreePanels from "../ThreePanels/ThreePanels";
 import AboutMeText from "../AboutMeText/AboutMeTitle";
 import './CSS/AboutMeInfo.css';

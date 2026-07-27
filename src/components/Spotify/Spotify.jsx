@@ -1,4 +1,3 @@
-import React from 'react';
 import './CSS/Spotify.css';
 
 const SpotifyEmbed = ({ id, height = 352 }) => (

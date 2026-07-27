@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Divider from '../components/Divider/Divider';
 import PhotoBox from '../components/PhotoBox/PhotoBox';
 import Footer from '../components/Footer/Footer';

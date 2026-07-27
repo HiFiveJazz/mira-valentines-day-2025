@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SizeableBox from '../SizeableBox/SizeableBox';
 import './CSS/Masters.css';
 import MastersText from '../MastersText/MastersText';
