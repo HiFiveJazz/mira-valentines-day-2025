@@ -1,32 +1,37 @@
 @font-face {
   font-family: 'Sequel';
-  src: url('/fonts/Sequel/Sequel-Sans-Book-Disp.otf') format('opentype');
+  src: url('/fonts/Sequel/Sequel-Sans-Book-Disp.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Sequel';
-  src: url('/fonts/Sequel/Sequel-Sans-Medium-Disp.otf') format('opentype');
+  src: url('/fonts/Sequel/Sequel-Sans-Medium-Disp.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SF-Pro-Display-Light.otf') format('opentype');
+  src: url('/fonts/SF-Pro-Display-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('/fonts/SF-Pro-Display-Regular.otf') format('opentype');
+  src: url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SF Mono';
-  src: url('/fonts/SFMonoLight.otf') format('opentype');
+  src: url('/fonts/SFMonoLight.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 html {

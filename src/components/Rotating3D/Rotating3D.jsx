@@ -1,11 +1,42 @@
+import { useEffect, useRef } from 'react';
 import './CSS/Rotating3D.css';
 
 const Rotating3D = ({ webmUrl, mp4Url, description }) => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      {
+        rootMargin: '150px',
+        threshold: 0.1,
+      },
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="circle-video-heading-container">
       <div className="circle-video">
         <video
-          autoPlay
+          ref={videoRef}
           loop
           muted
           playsInline

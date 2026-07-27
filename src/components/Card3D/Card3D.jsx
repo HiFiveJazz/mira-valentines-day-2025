@@ -1,6 +1,4 @@
 import { useEffect, useRef } from 'react';
-import VanillaTilt from 'vanilla-tilt';
-import confetti from 'canvas-confetti';
 import './CSS/Card3D.css';
 
 const Card3D = ({
@@ -16,71 +14,86 @@ const Card3D = ({
 }) => {
   const cardRef = useRef(null);
   const tagsRef = useRef(null);
-  const tiltInitializedRef = useRef(false);
 
   useEffect(() => {
-    const card = cardRef.current;
+    const currentCard = cardRef.current;
+    const hasFinePointer = window.matchMedia(
+      '(hover: hover) and (pointer: fine)',
+    ).matches;
 
-    if (!card) {
+    if (!currentCard || !hasFinePointer) {
       return;
     }
 
-    const isMobile =
-      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    let tiltInstance;
+    let cancelled = false;
 
-    const initializeTilt = () => {
-      if (isMobile || tiltInitializedRef.current) {
-        return;
-      }
+    import('vanilla-tilt')
+      .then(({ default: VanillaTilt }) => {
+        if (cancelled) {
+          return;
+        }
 
-      VanillaTilt.init(card, {
-        max: 25,
-        speed: 400,
-        glare: true,
-        'max-glare': 0.5,
-        gyroscope: false,
-        reset: true,
+        VanillaTilt.init(currentCard, {
+          max: 25,
+          speed: 400,
+          glare: true,
+          'max-glare': 0.5,
+          gyroscope: false,
+        });
+
+        tiltInstance = currentCard.vanillaTilt;
+      })
+      .catch((error) => {
+        console.error('Failed to load card tilt:', error);
       });
 
-      tiltInitializedRef.current = true;
-    };
-
-    /*
-     * Initialize only when this particular card is first used.
-     * Afterward VanillaTilt remains dormant whenever the mouse is not moving
-     * over it.
-     */
-    card.addEventListener('pointerenter', initializeTilt, {
-      once: true,
-    });
-
     return () => {
-      card.removeEventListener('pointerenter', initializeTilt);
-
-      if (card.vanillaTilt) {
-        card.vanillaTilt.destroy();
-      }
-
-      tiltInitializedRef.current = false;
+      cancelled = true;
+      tiltInstance?.destroy();
     };
   }, []);
 
   const handleClick = () => {
-    if (!blurred && !confettiDisabled && !disableConfetti) {
-      const rect = cardRef.current.getBoundingClientRect();
+    const shouldLaunchConfetti =
+      !blurred &&
+      !confettiDisabled &&
+      !disableConfetti;
 
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: {
-          x: (rect.left + rect.width / 2) / window.innerWidth,
-          y: (rect.top + rect.height / 2) / window.innerHeight,
-        },
-      });
+    const cardRect = shouldLaunchConfetti
+      ? cardRef.current?.getBoundingClientRect()
+      : null;
+
+    // Do not delay the card selection while confetti downloads.
+    onClick?.();
+
+    if (!cardRect) {
+      return;
     }
 
-    onClick?.();
+    import('canvas-confetti')
+      .then(({ default: confetti }) => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: {
+            x:
+              (cardRect.left + cardRect.width / 2) /
+              window.innerWidth,
+            y:
+              (cardRect.top + cardRect.height / 2) /
+              window.innerHeight,
+          },
+        });
+      })
+      .catch((error) => {
+        console.error('Failed to load confetti:', error);
+      });
   };
+
+  const isWeatherImage = imageUrl.includes(
+    'openweathermap.org',
+  );
 
   return (
     <div
@@ -94,10 +107,10 @@ const Card3D = ({
         className="card-image"
         style={{
           backgroundImage: `url(${imageUrl})`,
-          backgroundColor: imageUrl.includes('openweathermap.org')
+          backgroundColor: isWeatherImage
             ? '#000'
             : '#9c1112',
-          backgroundSize: imageUrl.includes('openweathermap.org')
+          backgroundSize: isWeatherImage
             ? 'contain'
             : 'cover',
           backgroundRepeat: 'no-repeat',
