@@ -1,29 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import './CSS/OneMonth.css';
-
-const detectWebmSupport = () => {
-  if (typeof document === 'undefined') {
-    return false;
-  }
-
-  const video = document.createElement('video');
-
-  return Boolean(
-    video.canPlayType(
-      'video/webm; codecs="vp8, vorbis"',
-    ),
-  );
-};
 
 const OneMonth = ({
   webmUrl,
-  mp4Url,
   description,
 }) => {
-  const [canPlayWebm] = useState(
-    detectWebmSupport,
-  );
-
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -80,19 +61,12 @@ const OneMonth = ({
           controls
           preload="metadata"
         >
-          {canPlayWebm && (
-            <source
-              src={webmUrl}
-              type="video/webm"
-            />
-          )}
-
           <source
-            src={mp4Url}
-            type="video/mp4"
+            src={webmUrl}
+            type='video/webm; codecs="vp9"'
           />
 
-          Your browser does not support the video tag.
+          Your browser does not support WebM video.
         </video>
 
         <button
