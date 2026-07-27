@@ -33,16 +33,6 @@ const rawLocations = [
   },
   {
     imageUrl:
-      'https://bloximages.newyork1.vip.townnews.com/kitv.com/content/tncms/assets/v3/editorial/4/1c/41cf7460-1600-11ee-9b9d-4752e3d4f39b/649caf60b37d4.image.jpg?resize=400%2C400',
-    title: 'Potato Corner',
-    description:
-      "Potato Corner is a Filipino-founded global food chain that sells flavored french fries, which are a popular snack in the Philippines and internationally. Founded in 1992, the company serves various seasoned fries.",
-    clipboard:
-      'Potato Corner, 3030 Plaza Bonita Rd, National City, CA 91950',
-    tags: ['San Diego','Food'],
-  },
-  {
-    imageUrl:
       'https://www.top100golfcourses.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F03mhssoh%2Fproduction%2F0497979982b5bec3f77447355b0120ba50153091-1600x899.jpg&w=3840&q=75',
     title: 'Torrey Pines',
     description:
