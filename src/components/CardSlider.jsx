@@ -171,10 +171,6 @@ const CardSlider = ({ images = [], title }) => {
       return [];
     }
 
-    if (imageCount === 0) {
-      return null;
-    }
-
     return images
       .map((item, index) => {
         const forwardDistance =
@@ -275,7 +271,7 @@ const CardSlider = ({ images = [], title }) => {
                 `${title ?? 'Gallery'} slide ${item.index + 1}`
               }
               loading={
-                item.distance & item.distance === 0
+                item.distance && item.distance === 0
                   ? 'eager'
                   : 'lazy'
               }
