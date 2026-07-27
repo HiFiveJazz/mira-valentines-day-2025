@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import './CSS/Rotating3D.css';
 
-const Rotating3D = ({ webmUrl, mp4Url, description }) => {
+const Rotating3D = ({ webmUrl, description }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -42,9 +42,12 @@ const Rotating3D = ({ webmUrl, mp4Url, description }) => {
           playsInline
           preload="metadata"
         >
-          <source src={webmUrl} type="video/webm" />
-          <source src={mp4Url} type="video/mp4" />
-          Your browser does not support the video tag.
+          <source
+            src={webmUrl}
+            type='video/webm; codecs="vp9"'
+          />
+
+          Your browser does not support WebM video.
         </video>
       </div>
 
