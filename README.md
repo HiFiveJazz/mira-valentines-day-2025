@@ -1,8 +1,25 @@
-# miraandjazz.com
+# jazzmems.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Source code for my personal website, hosted at jazzmems.com.
 
-Currently, two official plugins are available:
+The site started as a Valentine’s Day project and has since grown into a personal website containing photography, memories, blog posts, weather information, interactive cards, and other experiments.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Responsive React interface
+- Route-based code splitting
+- Photography and memories galleries
+- Interactive card sliders
+- Weather forecasts and charts
+- Personal blog
+- Dark mode
+- Lazy-loaded media and page sections
+- Custom domain hosted through GitHub Pages
+## Built With
+- React 19
+- React Router
+- Vite
+- Chart.js
+- React Chart.js 2
+- Vanilla Tilt
+- Canvas Confetti
+- GitHub Pages
